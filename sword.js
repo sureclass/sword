@@ -1,3 +1,3 @@
-﻿function 1_2(){
+﻿function ffd(){
 	alert("你好");
 }
