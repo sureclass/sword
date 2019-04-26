@@ -1,3 +1,3 @@
-﻿function s_g(){
+﻿function s_p(){
 	alert("你好");
 }
