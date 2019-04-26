@@ -1,3 +1,3 @@
 ﻿function s_p(){
-	alert("你好");
+	alert("难受");
 }
