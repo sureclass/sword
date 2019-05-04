@@ -5539,10 +5539,11 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_room")
+    let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         console.log(g.keys()[i]+":"+g.get(g.keys()[i]));
     }
+    //send_notice(me,"我的天呐");
 }
 var p_id = 0;
 (function(){
@@ -5598,6 +5599,7 @@ var d_list = [];
 var chonglian = 0;
 var tuposkill_obj = {};
 var tuposkill_off = 0;
+var jj_qs_delay = 20;
 (function (window) {
     window.game = this;
     window.attach = function() {
@@ -5606,6 +5608,33 @@ var tuposkill_off = 0;
             this.old(b);
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
+                if(type=="show_html_page"&&b.get("title")=="兽雀游戏"&&jj_qs_cmd_id!=""){
+                    let x = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                    let x_1 = x.split(">");
+                    let cs = x_1[2].split("<")[0];
+                    let jd = x_1[16].split("<")[0].match(/(.*?)\s金锭/)[1];
+                    let deday = 250;
+                    if(x.indexOf("开始抽牌")>=0){
+                        setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
+                        return;
+                    }
+                    if(x.indexOf("乘胜追击")>=0){
+                        if(jd<10){
+                            setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
+                        }else{
+                            setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                        }
+                        return;
+                    }
+                    if(x.indexOf("此轮结束")>=0){
+                        if(jd==0){
+                            setTimeout(clickButton,deday,jj_qs_cmd_id+' pay');
+                        }else{
+                            setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                        }
+                        return;
+                    }
+                }
                 if(tuposkill_off==1){
                 if(type=="skills"&&subtype=="info"){
                     if(b.get("tupo_tm")!=undefined){
@@ -6165,12 +6194,12 @@ function chaa(text) {
     btnlist["重连"].style.display = "none";
     createButton("保持",jj_bc_func);
     btnlist["保持"].style.display = "none";
-    createButton("自突时长",jj_tptime_func);
-    btnlist["自突时长"].style.display = "none";
+    createButton("强连",jj_tptime_func);
+    btnlist["强连"].style.display = "none";
     createButton("自动突破",jj_autotp_func);
     btnlist["自动突破"].style.display = "none";
-    createButton("突破个数",jj_tpmax_func);
-    btnlist["突破个数"].style.display = "none";
+    createButton("兽雀",jj_tpmax_func);
+    btnlist["兽雀"].style.display = "none";
     createButton("进阶返回",jjfhfunc);
     btnlist["进阶返回"].style.display = "none";
     btnlist["进阶返回"].innerText = "返回";
@@ -6184,9 +6213,9 @@ function jinjiefunc(){
     btnlist["清背包"].style.display = "block";
     btnlist["重连"].style.display = "block";
     btnlist["保持"].style.display = "block";
-    btnlist["自突时长"].style.display = "block";
+    btnlist["强连"].style.display = "block";
     btnlist["自动突破"].style.display = "block";
-    btnlist["突破个数"].style.display = "block";
+    btnlist["兽雀"].style.display = "block";
 }
 function jjfhfunc(){
     btnlist["进阶返回"].style.display = "none";
@@ -6196,9 +6225,9 @@ function jjfhfunc(){
     btnlist["清背包"].style.display = "none";
     btnlist["重连"].style.display = "none";
     btnlist["保持"].style.display = "none";
-    btnlist["自突时长"].style.display = "none";
+    btnlist["强连"].style.display = "none";
     btnlist["自动突破"].style.display = "none";
-    btnlist["突破个数"].style.display = "none";
+    btnlist["兽雀"].style.display = "none";
     showzt();
 }
 var jj_qback_event = 0;
@@ -6208,6 +6237,7 @@ var jj_autotp_js_boolean = 0;
 var jj_jwp_obj = {};//记录场上所有物品的对象
 var jj_jwp_off = 0;
 var jj_jwp_int_id = null;
+var jj_qs_cmd_id = "";
 function jj_xid_func(){
     document.getElementById("out2").innerHTML +=抓到的id;
 }
@@ -6288,7 +6318,18 @@ function jj_autotp_func1(){
     },dalay);
 }
 function jj_tpmax_func(){
-    alert("暂弃");
+    for(let i=1;i<1000;i++){
+        let str = "cmd"+i;
+        if(g_obj_map.get("msg_room").get(str)!=undefined){
+            let text = str + "_name";
+            if(g_obj_map.get("msg_room").get(text).indexOf("兽雀游戏")>=0){
+                jj_qs_cmd_id = g_obj_map.get("msg_room").get(str);
+                break;
+            }
+        }else{
+            break;
+        }
+    }
 }
 function jj_jwp_func(){
     if(jj_jwp_off==0){
