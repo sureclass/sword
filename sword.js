@@ -3975,7 +3975,7 @@ function go(str){
 	}
 }
 function go_1(){
-    if(g_gmain.is_fighting==1){
+    if(document.getElementById("combat_xdz_text")){
         setTimeout(go_1,20);
 		return;
     }
@@ -5142,7 +5142,11 @@ function xhjs(name){
     }
 }
 function genzhaofunc(){
-    alert("曾经的跟招，已舍弃");
+    //alert("曾经的跟招，已舍弃");
+	if(document.getElementById("combat_xdz_text")){
+		clickButton('fudi callout_youxia', 0);
+	}
+	setTimeout(genzhaofunc,1000);
 }
 var restr_off = 0;
 function pzfunc(){
