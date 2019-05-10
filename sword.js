@@ -4020,7 +4020,7 @@ function go(str){
 	}
 }
 function go_1(){
-    if(g_gmain.is_fighting==1){
+    if(document.getElementById("combat_xdz_text")){
         setTimeout(go_1,20);
 		return;
     }
@@ -5668,7 +5668,7 @@ var jj_qs_delay = 20;
                         return;
                     }
                     if(x.indexOf("乘胜追击")>=0){
-                        if(jd<10){
+                        if(jd<8){
                             setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
                         }else{
                             setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
