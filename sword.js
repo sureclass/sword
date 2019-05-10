@@ -2239,6 +2239,51 @@ var npcdp = {
         "车尔库":"jh 48,e,se,se,e,ne,se,e,e,e,ne,ne,event_1_369927,s",
         "分身":"jh 48,e,se,se,e,ne,se,e,e,e,ne,ne,event_1_369927,s,s,s",
         "瓦耳拉齐":"jh 48,e,se,se,e,ne,se,e,e,e,ne,ne,event_1_369927,s,s,s",
+    },
+    "京城":{
+        "饥民":"jh 49",
+        "捕快":"jh 49,n,n,n,n",
+        "武将":"jh 49,n,n,n,n",
+        "侯府小姐":"jh 49,n,n,n,n,n",
+        "小丫鬟":"jh 49,n,n,n,n,n",
+        "学士":"jh 49,n,n,n,n,n，w",
+        "书生":"jh 49,n,n,n,n,n,w,w",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "1":"jh 49,n,n,n,n,n",
+        "通天塔":"jh 49,n,n,n,n,n,n,n,n,e,e,e,e,nw,n,e,ne,ne,n,n",
+        "红螺寺":"jh 49,n,n,n,n,n,n,n,n,w,w,w,w,ne,n,n,n,n,w,nw,nw,nw,n",
     }
 };//npc位置对象
 var npcdplist = {
@@ -3975,7 +4020,7 @@ function go(str){
 	}
 }
 function go_1(){
-    if(document.getElementById("combat_xdz_text")){
+    if(g_gmain.is_fighting==1){
         setTimeout(go_1,20);
 		return;
     }
@@ -4094,12 +4139,14 @@ createButton("战斗",zdfunc);
 createButton("跨服",kffunc);
 createButton("其他",otherfunc);
 createButton("进阶",jinjiefunc);
+createButton("快捷",kuaijiefunc);
 function hidezt(){
     btnlist["日常"].style.display = "none";
     btnlist["战斗"].style.display = "none";
     btnlist["跨服"].style.display = "none";
     btnlist["其他"].style.display = "none";
     btnlist["进阶"].style.display = "none";
+    btnlist["快捷"].style.display = "none";
 }
 function showzt(){
     btnlist["日常"].style.display = "block";
@@ -4107,6 +4154,7 @@ function showzt(){
     btnlist["跨服"].style.display = "block";
     btnlist["其他"].style.display = "block";
     btnlist["进阶"].style.display = "block";
+    btnlist["快捷"].style.display = "block";
 }
 //------------------------日常
 (function(){
@@ -4208,6 +4256,7 @@ function yzqdfunc(){
         "jh 26;w;w;n;e;e;event_1_18075497;w;w;n;event_1_14435995;home;"+
         "jh 35;nw;nw;nw;n;ne;nw;w;w^v^灸熔洞口^v^;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
         "cangjian get_all;xueyin_shenbinggu blade get_all;xueyin_shenbinggu unarmed get_all;xueyin_shenbinggu throwing get_all;xueyin_shenbinggu hammer get_all;"+
+        "xueyin_shenbinggu spear get_all;xueyin_shenbinggu stick get_all;xueyin_shenbinggu staff get_all;xueyin_shenbinggu whip get_all;"+
         "share_ok 1;share_ok 2;share_ok 3;share_ok 4;share_ok 5;share_ok 7;exercise stop;exercise";
     go(str);
 }
@@ -4245,7 +4294,7 @@ function dzqdfunc(){
 }
 function bhqdfunc(){
     if(qlyxautoboolean == 0){
-        tanfanname = prompt("...","二娘");
+        tanfanname = prompt("...","夜魔*二娘");
         qlyxautoboolean = 1;
     }else{
         qlyxautoboolean = 0;
@@ -5101,7 +5150,7 @@ var xhjsInt = null;
 var xhjs_qxjs_off = 0;
 function xhjsfunc(){
     if(xhjsInt == null){
-        let canshu = prompt("请输入循环击杀的npc名以及叫杀时间间隔","青竹蛇,地痞,200");
+        let canshu = prompt("请输入循环击杀的npc名以及叫杀时间间隔","青竹蛇,夜魔*二娘,200");
         btnlist["循环击杀"].innerText = "循环击杀i";
         let name = canshu.split(",");
         let time = name.pop();
@@ -5142,11 +5191,7 @@ function xhjs(name){
     }
 }
 function genzhaofunc(){
-    //alert("曾经的跟招，已舍弃");
-	if(document.getElementById("combat_xdz_text")){
-		clickButton('fudi callout_youxia', 0);
-	}
-	setTimeout(genzhaofunc,1000);
+    alert("曾经的跟招，已舍弃");
 }
 var restr_off = 0;
 function pzfunc(){
@@ -6375,6 +6420,32 @@ function jj_jwp_int(){
         }
     }
     jj_jwp_obj=jj_jwp_obj1;
+}
+//--------------------------快捷键
+(function(){
+    btnleft = 5;
+    btntop = 5;
+    createButton("到通天塔",kj_tt_func);
+    btnlist["到通天塔"].style.display = "none";
+    createButton("快捷返回",kjfhfunc);
+    btnlist["快捷返回"].style.display = "none";
+    btnlist["快捷返回"].innerText = "返回";
+})();
+function kuaijiefunc(){
+    hidezt();
+    btnlist["到通天塔"].style.display = "block";
+    btnlist["快捷返回"].style.display = "block";
+}
+function kjfhfunc(){
+    btnlist["到通天塔"].style.display = "none";
+    btnlist["快捷返回"].style.display = "none";
+    showzt();
+}
+function kj_tt_func(){
+    go(npcdp.京城.通天塔);
+}
+function kj_sq_func(){
+    //
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
