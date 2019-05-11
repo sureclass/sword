@@ -3999,30 +3999,41 @@ var room_id = "",bb_move_off = 1,bb_move_index = 0;
     console.log(doubleskilllist,doubleskilllist_id);
 })();
 //------------------------新的go方法
-var go_arr = [];//要执行的数组
 var go_reg_num = 0;//执行到的步数
 var go_repeat = 0;//重复的次数
 var go_next = 0;//是否继续执行
+var go_nonext_dp = [
+    "渔船","木船","竹篮","木筏","小船","客船"
+];
 function go(str){
 	if(str==null&&str==undefined){
 		return;
 	}
+    if(go_1_settime!=null){
+        clearTimeout(go_1_settime);
+        go_1_settime = null;
+    }
 	go_reg_num = 0;
+    let go_arr = [];
 	if(str.indexOf(",")>=0){
 		go_arr = str.split(",");
-		go_1();
 	}else if(str.indexOf(";")>=0){
 		go_arr = str.split(";");
-		go_1();
 	}else{
-		go_arr = [];
+        go_arr = [];
 		clickButton(str);
 	}
+    go_1(go_arr);
 }
-function go_1(){
-    if(document.getElementById("combat_xdz_text")){
-        setTimeout(go_1,20);
-		return;
+var go_1_settime = null;
+function go_1(go_arr){
+    if(go_1_settime!=null){
+        clearTimeout(go_1_settime);
+        go_1_settime = null;
+    }
+    if(go_nonext_func()){
+        go_1_settime = setTimeout(go_1,10,go_arr);
+        return;
     }
 	if(go_reg_num<go_arr.length){
 	    let text = go_arr[go_reg_num];
@@ -4061,7 +4072,7 @@ function go_1(){
             let reg = x_4[1];
             try{
 		        if(x_4[2]!=ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
-			        setTimeout(go_1,delay);
+			        go_1_settime = setTimeout(go_1,delay,go_arr);
                     clickButton(reg);
 			        return;
 			    }
@@ -4071,8 +4082,25 @@ function go_1(){
 		}
 		go_reg_num+=1;
 		clickButton(reg);
-		setTimeout(go_1,delay);
-	}
+		go_1_settime = setTimeout(go_1,delay,go_arr);
+	}else{
+        document.getElementById("out2").innerHTML += "<span class='out2'>执行完毕<br></span>";
+        go_reg_num = 0;
+        go_repeat = 0;
+        go_next = 0;
+        return;
+    }
+}
+function go_nonext_func(){
+    if(document.getElementById("combat_xdz_text")){
+        return true;
+    }
+    for(let i=0;i<go_nonext_dp.length;i++){
+        if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))==go_nonext_dp[i]){
+            return true;
+        }
+    }
+    return false;
 }
 //------------------------先做个按钮和一个box
 function ispc(){
@@ -5588,10 +5616,10 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_room");
+    /*let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         console.log(g.keys()[i]+":"+g.get(g.keys()[i]));
-    }
+    }*/
     //send_notice(me,"我的天呐");
 }
 var p_id = 0;
@@ -5627,7 +5655,7 @@ function navfunc(){
     if(npcs == 1){
         let str = npcxx.split(":")[1];
         sleep = 400;
-        gonpcdp(str);
+        go(str);
     }
     if(npcs>1){
         let text = "请输入要导航的目标序号：\n" + npcxx;
@@ -5636,7 +5664,7 @@ function navfunc(){
         let str = npcxx.split(":")[num];
         //console.log(str);
         sleep = 400;
-        gonpcdp(str);
+        go(str);
     }
 }
 var tjg_move_off = 1;
@@ -5649,6 +5677,7 @@ var chonglian = 0;
 var tuposkill_obj = {};
 var tuposkill_off = 0;
 var jj_qs_delay = 20;
+var jj_sq_zj_num = 0;
 (function (window) {
     window.game = this;
     window.attach = function() {
@@ -5665,13 +5694,29 @@ var jj_qs_delay = 20;
                     let deday = 250;
                     if(x.indexOf("开始抽牌")>=0){
                         setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
+                        jj_sq_zj_num = 0;
                         return;
                     }
                     if(x.indexOf("乘胜追击")>=0){
-                        if(jd<8){
-                            setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
-                        }else{
+                        if(jd<11){
+                            if(jj_sq_zj_num>=1){
+                                jj_sq_zj_num = 0;
+                                setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                            }else{
+                                jj_sq_zj_num += 1;
+                                setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
+                            }
+                        }else if(jd>=30){
+                            jj_sq_zj_num = 0;
                             setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                        }else{
+                            if(jj_sq_zj_num>=1){
+                                jj_sq_zj_num = 0;
+                                setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                            }else{
+                                jj_sq_zj_num += 1;
+                                setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
+                            }
                         }
                         return;
                     }
@@ -6114,8 +6159,8 @@ function killYXfeedback(){
                         Object.keys(npcdplist[y[1]]).forEach(function(key){
                             if(npcdplist[y[1]][key].indexOf(y[2])>=0){
                                 //这个key(npc名)就是我们要对话的,调用导航仪走过去
-                                gonpcdp(npcdp[y[1]][key]);
-                                console.log(key);
+                                go(npcdp[y[1]][key]);
+                                document.getElementById("out2").innerHTML += "<span class='out2'>"+key+"("+npcdp[y[1]][key]+")<br></span>";
                                 rc_xh_int_func(key);
                             }
                         });
@@ -6427,6 +6472,8 @@ function jj_jwp_int(){
     btntop = 5;
     createButton("到通天塔",kj_tt_func);
     btnlist["到通天塔"].style.display = "none";
+    createButton("到红螺寺",kj_hl_func);
+    btnlist["到红螺寺"].style.display = "none";
     createButton("快捷返回",kjfhfunc);
     btnlist["快捷返回"].style.display = "none";
     btnlist["快捷返回"].innerText = "返回";
@@ -6435,10 +6482,12 @@ function kuaijiefunc(){
     hidezt();
     btnlist["到通天塔"].style.display = "block";
     btnlist["快捷返回"].style.display = "block";
+    btnlist["到红螺寺"].style.display = "block";
 }
 function kjfhfunc(){
     btnlist["到通天塔"].style.display = "none";
     btnlist["快捷返回"].style.display = "none";
+    btnlist["到红螺寺"].style.display = "none";
     showzt();
 }
 function kj_tt_func(){
@@ -6446,6 +6495,9 @@ function kj_tt_func(){
 }
 function kj_sq_func(){
     //
+}
+function kj_hl_func(){
+    go(npcdp.京城.红螺寺);
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
@@ -6467,103 +6519,4 @@ function runnum(n){
         num += Math.floor(Math.random()*10);
     }
     return num;
-}
-//--------------------------go方法
-var sj,sjs = 0,ja,sleep = 300,autogo;
-function going(){
-    if(!document.getElementById("combat_xdz_text")){
-        if(sjs < sj.length){//说明有要执行的代码
-            if(sj[sjs].indexOf("#") >= 0){//说明要重复
-                if(ja < sj[sjs].split("#")[1]){
-                    if(zjmove(sj[sjs].split("#")[0])){
-                        clickButton(sj[sjs].split("#")[0],0);
-                        ja ++;
-                    }
-                }else{
-                    ja = 0;
-                    sjs++;
-                }
-            }else{
-                if(zjmove(sj[sjs])){
-                    clickButton(sj[sjs],0);
-                    sjs++;
-                }
-            }
-        }else{
-            sjs = 0;
-            ja = 0;
-            clearInterval(autogo);
-            document.getElementById("out2").innerHTML += "<span class='out2'>执行完毕<br></span>";
-        }
-    }
-}
-function zjmove(fangxiang){
-    if(fangxiang == "w"){
-        if(g_obj_map.get("msg_room").get("west") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "e"){
-        if(g_obj_map.get("msg_room").get("east") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "s"){
-        if(g_obj_map.get("msg_room").get("south") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "n"){
-        if(g_obj_map.get("msg_room").get("north") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "sw"){
-        if(g_obj_map.get("msg_room").get("southwest") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "se"){
-        if(g_obj_map.get("msg_room").get("southeast") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "ne"){
-        if(g_obj_map.get("msg_room").get("northeast") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(fangxiang == "nw"){
-        if(g_obj_map.get("msg_room").get("northwest") != undefined){
-            return true;
-        }else{
-            return false;
-        }
-    }else{
-        return true;
-    }
-}
-//-------------------------------导航仪
-function gonpcdp(str){
-    try{
-        sj = [];
-        sjs = 0;
-        ja = 0;
-        if(autogo != null && autogo != undefined){
-            clearInterval(autogo);
-        }
-        if(str != undefined){
-            sj = str.split(",");
-        }
-        autogo = setInterval(going,sleep);
-    }catch(err){
-        console.log(err);
-    }
 }
