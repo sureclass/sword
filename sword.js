@@ -4007,6 +4007,10 @@ var go_nonext_dp = [
 ];
 function go(str){
 	if(str==null&&str==undefined){
+        if(go_1_settime!=null){
+           clearTimeout(go_1_settime);
+           go_1_settime = null;
+        }
 		return;
 	}
     if(go_1_settime!=null){
@@ -4033,9 +4037,8 @@ function go_1(go_arr){
     }
     if(go_nonext_func()){
         go_1_settime = setTimeout(go_1,10,go_arr);
-        return;
-    }
-	if(go_reg_num<go_arr.length){
+    }else{
+        if(go_reg_num<go_arr.length){
 	    let text = go_arr[go_reg_num];
 		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
 		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
@@ -4084,14 +4087,16 @@ function go_1(go_arr){
 		clickButton(reg);
 		go_1_settime = setTimeout(go_1,delay,go_arr);
 	}else{
-        document.getElementById("out2").innerHTML += "<span class='out2'>执行完毕<br></span>";
+        g_gmain.recvNetWork2("执行完毕");
         go_reg_num = 0;
         go_repeat = 0;
         go_next = 0;
         return;
     }
+    }
 }
 function go_nonext_func(){
+    try{
     if(document.getElementById("combat_xdz_text")){
         return true;
     }
@@ -4100,6 +4105,7 @@ function go_nonext_func(){
             return true;
         }
     }
+    }catch(e){}
     return false;
 }
 //------------------------先做个按钮和一个box
@@ -5616,10 +5622,11 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    /*let g = g_obj_map.get("msg_room");
+    let g = g_obj_map.get("msg_score");
     for(let i=0;i<g.keys().length;i++){
-        console.log(g.keys()[i]+":"+g.get(g.keys()[i]));
-    }*/
+        try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
+    }
+    //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
 }
 var p_id = 0;
@@ -6174,6 +6181,7 @@ function killYXfeedback(){
                 let x = msg.match(/【江湖悬红榜】任务已完成。/);
                 let x_1 = msg.match(/哎，我都累死了，等下再来好吗？/);
                 let x_2 = msg.match(/系统更新中，请稍候再试。/);
+                let x_3 = msg.match(/你今天江湖悬红榜任务数量已经达到上限/);
                 if(x){
                     go("jh 1;w;event_1_40923067^c^2c");
                 }
@@ -6182,6 +6190,9 @@ function killYXfeedback(){
                 }
                 if(x_2){
                     clickButton("event_1_40923067");
+                }
+                if(x_3){
+                    clickButton('items use obj_xuankongling');
                 }
             }
         }
@@ -6294,6 +6305,8 @@ function chaa(text) {
     btnlist["自动突破"].style.display = "none";
     createButton("兽雀",jj_tpmax_func);
     btnlist["兽雀"].style.display = "none";
+    createButton("等级任务",jj_djrw_func);
+    btnlist["等级任务"].style.display = "none";
     createButton("进阶返回",jjfhfunc);
     btnlist["进阶返回"].style.display = "none";
     btnlist["进阶返回"].innerText = "返回";
@@ -6310,6 +6323,7 @@ function jinjiefunc(){
     btnlist["强连"].style.display = "block";
     btnlist["自动突破"].style.display = "block";
     btnlist["兽雀"].style.display = "block";
+    btnlist["等级任务"].style.display = "block";
 }
 function jjfhfunc(){
     btnlist["进阶返回"].style.display = "none";
@@ -6322,6 +6336,7 @@ function jjfhfunc(){
     btnlist["强连"].style.display = "none";
     btnlist["自动突破"].style.display = "none";
     btnlist["兽雀"].style.display = "none";
+    btnlist["等级任务"].style.display = "none";
     showzt();
 }
 var jj_qback_event = 0;
@@ -6466,6 +6481,20 @@ function jj_jwp_int(){
     }
     jj_jwp_obj=jj_jwp_obj1;
 }
+function jj_djrw_func(){
+    clickButton("score");
+    setTimeout(jj_djrw_1,2000);
+}
+function jj_djrw_1(){
+    let shen = g_obj_map.get("msg_score").get("shen");
+    if(shen>=50000){
+        go("daily go 18,event_1_20668593,jh 21");
+    }else if(shen<=(-50000)){
+        go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
+    }else{
+        alert("你的正邪气不足");
+    }
+}
 //--------------------------快捷键
 (function(){
     btnleft = 5;
@@ -6474,6 +6503,18 @@ function jj_jwp_int(){
     btnlist["到通天塔"].style.display = "none";
     createButton("到红螺寺",kj_hl_func);
     btnlist["到红螺寺"].style.display = "none";
+    createButton("吃令牌",kj_clp_func);
+    btnlist["吃令牌"].style.display = "none";
+    createButton("幽冥*普",kj_ymszp_func);
+    btnlist["幽冥*普"].style.display = "none";
+    createButton("幽冥*打",kj_ymszd_func);
+    btnlist["幽冥*打"].style.display = "none";
+    createButton("木人18",kj_mr18_func);
+    btnlist["木人18"].style.display = "none";
+    createButton("绝杀",kj_js_func);
+    btnlist["绝杀"].style.display = "none";
+    createButton("上沉香",kj_cx_func);
+    btnlist["上沉香"].style.display = "none";
     createButton("快捷返回",kjfhfunc);
     btnlist["快捷返回"].style.display = "none";
     btnlist["快捷返回"].innerText = "返回";
@@ -6483,11 +6524,23 @@ function kuaijiefunc(){
     btnlist["到通天塔"].style.display = "block";
     btnlist["快捷返回"].style.display = "block";
     btnlist["到红螺寺"].style.display = "block";
+    btnlist["吃令牌"].style.display = "block";
+    btnlist["幽冥*打"].style.display = "block";
+    btnlist["幽冥*普"].style.display = "block";
+    btnlist["绝杀"].style.display = "block";
+    btnlist["木人18"].style.display = "block";
+    btnlist["上沉香"].style.display = "block";
 }
 function kjfhfunc(){
     btnlist["到通天塔"].style.display = "none";
     btnlist["快捷返回"].style.display = "none";
     btnlist["到红螺寺"].style.display = "none";
+    btnlist["吃令牌"].style.display = "none";
+    btnlist["幽冥*打"].style.display = "none";
+    btnlist["幽冥*普"].style.display = "none";
+    btnlist["绝杀"].style.display = "none";
+    btnlist["木人18"].style.display = "none";
+    btnlist["上沉香"].style.display = "none";
     showzt();
 }
 function kj_tt_func(){
@@ -6498,6 +6551,32 @@ function kj_sq_func(){
 }
 function kj_hl_func(){
     go(npcdp.京城.红螺寺);
+}
+function kj_cx_func(){
+    go('clan incense cx^c^5c;');
+}
+function kj_clp_func(){
+    let str = "jh 1;dh_baibaoling 0 1^c^3c;dh_baibaoling 1 1^c^2c;dh_baibaoling 3 1^c^3c;dh_baibaoling 4 1^c^2c;items use obj_zhuangyuantie^c^2c;"+
+        "items use obj_jianghuling^c^3c;items use obj_bangpailing^c^2c;items use obj_shimenling^c^3c;event_1_82393002;event_1_12494761;home";
+    go(str);
+}
+function kj_ymszp_func(){
+    go(npcdp.幽冥山庄.幽冥山庄);
+}
+function kj_ymszd_func(){
+    let str = "jh 45,ne,ne,n,n,ne,ne,e,ne,n,n,n,n,n,ne,ne,n,n,n,nw,nw,n,e,e,e,e,e,"+
+        "event_1_77775145,event_1_77775145 ymsz_houyuan,se^d^2000s,se^d^2000s,"+
+        "s^d^2000s,w^d^2000s,e,e^d^2000s,w,s^d^2000s,s^d^2000s,s^d^2000s,w^d^2000s,"+
+        "e,e^d^2000s,s^d^2000s,n,e^d^2000s,e^d^2000s,n^d^2000s,s,e^d^2000s,e^d^2000s,n";
+    go(str);
+}
+function kj_mr18_func(){
+    let str = npcdp.白帝城.木人 + ",event_1_91914705,e,e,e";
+    go(str);
+}
+function kj_js_func(){
+    let str = npcdp.海云阁.海东狮 + ",n";
+    go(str);
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
