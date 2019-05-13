@@ -4027,6 +4027,7 @@ function go(str){
         go_arr = [];
 		clickButton(str);
 	}
+    console.log(str);
     go_1(go_arr);
 }
 var go_1_settime = null;
@@ -4035,9 +4036,15 @@ function go_1(go_arr){
         clearTimeout(go_1_settime);
         go_1_settime = null;
     }
-    if(go_nonext_func()){
+    let num = 0;
+    num = go_nonext_func();
+    if(num==1){
         go_1_settime = setTimeout(go_1,10,go_arr);
-    }else{
+    }
+    if(num==2){
+        go_1_settime = setTimeout(go_1,200,go_arr);
+    }
+    if(num==3){
         if(go_reg_num<go_arr.length){
 	    let text = go_arr[go_reg_num];
 		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
@@ -4094,19 +4101,22 @@ function go_1(go_arr){
         return;
     }
     }
+    if(num==0){
+        g_gmain.recvNetWork2("异常");
+    }
 }
 function go_nonext_func(){
     try{
     if(document.getElementById("combat_xdz_text")){
-        return true;
+        return 1;
     }
     for(let i=0;i<go_nonext_dp.length;i++){
         if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))==go_nonext_dp[i]){
-            return true;
+            return 2;
         }
     }
     }catch(e){}
-    return false;
+    return 3;
 }
 //------------------------先做个按钮和一个box
 function ispc(){
@@ -4976,7 +4986,7 @@ function auto_skill_kf(){
             if(gSocketMsg.get_xdz()>=3){
                 for(let i=0;i<skill_list4.length;i++){
                     if(jineng(skill_list4[i])){
-                        go("playskill "+jineng(skill_list4[i]));
+                        clickButton("playskill "+jineng(skill_list4[i]));
                         return;
                     }
                 }
@@ -4994,7 +5004,7 @@ function auto_skill_kf(){
                 if(gSocketMsg.get_xdz()>=3){
                     for(let i=0;i<7;i++){
                         if(jineng(skill_list4[i])){
-                            go("playskill "+jineng(skill_list4[i]));
+                            clickButton("playskill "+jineng(skill_list4[i]));
                             return;
                         }
                     }
