@@ -5715,25 +5715,17 @@ var jj_sq_zj_num = 0;
                         return;
                     }
                     if(x.indexOf("乘胜追击")>=0){
-                        if(jd<11){
-                            if(jj_sq_zj_num>=1){
+                        if(jd<8){
+                            if(jj_sq_zj_num>=2){
                                 jj_sq_zj_num = 0;
                                 setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
                             }else{
                                 jj_sq_zj_num += 1;
                                 setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
                             }
-                        }else if(jd>=30){
+                        }else{
                             jj_sq_zj_num = 0;
                             setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
-                        }else{
-                            if(jj_sq_zj_num>=1){
-                                jj_sq_zj_num = 0;
-                                setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
-                            }else{
-                                jj_sq_zj_num += 1;
-                                setTimeout(clickButton,deday,jj_qs_cmd_id+' take');
-                            }
                         }
                         return;
                     }
