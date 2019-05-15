@@ -5615,29 +5615,19 @@ function shiyanfunc(){
     //let name = ansi_up.ansi_to_text(g_obj_map.get("msg_attrs").get("name"));
     //g_obj_map.get("msg_vs_info").get("vs2_pos1")//抓npcid
     //console.log(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short')));
-    /*for(let i=0;i<30;i++){
-            try{
-                if(g_obj_map.get("msg_room").get("item"+i)!=undefined){
-                    if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get("item"+i)).split(",")[1]=="何不净的尸体"){
-                        let str = "get " +g_obj_map.get("msg_room").get("item"+i).split(",")[0];
-                        clickButton(str);
-                    }
-                }
-            }catch(e){}
-        }
-        */
     //setTimeout(shiyanfunc,10);
     //let str = window.location.href;
     //clickButton('skills info u5864606 chanchu-bufa');
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_score");
+    /*let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
-    }
+    }*/
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
+    console.log(g_gmain);
 }
 var p_id = 0;
 (function(){
@@ -5671,7 +5661,6 @@ function navfunc(){
     }
     if(npcs == 1){
         let str = npcxx.split(":")[1];
-        sleep = 400;
         go(str);
     }
     if(npcs>1){
@@ -5680,7 +5669,6 @@ function navfunc(){
         if(!num)return;
         let str = npcxx.split(":")[num];
         //console.log(str);
-        sleep = 400;
         go(str);
     }
 }
@@ -5703,6 +5691,14 @@ var jj_sq_zj_num = 0;
             this.old(b);
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
+                try{
+                    if(type=="main_msg"){
+                        let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        if(msg.match(/选择了(.*?)宝藏地图。/)){
+                            clickButton('clan bzmt puzz');
+                        }
+                    }
+                }catch(e){}
                 if(type=="show_html_page"&&b.get("title")=="兽雀游戏"&&jj_qs_cmd_id!=""){
                     let x = g_simul_efun.replaceControlCharBlank(b.get("msg"));
                     let x_1 = x.split(">");
@@ -6169,7 +6165,8 @@ function killYXfeedback(){
                             if(npcdplist[y[1]][key].indexOf(y[2])>=0){
                                 //这个key(npc名)就是我们要对话的,调用导航仪走过去
                                 go(npcdp[y[1]][key]);
-                                document.getElementById("out2").innerHTML += "<span class='out2'>"+key+"("+npcdp[y[1]][key]+")<br></span>";
+                                let str_wz = key+npcdp[y[1]][key];
+                                g_gmain.recvNetWork2(str_wz);
                                 rc_xh_int_func(key);
                             }
                         });
@@ -6188,26 +6185,16 @@ function killYXfeedback(){
                     go("jh 1;w;event_1_40923067^c^2c");
                 }
                 if(x_1){
-                    clickButton("event_1_40923067");
+                    setTimeout(clickButton,200,"event_1_40923067");
                 }
                 if(x_2){
-                    clickButton("event_1_40923067");
+                    setTimeout(clickButton,200,"event_1_40923067");
                 }
                 if(x_3){
                     clickButton('items use obj_xuankongling');
+                    setTimeout(clickButton,200,"event_1_40923067");
                 }
             }
-        }
-        if(type=="vs"){//pk
-            try{
-                if(1 == 1){
-                    let msg=g_simul_efun.replaceControlCharBlank(b.get("msg"));
-                    if(msg.match(/(独孤须臾|翼国公|云观海|黑袍公|百毒旗主|叶千麟|巫蛊王|十方恶神)死了。/)){
-                        clickButton('clan bzmt puzz');
-                        clickButton('clan bzmt puzz');
-                    }
-                }
-            }catch(err){}
         }
     }
 }
