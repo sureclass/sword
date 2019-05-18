@@ -5620,13 +5620,13 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    /*let g = g_obj_map.get("msg_room");
+    let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
-    }*/
+    }
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
-    console.log(g_gmain);
+    //console.log(g_gmain);
 }
 var p_id = 0;
 (function(){
@@ -6121,6 +6121,25 @@ function fond_npc(name){
         return null;
     }catch(e){}
 }
+function fond_cmd(name){
+    try{
+        let return_text = "";
+        for(let i=1;i<1000;i++){
+            let text = "cmd"+i;
+            try{
+                if(g_obj_map.get("msg_room").get(text)!=undefined){
+                    if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get(text+"_name"))==name){
+                        return_text = g_obj_map.get("msg_room").get(text);
+                        return return_text;
+                    }
+                }else{
+                    break;
+                }
+            }catch(e){}
+        }
+        return null;
+    }catch(e){}
+}
 var autoskill = new AutoSkill();
 var autoskillboolean = 0;
 var killYXFeed = new killYXfeedback();
@@ -6323,8 +6342,10 @@ function chaa(text) {
     btnlist["兽雀"].style.display = "none";
     createButton("等级任务",jj_djrw_func);
     btnlist["等级任务"].style.display = "none";
-    createButton("定时签到",jj_djrw_func);
+    createButton("定时签到",jj_dsqd_func);
     btnlist["定时签到"].style.display = "none";
+    createButton("循环点击",jj_xhdj_func);
+    btnlist["循环点击"].style.display = "none";
     createButton("进阶返回",jjfhfunc);
     btnlist["进阶返回"].style.display = "none";
     btnlist["进阶返回"].innerText = "返回";
@@ -6343,6 +6364,7 @@ function jinjiefunc(){
     btnlist["兽雀"].style.display = "block";
     btnlist["等级任务"].style.display = "block";
     btnlist["定时签到"].style.display = "block";
+    btnlist["循环点击"].style.display = "block";
 }
 function jjfhfunc(){
     btnlist["进阶返回"].style.display = "none";
@@ -6357,6 +6379,7 @@ function jjfhfunc(){
     btnlist["兽雀"].style.display = "none";
     btnlist["等级任务"].style.display = "none";
     btnlist["定时签到"].style.display = "none";
+    btnlist["循环点击"].style.display = "none";
     showzt();
 }
 var jj_qback_event = 0;
@@ -6516,8 +6539,18 @@ function jj_djrw_1(){
     }
 }
 var jj_dsqd_value = 0;
+var jj_dsqd_int = null;
 function jj_dsqd_func(){
-    //
+    if(jj_dsqd_int == null){
+        jj_dsqd_value = 0;
+        btnlist["定时签到"].innerText = "定时签到i";
+        jj_dsqd_int = setInterval(jj_dsqd_int_func,1000);
+    }else{
+        jj_dsqd_value = 0;
+        btnlist["定时签到"].innerText = "定时签到";
+        clearInterval(jj_dsqd_int);
+        jj_dsqd_int = null;
+    }
 }
 function jj_dsqd_int_func(){
     let sureclock = new Date();
@@ -6539,6 +6572,25 @@ function jj_dsqd_int_func(){
             jj_dsqd_value = 0;
             killYXTrigger = 1;
         }
+    }
+}
+var jj_xhdj_int = null;
+function jj_xhdj_func(){
+    if(jj_xhdj_int == null){
+        let name = prompt("请输入要点击的按钮名","帮助天魔");
+        if(name!=null&&name!=""){
+            btnlist["循环点击"].innerText = "循环点击i";
+            jj_xhdj_int = setInterval(jj_xhdj_int_func,200,name);
+        }
+    }else{
+        btnlist["循环点击"].innerText = "循环点击";
+        clearInterval(jj_xhdj_int);
+        jj_xhdj_int = null;
+    }
+}
+function jj_xhdj_int_func(name){
+    if(fond_cmd(name)!=null){
+        clickButton(fond_cmd(name));
     }
 }
 //--------------------------快捷键
