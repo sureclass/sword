@@ -1,5 +1,4 @@
-﻿//------------------------
-var an_obj = {
+﻿var an_obj = {
     "锦缎腰带是腰带类的第几级装备？":"a","扬州询问黑狗子能到下面哪个地点？":"a","跨服天剑谷每周六几点开启？":"a",
     "青城派的道德经可以提升哪个属性？":"c","论剑中以下哪个不是晚月庄的技能？":"d","跨服天剑谷是星期几举行的？":"b",
     "玉女剑法是哪个门派的技能？":"b","玉草帽可以在哪位npc那里获得？":"b","逍遥林是第几章的地图？":"c","精铁棒可以在哪位npc那里获得？":"d",
@@ -5689,6 +5688,11 @@ var jj_sq_zj_num = 0;
         webSocketMsg.prototype.old = gSocketMsg.dispatchMessage;
         gSocketMsg.dispatchMessage = function(b) {
             this.old(b);
+            try{
+                if(b.get("msg").match("天剑真身")){
+                    console.log(b.get("type"),g_simul_efun.replaceControlCharBlank(b.get("msg")));
+                }
+            }catch(e){}
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
                 try{
@@ -5699,6 +5703,24 @@ var jj_sq_zj_num = 0;
                         }
                     }
                 }catch(e){}
+                if(type=="main_msg"){
+                    try{
+                        let x = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        //console.log(x);
+                        let xieweizhi = x.match(/血刀妖僧：有个美女在(.*?)出现/);
+                        let xiewancheng = x.match(/你已用合欢散将美女弄晕，赶紧弄回去讨好(.*?)领赏/);
+                        let zhenwancheng = x.match(/你已杀掉了全部的星宿恶徒，回去找(.*?)回报一下吧。/);
+                        if(xieweizhi){
+                            g_gmain.recvNetWork2(xieweizhi[1]);
+                        }
+                        if(xiewancheng){
+                            go(npcdp.海云阁.血刀妖僧);
+                        }
+                        if(zhenwancheng){
+                            clickButton("daily go 18");
+                        }
+                    }catch(e){}
+                }
                 if(type=="show_html_page"&&b.get("title")=="兽雀游戏"&&jj_qs_cmd_id!=""){
                     let x = g_simul_efun.replaceControlCharBlank(b.get("msg"));
                     let x_1 = x.split(">");
@@ -6049,6 +6071,7 @@ function pu_wp(text){
         }catch(e){}
     }
 }
+var room_id_tjg = 111111;
 function tjg_main(){
     if(tjg_off==1){
         try{
@@ -6058,11 +6081,15 @@ function tjg_main(){
                         clickButton("kill "+tjg_room_npc());
                     }
                 }else{
-                    if(tjg_if_team==1){//是队长,那么我们来移动
-                        if(Ifroom()){
-                            console.log("有特殊房间，我们过去");
-                        }else{
-                            tjg_move();
+                    let room_id = g_obj_map.get("msg_room").get("go_random");//记录现在的房间id
+                    if(room_id_tjg!=room_id){
+                        room_id_tjg = room_id;
+                        if(tjg_if_team==1){//是队长,那么我们来移动
+                            if(Ifroom()){
+                                console.log("有特殊房间，我们过去");
+                            }else{
+                                tjg_move();
+                            }
                         }
                     }
                 }
@@ -6296,6 +6323,8 @@ function chaa(text) {
     btnlist["兽雀"].style.display = "none";
     createButton("等级任务",jj_djrw_func);
     btnlist["等级任务"].style.display = "none";
+    createButton("定时签到",jj_djrw_func);
+    btnlist["定时签到"].style.display = "none";
     createButton("进阶返回",jjfhfunc);
     btnlist["进阶返回"].style.display = "none";
     btnlist["进阶返回"].innerText = "返回";
@@ -6313,6 +6342,7 @@ function jinjiefunc(){
     btnlist["自动突破"].style.display = "block";
     btnlist["兽雀"].style.display = "block";
     btnlist["等级任务"].style.display = "block";
+    btnlist["定时签到"].style.display = "block";
 }
 function jjfhfunc(){
     btnlist["进阶返回"].style.display = "none";
@@ -6326,6 +6356,7 @@ function jjfhfunc(){
     btnlist["自动突破"].style.display = "none";
     btnlist["兽雀"].style.display = "none";
     btnlist["等级任务"].style.display = "none";
+    btnlist["定时签到"].style.display = "none";
     showzt();
 }
 var jj_qback_event = 0;
@@ -6482,6 +6513,32 @@ function jj_djrw_1(){
         go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
     }else{
         alert("你的正邪气不足");
+    }
+}
+var jj_dsqd_value = 0;
+function jj_dsqd_func(){
+    //
+}
+function jj_dsqd_int_func(){
+    let sureclock = new Date();
+    let s = sureclock.getSeconds();
+    let m = sureclock.getMinutes();
+    let h = sureclock.getHours();
+    if(jj_dsqd_value == 0){
+        if(h == 6&&m == 30){
+            yzqdfunc();
+            jj_dsqd_value = 9999999;
+            killYXTrigger = 0;
+            setTimeout(function(){
+                jj_dsqd_value = 1;
+            },250000);
+        }
+    }
+    if(jj_dsqd_value == 1){
+        if(h == 6&&m == 35){
+            jj_dsqd_value = 0;
+            killYXTrigger = 1;
+        }
     }
 }
 //--------------------------快捷键
