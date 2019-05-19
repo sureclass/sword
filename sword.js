@@ -4300,8 +4300,11 @@ function yzqdfunc(){
         "jh 35;nw;nw;nw;n;ne;nw;w;w^v^灸熔洞口^v^;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
         "cangjian get_all;xueyin_shenbinggu blade get_all;xueyin_shenbinggu unarmed get_all;xueyin_shenbinggu throwing get_all;xueyin_shenbinggu hammer get_all;"+
         "xueyin_shenbinggu spear get_all;xueyin_shenbinggu stick get_all;xueyin_shenbinggu staff get_all;xueyin_shenbinggu whip get_all;"+
-        "share_ok 1;share_ok 2;share_ok 3;share_ok 4;share_ok 5;share_ok 7;exercise stop;exercise";
-    go(str);
+        "share_ok 1;share_ok 2;share_ok 3;share_ok 4;share_ok 5;share_ok 7;exercise stop;exercise;";
+    let str1 = "home;vip drops;vip finish_dig^c^10c;vip finish_diaoyu^c^10c;";
+    let str2 = "home;vip drops;vip finish_fb dulongzhai^c^3c;vip finish_fb junying^c^3c;vip finish_fb beidou^c^3c;vip finish_fb youling^c^3c;"+
+        "vip finish_fb siyu^c^2c;vip finish_fb changleweiyang^c^2c;vip finish_fb heishuihuangling^c^2c;vip finish_fb jiandangfenglingdu^c^2c;"
+    go(str+str1+str2);
 }
 function pkrcfunc(){
     let str = "jh 15;n;nw;w;nw;n;event_1_14401179;kill qingcheng_nielongzhiling^d^2000s;"+
@@ -4357,10 +4360,10 @@ function bangpai(){
     go("clan scene;clan task;home;vip finish_clan^c^20c;clan scene;clan task;home");
 }
 function xunbaodiaoyu(){
-    go("home;vip drops;vip finish_dig^c^10c;vip finish_diaoyu^c^10c");
+    alert("暂弃");
 }
 function dianfuben(){
-    go("home;vip drops;vip finish_fb dulongzhai^c^2c;vip finish_fb junying^c^2c;vip finish_fb beidou^c^2c;vip finish_fb youling^c^2c;vip finish_fb siyu;vip finish_fb changleweiyang");
+    alert("暂弃");
 }
 var dazhaobihuainterval = null;
 function dazhaobihua(){
@@ -6571,6 +6574,16 @@ function jj_dsqd_int_func(){
         if(h == 6&&m == 35){
             jj_dsqd_value = 0;
             killYXTrigger = 1;
+        }
+    }
+    if(jj_dsqd_value == 0){
+        if(h == 5&&m == 30){
+            go("vip finish_bad 1^c^5;vip finish_bad 2^c^5c;");
+            jj_dsqd_value = 9999999;
+            killYXTrigger = 0;
+            setTimeout(function(){
+                jj_dsqd_value = 0;
+            },250000);
         }
     }
 }
