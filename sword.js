@@ -4037,19 +4037,20 @@ function go_1(go_arr){
     }
     let num = 0;
     num = go_nonext_func();
-    if(num==1){
+    if(num==1||num==3){
         go_1_settime = setTimeout(go_1,10,go_arr);
     }
     if(num==2){
         go_1_settime = setTimeout(go_1,200,go_arr);
     }
-    if(num==3){
+    if(num==4){
         if(go_reg_num<go_arr.length){
 	    let text = go_arr[go_reg_num];
 		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
 		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
 		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//判断1，成功往后执行，失败执行函数，函数为空停止执行
 		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v\^/);//判断2，失败执行上一步动作，没有动作循环等待，直到成功往后继续执行
+        let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再杀
 		let reg = text;
 		let delay = 200;
 		if(x_1&&!x_3){
@@ -4078,7 +4079,7 @@ function go_1(go_arr){
 			reg = x_3[3];
 		}
 		if(x_4){
-            let reg = x_4[1];
+            reg = x_4[1];
             try{
 		        if(x_4[2]!=ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
 			        go_1_settime = setTimeout(go_1,delay,go_arr);
@@ -4089,6 +4090,14 @@ function go_1(go_arr){
                 return;
             }
 		}
+        if(x_5){
+            let name = x_5[2];
+            reg = x_5[1];
+            if(fond_npc(name)==null){
+                go_1_settime = setTimeout(go_1,10,go_arr);
+                return;
+            }
+        }
 		go_reg_num+=1;
 		clickButton(reg);
 		go_1_settime = setTimeout(go_1,delay,go_arr);
@@ -4104,6 +4113,7 @@ function go_1(go_arr){
         g_gmain.recvNetWork2("异常");
     }
 }
+var go_is_npc = 0;
 function go_nonext_func(){
     try{
     if(document.getElementById("combat_xdz_text")){
@@ -4114,8 +4124,11 @@ function go_nonext_func(){
             return 2;
         }
     }
+    if(go_is_npc!=0){
+        return 3;
+    }
     }catch(e){}
-    return 3;
+    return 4;
 }
 //------------------------先做个按钮和一个box
 function ispc(){
@@ -4307,14 +4320,20 @@ function yzqdfunc(){
     go(str+str1+str2);
 }
 function pkrcfunc(){
-    let str = "jh 15;n;nw;w;nw;n;event_1_14401179;kill qingcheng_nielongzhiling^d^2000s;"+
-        "jh 21;n^c^4c;w;kill baituo_qingyidunwei^d^2000s;w;kill baituo_feiyushenjian^d^2000s;w;kill baituo_yinlangjinwei^d^2000s;w;fight baituo_junzhongzhushuai^d^2000s;"+
-        "jh 8;ne;e;e;e;n;kill emei_chibaosishi^d^2000s;n;n;kill emei_heiyingsishi^d^2000s;n;n;kill emei_jinlangdajiang^d^2000s;e;e;n;event_1_19360932 go;s;e;event_1_55885405;"+
-        "w;n;kill emei_qili^d^2000s;s;s;kill emei_heiyudijiang^d^2000s;n;w;s;kill emei_abaojia^d^2000s;n;e;e;event_1_53216521;"+
-        "jh 9;event_1_20960851;kill henshan_shashenzhaifeishou^d^2000s;jh 13;e;s;s;w;w;w;event_1_38874360;kill shaolin_duyunshenshi^d^2000s;"+
-        "jh 21;n^c^4c;e^c^7c;s;s;event_1_66710076;s;e;ne;e;se;n;event_1_53430818^d^2000s;n;kill baituo_baojunzhushuai^d^2000s;s;s;nw;n;n;kill baituo_hujunshiwei^d^2000s;"+
-        "s;s;se;e;e;e;kill baituo_yingjunzhushuai^d^2000s;w;w;w;nw;w;nw;event_1_89411813;kill baituo_xieli^d^2000s;"+
-        "jh 18;n;nw;n^c^5c;ne;n^c^9c;w;nw;nw;event_1_70957287;kill mingjiao_jiuyoudumo^d^2000s;jh 28;n;w^c^6c;nw;ne;nw;ne;nw;ne;e";
+    let str = "jh 15;n;nw;w;nw;n;event_1_14401179;kill qingcheng_nielongzhiling^n^孽龙之灵^n^d^2000s;"+
+        "jh 21;n^c^4c;w;kill baituo_qingyidunwei^n^青衣盾卫^n^d^2000s;w;kill baituo_feiyushenjian^n^飞羽神箭^n^d^2000s;"+
+        "w;kill baituo_yinlangjinwei^n^银狼近卫^n^d^2000s;w;fight baituo_junzhongzhushuai^d^2000s;"+
+        "jh 8;ne;e;e;e;n;kill emei_chibaosishi^n^赤豹死士^n^d^2000s;n;n;kill emei_heiyingsishi^n^黑鹰死士^n^d^2000s;n;n;"+
+        "kill emei_jinlangdajiang^n^金狼大将^n^d^2000s;e;e;n;event_1_19360932 go;s;e;event_1_55885405;"+
+        "w;n;kill emei_qili^n^乞利^n^d^2000s;s;s;kill emei_heiyudijiang^n^黑羽敌将^n^d^2000s;n;w;s;"+
+        "kill emei_abaojia^n^阿保甲^n^d^2000s;n;e;e;event_1_53216521;"+
+        "jh 9;event_1_20960851;kill henshan_shashenzhaifeishou^d^2000s;jh 13;e;s;s;w;w;w;event_1_38874360;"+
+        "kill shaolin_duyunshenshi^n^渡云神识^n^d^2000s;"+
+        "jh 21;n^c^4c;e^c^7c;s;s;event_1_66710076;s;e;ne;e;se;n;event_1_53430818;n;kill baituo_baojunzhushuai^n^豹军主帅^n^d^2000s;"+
+        "s;s;nw;n;n;kill baituo_hujunzhushuai^n^虎军主帅^n^d^2000s;"+
+        "s;s;se;e;e;e;kill baituo_yingjunzhushuai^n^鹰军主帅^n^d^2000s;w;w;w;nw;w;nw;event_1_89411813;"+
+        "kill baituo_xieli^n^颉利^n^d^2000s;"+
+        "jh 18;n;nw;n^c^5c;ne;n^c^9c;w;nw;nw;event_1_70957287;kill mingjiao_jiuyoudumo^n^九幽毒魔^n^d^2000s;jh 28;n;w^c^6c;nw;ne;nw;ne;nw;ne;e";
     go(str);
 }
 function jqqdfunc(){
@@ -5623,13 +5642,17 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_room");
+    /*let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
     }
+    */
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
     //console.log(g_gmain);
+    if(window!=top){
+        top.location.href = location.href;
+    }
 }
 var p_id = 0;
 (function(){
@@ -6567,13 +6590,18 @@ function jj_dsqd_int_func(){
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 1;
-            },250000);
+            },240000);
         }
     }
     if(jj_dsqd_value == 1){
         if(h == 6&&m == 35){
-            jj_dsqd_value = 0;
-            killYXTrigger = 1;
+            pkrcfunc();
+            jj_dsqd_value = 9999999;
+            killYXTrigger = 0;
+            setTimeout(function(){
+                jj_dsqd_value = 0;
+                killYXTrigger = 1;
+            },600000);
         }
     }
     if(jj_dsqd_value == 0){
@@ -6583,7 +6611,8 @@ function jj_dsqd_int_func(){
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 0;
-            },250000);
+                killYXTrigger = 1;
+            },120000);
         }
     }
 }
