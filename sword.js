@@ -4373,10 +4373,10 @@ function wxxfunc(){
     go("jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e^c^3c;event_1_2207248");
 }
 function shimen(){
-    go("home;vip drops;family_quest;vip finish_family^c^25c;family_quest");
+    go("home;vip drops;family_quest;vip finish_family^c^100c;family_quest");
 }
 function bangpai(){
-    go("clan scene;clan task;home;vip finish_clan^c^20c;clan scene;clan task;home");
+    go("clan scene;clan task;home;vip finish_clan^c^60c;clan scene;clan task;home");
 }
 function xunbaodiaoyu(){
     alert("暂弃");
@@ -6362,8 +6362,6 @@ function chaa(text) {
     btnlist["保持"].style.display = "none";
     createButton("强连",jj_tptime_func);
     btnlist["强连"].style.display = "none";
-    createButton("自动突破",jj_autotp_func);
-    btnlist["自动突破"].style.display = "none";
     createButton("兽雀",jj_tpmax_func);
     btnlist["兽雀"].style.display = "none";
     createButton("等级任务",jj_djrw_func);
@@ -6386,7 +6384,6 @@ function jinjiefunc(){
     btnlist["重连"].style.display = "block";
     btnlist["保持"].style.display = "block";
     btnlist["强连"].style.display = "block";
-    btnlist["自动突破"].style.display = "block";
     btnlist["兽雀"].style.display = "block";
     btnlist["等级任务"].style.display = "block";
     btnlist["定时签到"].style.display = "block";
@@ -6401,7 +6398,6 @@ function jjfhfunc(){
     btnlist["重连"].style.display = "none";
     btnlist["保持"].style.display = "none";
     btnlist["强连"].style.display = "none";
-    btnlist["自动突破"].style.display = "none";
     btnlist["兽雀"].style.display = "none";
     btnlist["等级任务"].style.display = "none";
     btnlist["定时签到"].style.display = "none";
