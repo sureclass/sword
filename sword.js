@@ -1781,8 +1781,8 @@ var npcdp = {
         '麒麟幼崽': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,n,nw',
         '游方道士': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e',
         '梅花鹿': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e',
-        '雪狼': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,sw',
-        '白熊': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,sw',
+        '雪狼': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,nw',
+        '白熊': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,nw',
         '殷夫人': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,nw,s,s,s,s,s,s,e',
         '张五侠': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,s,se,w,nw,s,s,s,s,s,s,w,w,n,e,n,w,w,s,s',
         '赵郡主': 'jh 35,nw,nw,nw,n,ne,nw,w,nw,e,e,e,e,e,se,n,n',
@@ -4049,7 +4049,7 @@ function go_1(go_arr){
 		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
 		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
 		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//判断1，成功往后执行，失败执行函数，函数为空停止执行
-		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v\^/);//判断2，失败执行上一步动作，没有动作循环等待，直到成功往后继续执行
+		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//判断2，失败执行上一步动作，没有动作循环等待，直到成功往后继续执行
         let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再杀
 		let reg = text;
 		let delay = 200;
@@ -4307,10 +4307,25 @@ function bingyuegufunc(){
     go("jh 14;w;n^c^4c;event_1_32682066;event_1_48044005;kill bingyuegu_zihanshou^d^2000s;event_1_95129086;kill bingyuegu_xuanwujiguanshou^d^2000s;event_1_17623983;event_1_6670148;kill bingyuegu_hundunyaoling^d^2000s;s;kill bingyuegu_bingyuexianren");
 }
 function yzqdfunc(){
-    let str = "jh 5;n;n;n;w;sign7;home;jh 2;n^c^7c;e;tzjh_lq;w;n^c^12c;e;n^c^3c;w;event_1_31320275;home;"+
+    let yuanbao = g_obj_map.get("msg_attrs").get("yuanbao");
+    let lc_dang = "";
+    if(yuanbao>=100000){
+        lc_dang += 'touzi_jihua2 buygo go8;touzi_jihua2 buygo go7;touzi_jihua2 buygo go6;';
+    }else if(yuanbao>=50000){
+        lc_dang += 'touzi_jihua2 buygo go5;';
+    }else if(yuanbao>=30000){
+        lc_dang += 'touzi_jihua2 buygo go4;';
+    }else if(yuanbao>=20000){
+        lc_dang += 'touzi_jihua2 buygo go3;';
+    }else if(yuanbao>=10000){
+        lc_dang += 'touzi_jihua2 buygo go2;';
+    }else if(yuanbao>=2000){
+        lc_dang += 'touzi_jihua2 buygo go1;';
+    }
+    let str = "jh 5;n;n;n;w;sign7;home;jh 2;n^c^7c;e;"+lc_dang+"tzjh_lq;w;n^c^3c;w;w;event_1_48689119;event_1_42250469;e;e;n^c^9c;e;n^c^3c;w;event_1_31320275;home;"+
         "jh 37;n;e;e;nw;nw;w;n;e;n;e;e;e;ne;ne;ne;se;n;event_1_97487911;home;"+
         "jh 26;w;w;n;e;e;event_1_18075497;w;w;n;event_1_14435995;home;"+
-        "jh 35;nw;nw;nw;n;ne;nw;w;w^v^灸熔洞口^v^;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
+        "jh 35;nw;nw;nw;n;ne;nw;w;w^v^灸熔洞口^v;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
         "cangjian get_all;xueyin_shenbinggu blade get_all;xueyin_shenbinggu unarmed get_all;xueyin_shenbinggu throwing get_all;xueyin_shenbinggu hammer get_all;"+
         "xueyin_shenbinggu spear get_all;xueyin_shenbinggu stick get_all;xueyin_shenbinggu staff get_all;xueyin_shenbinggu whip get_all;"+
         "share_ok 1;share_ok 2;share_ok 3;share_ok 4;share_ok 5;share_ok 7;exercise stop;exercise;";
@@ -4917,7 +4932,10 @@ function AutoSkill(){
                     outskill = outskill.replace(/区/,"");
                 }
                 if(str&&restr_off == 0){
-                    if(gSocketMsg.get_xdz()>=3){
+                    auto_skill_kf();
+                    if(gSocketMsg.get_xdz()>=6){
+                        auto_skill_cz(2);
+                    }else if(gSocketMsg.get_xdz()>=3){
                         auto_skill_cz(1);
                     }
                 }
@@ -4940,6 +4958,7 @@ function auto_skill_gz(outskill,num){
                 if(gSocketMsg.get_xdz()>=3){
                     console.log("成功跟了"+outskill+"的招");
                 }
+                auto_skill_kf();
                 if(gSocketMsg.get_xdz()>=9){
                     auto_skill_cz(3);
                 }
@@ -5642,17 +5661,13 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    /*let g = g_obj_map.get("msg_room");
+    let g = g_obj_map.get("msg_attrs");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
     }
-    */
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
     //console.log(g_gmain);
-    if(window!=top){
-        top.location.href = location.href;
-    }
 }
 var p_id = 0;
 (function(){
