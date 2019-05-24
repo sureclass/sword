@@ -4116,7 +4116,7 @@ function go_1(go_arr){
 var go_is_npc = 0;
 function go_nonext_func(){
     try{
-    if(document.getElementById("combat_xdz_text")){
+    if(is_fighting==1){
         return 1;
     }
     for(let i=0;i<go_nonext_dp.length;i++){
@@ -4374,7 +4374,7 @@ function dzqdfunc(){
 }
 function bhqdfunc(){
     if(qlyxautoboolean == 0){
-        tanfanname = prompt("...","夜魔*二娘");
+        tanfanname = prompt("...","夜魔*段老大,夜魔*二娘,夜魔*岳老三,夜魔*云老四");
         qlyxautoboolean = 1;
     }else{
         qlyxautoboolean = 0;
@@ -4865,6 +4865,9 @@ var cr_10 = 0;
 function AutoSkill(){
     this.dispatchMessage=function(b){
         let type = b.get("type"), subType = b.get("subtype");
+        if(type == "vs"&&subType == "vs_info"){
+            //console.log("d");
+        }
         if(type=="vs"&&subType=="add_xdz"){//获得行动值
             try{
                 if_cz_su = 0;
@@ -5234,7 +5237,7 @@ var xhjsInt = null;
 var xhjs_qxjs_off = 0;
 function xhjsfunc(){
     if(xhjsInt == null){
-        let canshu = prompt("请输入循环击杀的npc名以及叫杀时间间隔","青竹蛇,夜魔*二娘,200");
+        let canshu = prompt("请输入循环击杀的npc名以及叫杀时间间隔","夜魔*段老大,夜魔*二娘,夜魔*岳老三,夜魔*云老四,200");
         btnlist["循环击杀"].innerText = "循环击杀i";
         let name = canshu.split(",");
         let time = name.pop();
@@ -5661,17 +5664,22 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_attrs");
+    /*let g = g_obj_map;
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
     }
+    */
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
     //console.log(g_gmain);
+    //console.log(gSocketMsg);
+    gSocketMsg.go_combat();
 }
 var p_id = 0;
+var vs_cz_dalay = 20000;
 (function(){
     setInterval(clear_notify,20);
+    clear_vs();
 })();
 function clear_notify(){
     if(g_gmain.notify_id!=p_id){
@@ -5679,6 +5687,21 @@ function clear_notify(){
         let sdr = "notify_"+g_gmain.notify_id;
         try{document.getElementById(sdr).remove(0);}catch(e){}
     }
+}
+function clear_vs(){
+    if(is_fighting==1){
+        if(vs_cz_dalay>=1001){
+            vs_cz_dalay -= 1000;
+        }
+        if(vs_cz_dalay>=201){
+            vs_cz_dalay -= 100;
+        }
+        if(gSocketMsg.get_xdz()<=5){
+            vs_cz_dalay = 20000;
+            gSocketMsg.go_combat();
+        }
+    }
+    setTimeout(clear_vs,vs_cz_dalay);
 }
 var chat_text = "";
 var fg_hg ="";
@@ -6320,11 +6343,15 @@ function qlyxauto(){
                         */
                     let jt = msg.match(/【系统】(.*?)慌不择路，逃往了(.*?)\-/);
                     if(jt){
-                        if(jt[1]==tanfanname){
+                        if(jt[1]==tanfanname.split(",")[0]||jt[1]==tanfanname.split(",")[1]||jt[1]==tanfanname.split(",")[2]||jt[1]==tanfanname.split(",")[3]){
                             let dp = Object.getOwnPropertyNames(npcdplist);
                             for(let i=0;i<dp.length;i++){
                                 if(jt[2]==dp[i]){
-                                    clickButton("jh "+i);
+                                    if(i==0||i==1){
+                                        clickButton("jh "+(i+1));
+                                    }else{
+                                        clickButton("jh "+i);
+                                    }
                                 }
                             }
                             setTimeout(xhjs,5000,tanfanname);
