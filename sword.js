@@ -4147,6 +4147,8 @@ if(!ispc()){
 }else{
     kongzhi.style.left = "520px";
     ztbox.style.left = "450px";
+    //kongzhi.style.right = "10px";
+    //ztbox.style.right = "10px";
 }
 kongzhi.setAttribute("id","kongzhi");
 kongzhi.setAttribute("type","button");
@@ -4325,7 +4327,7 @@ function yzqdfunc(){
     let str = "jh 5;n;n;n;w;sign7;home;jh 2;n^c^7c;e;"+lc_dang+"tzjh_lq;w;n^c^3c;w;w;event_1_48689119;event_1_42250469;e;e;n^c^9c;e;n^c^3c;w;event_1_31320275;home;"+
         "jh 37;n;e;e;nw;nw;w;n;e;n;e;e;e;ne;ne;ne;se;n;event_1_97487911;home;"+
         "jh 26;w;w;n;e;e;event_1_18075497;w;w;n;event_1_14435995;home;"+
-        "jh 35;nw;nw;nw;n;ne;nw;w;w^v^灸熔洞口^v;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
+        "jh 35;nw;nw;nw;n;ne;nw;w;nw;e;e;e;e;e;se;n;n;w;n;w;event_1_53278632;sousuo;sousuo;home;"+
         "cangjian get_all;xueyin_shenbinggu blade get_all;xueyin_shenbinggu unarmed get_all;xueyin_shenbinggu throwing get_all;xueyin_shenbinggu hammer get_all;"+
         "xueyin_shenbinggu spear get_all;xueyin_shenbinggu stick get_all;xueyin_shenbinggu staff get_all;xueyin_shenbinggu whip get_all;"+
         "share_ok 1;share_ok 2;share_ok 3;share_ok 4;share_ok 5;share_ok 7;exercise stop;exercise;";
@@ -6621,6 +6623,7 @@ function jj_dsqd_int_func(){
     let s = sureclock.getSeconds();
     let m = sureclock.getMinutes();
     let h = sureclock.getHours();
+    let shuiji = (parseInt(runnum(2))+1)%20;
     if(jj_dsqd_value == 0){
         if(h == 6&&m == 30){
             yzqdfunc();
@@ -6628,11 +6631,11 @@ function jj_dsqd_int_func(){
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 1;
-            },240000);
+            },119000);
         }
     }
     if(jj_dsqd_value == 1){
-        if(h == 6&&m == 35){
+        if(h == 6&&m == 32+shuiji){
             pkrcfunc();
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
