@@ -6606,6 +6606,7 @@ function jj_djrw_1(){
 }
 var jj_dsqd_value = 0;
 var jj_dsqd_int = null;
+var jj_dsqd_suiji1 = 0;
 function jj_dsqd_func(){
     if(jj_dsqd_int == null){
         jj_dsqd_value = 0;
@@ -6615,6 +6616,7 @@ function jj_dsqd_func(){
         jj_dsqd_value = 0;
         btnlist["定时签到"].innerText = "定时签到";
         clearInterval(jj_dsqd_int);
+		jj_dsqd_suiji1 = 0;
         jj_dsqd_int = null;
     }
 }
@@ -6623,11 +6625,11 @@ function jj_dsqd_int_func(){
     let s = sureclock.getSeconds();
     let m = sureclock.getMinutes();
     let h = sureclock.getHours();
-    let shuiji = (parseInt(runnum(2))+1)%20;
     if(jj_dsqd_value == 0){
         if(h == 6&&m == 30){
             yzqdfunc();
             jj_dsqd_value = 9999999;
+			jj_dsqd_suiji1 = (parseInt(runnum(2))+1)%20;
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 1;
@@ -6635,7 +6637,7 @@ function jj_dsqd_int_func(){
         }
     }
     if(jj_dsqd_value == 1){
-        if(h == 6&&m == 32+shuiji){
+        if(h == 6&&m == 32+jj_dsqd_suiji1){
             pkrcfunc();
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
