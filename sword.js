@@ -5678,10 +5678,10 @@ function shiyanfunc(){
     gSocketMsg.go_combat();
 }
 var p_id = 0;
-var vs_cz_dalay = 20000;
+var vs_cz_dalay = 120000;
 (function(){
     setInterval(clear_notify,20);
-    clear_vs();
+    setInterval(clear_vs,20);
 })();
 function clear_notify(){
     if(g_gmain.notify_id!=p_id){
@@ -5690,20 +5690,31 @@ function clear_notify(){
         try{document.getElementById(sdr).remove(0);}catch(e){}
     }
 }
+var vs_cz_timeout = null;
 function clear_vs(){
     if(is_fighting==1){
-        if(vs_cz_dalay>=1001){
-            vs_cz_dalay -= 1000;
+        if(vs_cz_timeout == null){
+            vs_cz_timeout = setTimeout(function(){
+                if(vs_cz_timeout != null){
+                    clearTimeout(vs_cz_timeout);
+                    vs_cz_timeout = null;
+                }
+                if(vs_cz_dalay>=1001){
+                    vs_cz_dalay = 100;
+                }
+                if(gSocketMsg.get_xdz()<=5){
+                    vs_cz_dalay = 120000;
+                    gSocketMsg.go_combat();
+                }
+            },vs_cz_dalay);
         }
-        if(vs_cz_dalay>=201){
-            vs_cz_dalay -= 100;
-        }
-        if(gSocketMsg.get_xdz()<=5){
-            vs_cz_dalay = 20000;
-            gSocketMsg.go_combat();
+    }else{
+        vs_cz_dalay = 120000;
+        if(vs_cz_timeout != null){
+            clearTimeout(vs_cz_timeout);
+            vs_cz_timeout = null;
         }
     }
-    setTimeout(clear_vs,vs_cz_dalay);
 }
 var chat_text = "";
 var fg_hg ="";
@@ -6614,9 +6625,9 @@ function jj_dsqd_func(){
         jj_dsqd_int = setInterval(jj_dsqd_int_func,1000);
     }else{
         jj_dsqd_value = 0;
+        jj_dsqd_suiji1 = 0;
         btnlist["定时签到"].innerText = "定时签到";
         clearInterval(jj_dsqd_int);
-		jj_dsqd_suiji1 = 0;
         jj_dsqd_int = null;
     }
 }
@@ -6629,7 +6640,7 @@ function jj_dsqd_int_func(){
         if(h == 6&&m == 30){
             yzqdfunc();
             jj_dsqd_value = 9999999;
-			jj_dsqd_suiji1 = (parseInt(runnum(2))+1)%20;
+            jj_dsqd_suiji1 = (parseInt(runnum(2))+1)%20;
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 1;
