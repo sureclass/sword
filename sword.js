@@ -3971,6 +3971,14 @@ var need_clear_wp = [
     "软甲衣","火折","弯月刀","斩空刀","鹿皮手套","拜月掌套","暗香灯盏","天寒帽","白蟒鞭","金刚杖",
     "青葫芦","精铁甲","重甲","银丝甲","羊角匕","梅花匕","逆钩匕","逆钩匕","金弹子","草鞋","蓑衣"
 ];//清理背包卖掉的物品列表
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+var lv_ditu_obj = {
+    "洛阳":"jh 2;n;n;e;s;f^cmd^跳上船坞(^cmd;n;n;w;n;e;s;n;w;w;f^cmd^蒲团^cmd;n;e;n;e;s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n",
+    "逍遥林":"jh 16;s;s;s;s;e;e;s;w;n;s;s;s;n;n;w;n;n;s;s;s;s;n;n;w;w;n;s;s;n;w;e^c^6c;n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e",
+    "开封":"jh 17;sw;nw;se;s;sw;nw;ne;解^cmd^转动桥墩^cmd;jh 17;event_1_97081006;s;s;s;e;o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w",
+    "铁血大旗门":"jh 11;e;e;s;n;nw;w;nw;e;e;e;se;nw;n;w;jh 25;w;e;e;e;e;e;s;yell;n;s;e;ne;se;e;e;e;e;w;w;w;w;nw;sw;w;s;e;的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w",
+    "慕容山庄":"jh 32;n;n;se;w;e;n;w;e;ne;sw;n;n;n;n;s;e;w;w;s;n;w;s;n;n;s;w;n;d^cmd^游过去^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;p^cmd^密室机关^cmd;",
+}//等级任务地图对象
 var kongzhi = document.createElement("input");
 var ztbox = document.createElement("div");
 var btnlist = {},btnwidth = "80px",btnheight = "20px",btnleft = 5,btntop = 5,btntopjg = 25,btnleftjg = 90;
@@ -4050,7 +4058,8 @@ function go_1(go_arr){
 		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
 		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//判断1，成功往后执行，失败执行函数，函数为空停止执行
 		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//判断2，失败执行上一步动作，没有动作循环等待，直到成功往后继续执行
-        let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再杀
+        let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再行动
+        let x_6 = text.match(/(.*?)\^cmd\^(.*?)\^cmd/);//按钮存在了再行动
 		let reg = text;
 		let delay = 200;
 		if(x_1&&!x_3){
@@ -4096,6 +4105,16 @@ function go_1(go_arr){
             if(fond_npc(name)==null){
                 go_1_settime = setTimeout(go_1,10,go_arr);
                 return;
+            }
+        }
+        if(x_6){
+            let name = x_6[2];
+            if(fond_cmd(name)==null){
+                go_reg_num = 0;
+                go_1_settime = setTimeout(go_1,10,go_arr);
+                return;
+            }else{
+                reg = fond_cmd(x_6[2]);
             }
         }
 		go_reg_num+=1;
@@ -5759,6 +5778,7 @@ var tuposkill_obj = {};
 var tuposkill_off = 0;
 var jj_qs_delay = 20;
 var jj_sq_zj_num = 0;
+var jj_djrw_xie_int = null;
 (function (window) {
     window.game = this;
     window.attach = function() {
@@ -5783,18 +5803,25 @@ var jj_sq_zj_num = 0;
                 if(type=="main_msg"){
                     try{
                         let x = g_simul_efun.replaceControlCharBlank(b.get("msg"));
-                        //console.log(x);
                         let xieweizhi = x.match(/血刀妖僧：有个美女在(.*?)出现/);
                         let xiewancheng = x.match(/你已用合欢散将美女弄晕，赶紧弄回去讨好(.*?)领赏/);
                         let zhenwancheng = x.match(/你已杀掉了全部的星宿恶徒，回去找(.*?)回报一下吧。/);
                         if(xieweizhi){
                             g_gmain.recvNetWork2(xieweizhi[1]);
+                            go(lv_ditu_obj[xieweizhi[1]]);
+                            jj_djrw_xie_int = setInterval(function(){
+                                if(fond_npc("美女")!=null){
+                                    go("jyfj_getmv_thlz^d^2000s;jyfj_getmv_thlz");
+                                    clearInterval(jj_djrw_xie_int);
+                                    jj_djrw_xie_int = null;
+                                }
+                            },10);
                         }
                         if(xiewancheng){
-                            go(npcdp.海云阁.血刀妖僧);
+                            go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
                         }
                         if(zhenwancheng){
-                            clickButton("daily go 18");
+                            go("daily go 18,event_1_20668593");
                         }
                     }catch(e){}
                 }
@@ -6637,17 +6664,26 @@ function jj_dsqd_int_func(){
     let m = sureclock.getMinutes();
     let h = sureclock.getHours();
     if(jj_dsqd_value == 0){
+        if(h == 6&&m == 25){
+            bingyuegufunc();
+            jj_dsqd_value = 9999999;
+            killYXTrigger = 0;
+            setTimeout(function(){
+                jj_dsqd_value = 0;
+            },119000);
+        }
+    }
+    if(jj_dsqd_value == 0){
         if(h == 6&&m == 30){
             yzqdfunc();
             jj_dsqd_value = 9999999;
             jj_dsqd_suiji1 = (parseInt(runnum(2))+1)%20;
-            killYXTrigger = 0;
             setTimeout(function(){
-                jj_dsqd_value = 1;
+                jj_dsqd_value = 0;
             },119000);
         }
     }
-    if(jj_dsqd_value == 1){
+    if(jj_dsqd_value == 0){
         if(h == 6&&m == 32+jj_dsqd_suiji1){
             pkrcfunc();
             jj_dsqd_value = 9999999;
