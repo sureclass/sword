@@ -549,7 +549,7 @@ var mijing = {
     "戈壁": "jh 21;find_task_road secret",
     "山溪畔": "jh 22;n;n;w;n;n;n;n;look_npc songshan_songshan7;event_1_88705407;s;s;find_task_road secret",
     "启母石": "jh 22;n;n;w;w;find_task_road secret",
-    "卢崖瀑布": "jh 22;n;n;n;n;n^v^青岗坪^v^;e;n;find_task_road secret",
+    "卢崖瀑布": "jh 22;n;n;n;n;n^v^青岗坪^v;e;n;find_task_road secret",
     "无极老姆洞": "jh 22;n;n;w;n;n;n;n;find_task_road secret",
     "奇槐坡": "jh 23;n;n;n;n;n;n;n;n;find_task_road secret",
     "小洞天": "jh 24;n;n;n;n;e;e;find_task_road secret",
@@ -3973,11 +3973,29 @@ var need_clear_wp = [
 ];//清理背包卖掉的物品列表
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 var lv_ditu_obj = {
-    "洛阳":"jh 2;n;n;e;s;f^cmd^跳上船坞(^cmd;n;n;w;n;e;s;n;w;w;f^cmd^蒲团^cmd;n;e;n;e;s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n",
-    "逍遥林":"jh 16;s;s;s;s;e;e;s;w;n;s;s;s;n;n;w;n;n;s;s;s;s;n;n;w;w;n;s;s;n;w;e^c^6c;n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e",
-    "开封":"jh 17;sw;nw;se;s;sw;nw;ne;解^cmd^转动桥墩^cmd;jh 17;event_1_97081006;s;s;s;e;o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w",
-    "铁血大旗门":"jh 11;e;e;s;n;nw;w;nw;e;e;e;se;nw;n;w;jh 25;w;e;e;e;e;e;s;yell;n;s;e;ne;se;e;e;e;e;w;w;w;w;nw;sw;w;s;e;的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w",
-    "慕容山庄":"jh 32;n;n;se;w;e;n;w;e;ne;sw;n;n;n;n;s;e;w;w;s;n;w;s;n;n;s;w;n;d^cmd^游过去^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;p^cmd^密室机关^cmd;",
+    "洛阳":"jh 2;n;n;e;s;f^cmd^跳上船坞(^cmd;n;n;w;n;e;s;n;w;w;f^cmd^蒲团^cmd;n;e;n;e;"+
+           "s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;"+
+           "s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;"+
+           "f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;"+
+           "w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n"+
+           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^北郊小路^if",
+    "逍遥林":"jh 16;s;s;s;s;e;e;s;w;n;s;s;s;n;n;w;n;n;s;s;s;s;n;n;w;w;n;s;s;n;w;e^c^6c;"+
+             "n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;"+
+             "v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;"+
+             "h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e"+
+             ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^石级^if",
+    "开封":"jh 17;sw;nw;se;s;sw;nw;ne;解^cmd^转动桥墩^cmd;jh 17;event_1_97081006;s;s;s;e;"+
+           "o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;"+
+           "x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;"+
+           "e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;"+
+           "w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w"+
+           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^演兵场^if",
+    "铁血大旗门":"jh 11;e;e;s;n;nw;w;nw;e;e;e;se;nw;n;w;jh 25;w;e;e;e;e;e;s;yell;n;s;e;ne;se;e;e;e;e;w;w;w;w;nw;sw;w;s;e;"+
+                 "的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^秘道^if",
+    "慕容山庄":"jh 32;n;n;se;w;e;n;w;e;ne;sw;n;n;n;n;s;e;w;w;s;n;w;s;n;n;s;w;n;d^cmd^游过去^cmd;"+
+               "d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;"+
+               "w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;"+
+               "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^问道堂^if",
 }//等级任务地图对象
 var kongzhi = document.createElement("input");
 var ztbox = document.createElement("div");
@@ -4026,10 +4044,10 @@ function go(str){
     }
 	go_reg_num = 0;
     let go_arr = [];
-	if(str.indexOf(",")>=0){
-		go_arr = str.split(",");
-	}else if(str.indexOf(";")>=0){
+	if(str.indexOf(";")>=0){
 		go_arr = str.split(";");
+	}else if(str.indexOf(",")>=0){
+		go_arr = str.split(",");
 	}else{
         go_arr = [];
 		clickButton(str);
@@ -4056,10 +4074,11 @@ function go_1(go_arr){
 	    let text = go_arr[go_reg_num];
 		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
 		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
-		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//判断1，成功往后执行，失败执行函数，函数为空停止执行
-		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//判断2，失败执行上一步动作，没有动作循环等待，直到成功往后继续执行
+		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//成功往后执行，失败执行函数，函数为空停止执行
+		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//失败重新开始，没有动作循环等待，直到成功往后继续执行
         let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再行动
         let x_6 = text.match(/(.*?)\^cmd\^(.*?)\^cmd/);//按钮存在了再行动
+        let x_7 = text.match(/(.*?)\^if\^(.*?)\^if/);//成功执行函数，失败重头再来
 		let reg = text;
 		let delay = 200;
 		if(x_1&&!x_3){
@@ -4083,28 +4102,34 @@ function go_1(go_arr){
             }catch(e){}
 			if(s!=x_3[2]){
 			    eval(str);
-				return;
+				return "未完成";
 			}
 			reg = x_3[3];
 		}
 		if(x_4){
-            reg = x_4[1];
+            reg = "";
             try{
 		        if(x_4[2]!=ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
 			        go_1_settime = setTimeout(go_1,delay,go_arr);
-                    clickButton(reg);
-			        return;
+                    go_reg_num = 0;
+			        return "未完成";
 			    }
             }catch(e){
-                return;
+                return "未完成";
             }
 		}
         if(x_5){
             let name = x_5[2];
-            reg = x_5[1];
+            let reg_str = x_5[1];
             if(fond_npc(name)==null){
                 go_1_settime = setTimeout(go_1,10,go_arr);
-                return;
+                return "未完成";
+            }else{
+                if(reg_str.indexOf("+")>=0){
+                    reg = reg_str.split("+")[0]+" "+fond_npc(name);
+                }else{
+                    reg = reg_str;
+                }
             }
         }
         if(x_6){
@@ -4112,9 +4137,24 @@ function go_1(go_arr){
             if(fond_cmd(name)==null){
                 go_reg_num = 0;
                 go_1_settime = setTimeout(go_1,10,go_arr);
-                return;
+                return "未完成";
             }else{
                 reg = fond_cmd(x_6[2]);
+            }
+        }
+        if(x_7){
+            reg ="";
+            try{
+		        if(x_7[2]==ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
+			        go(x_7[1]);
+			        return "未完成";
+			    }else{
+                    go_reg_num = 0;
+                    go_1_settime = setTimeout(go_1,10,go_arr);
+                    return "未完成";
+                }
+            }catch(e){
+                return "未完成";
             }
         }
 		go_reg_num+=1;
@@ -4125,12 +4165,13 @@ function go_1(go_arr){
         go_reg_num = 0;
         go_repeat = 0;
         go_next = 0;
-        return;
+        return "完成任务";
     }
     }
     if(num==0){
         g_gmain.recvNetWork2("异常");
     }
+    return "未完成";
 }
 var go_is_npc = 0;
 function go_nonext_func(){
@@ -6635,7 +6676,7 @@ function jj_djrw_func(){
 function jj_djrw_1(){
     let shen = g_obj_map.get("msg_score").get("shen");
     if(shen>=50000){
-        go("daily go 18,event_1_20668593,jh 21");
+        go("daily go 18,event_1_20668593,jh 21,kill+d^n^星宿恶徒【一】^n,kill+d^n^星宿恶徒【二】^n,kill+d^n^星宿恶徒【三】^n,kill+d^n^星宿恶徒【四】^n,");
     }else if(shen<=(-50000)){
         go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
     }else{
