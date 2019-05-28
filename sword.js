@@ -3978,24 +3978,24 @@ var lv_ditu_obj = {
            "s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;"+
            "f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;"+
            "w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n"+
-           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^北郊小路^if",
+           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^北郊小路^if",
     "逍遥林":"jh 16;s;s;s;s;e;e;s;w;n;s;s;s;n;n;w;n;n;s;s;s;s;n;n;w;w;n;s;s;n;w;e^c^6c;"+
              "n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;"+
              "v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;"+
              "h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e"+
-             ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^石级^if",
+             ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^石级^if",
     "开封":"jh 17;sw;nw;se;s;sw;nw;ne;解^cmd^转动桥墩^cmd;jh 17;event_1_97081006;s;s;s;e;"+
            "o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;"+
            "x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;"+
            "e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;"+
            "w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w"+
-           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^演兵场^if",
+           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^演兵场^if",
     "铁血大旗门":"jh 11;e;e;s;n;nw;w;nw;e;e;e;se;nw;n;w;jh 25;w;e;e;e;e;e;s;yell;n;s;e;ne;se;e;e;e;e;w;w;w;w;nw;sw;w;s;e;"+
-                 "的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^秘道^if",
+                 "的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^秘道^if",
     "慕容山庄":"jh 32;n;n;se;w;e;n;w;e;ne;sw;n;n;n;n;s;e;w;w;s;n;w;s;n;n;s;w;n;d^cmd^游过去^cmd;"+
                "d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;"+
                "w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;"+
-               "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341^if^问道堂^if",
+               "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^问道堂^if",
 }//等级任务地图对象
 var kongzhi = document.createElement("input");
 var ztbox = document.createElement("div");
