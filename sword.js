@@ -6731,13 +6731,31 @@ function jj_dsqd_int_func(){
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 0;
+            },599000);
+        }
+    }
+    if(jj_dsqd_value == 0){
+        let this_m = 60;
+        let this_h = 24;
+        if((32+jj_dsqd_suiji1+10)>59){
+            this_h = 7;
+            this_m = (32+jj_dsqd_suiji1+10) - 60;
+        }else{
+            this_h = 6;
+            this_m = (32+jj_dsqd_suiji1+10);
+        }
+        if(h == this_h&&m == this_m){
+            jj_djrw_func();
+            jj_dsqd_value = 9999999;
+            setTimeout(function(){
+                jj_dsqd_value = 0;
                 killYXTrigger = 1;
-            },600000);
+            },1200000);
         }
     }
     if(jj_dsqd_value == 0){
         if(h == 5&&m == 30){
-            go("vip finish_bad 1^c^5;vip finish_bad 2^c^5c;");
+            go("vip finish_bad 1^c^5c;vip finish_bad 2^c^5c;");
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
             setTimeout(function(){
@@ -6828,7 +6846,7 @@ function kj_cx_func(){
 }
 function kj_clp_func(){
     let str = "jh 1;dh_baibaoling 0 1^c^3c;dh_baibaoling 1 1^c^2c;dh_baibaoling 3 1^c^3c;dh_baibaoling 4 1^c^2c;items use obj_zhuangyuantie^c^2c;"+
-        "items use obj_jianghuling^c^3c;items use obj_bangpailing^c^2c;items use obj_shimenling^c^3c;event_1_82393002;event_1_12494761;home";
+        "items use obj_jianghuling^c^3c;items use obj_bangpailing^c^2c;items use obj_shimenling^c^3c;event_1_83905886;event_1_12494761;home";
     go(str);
 }
 function kj_ymszp_func(){
