@@ -4205,10 +4205,10 @@ if(!ispc()){
     kongzhi.style.right = "10px";
     ztbox.style.right = "10px";
 }else{
-    kongzhi.style.left = "520px";
-    ztbox.style.left = "450px";
-    //kongzhi.style.right = "10px";
-    //ztbox.style.right = "10px";
+    //kongzhi.style.left = "520px";
+    //ztbox.style.left = "450px";
+    kongzhi.style.right = "10px";
+    ztbox.style.right = "10px";
 }
 kongzhi.setAttribute("id","kongzhi");
 kongzhi.setAttribute("type","button");
@@ -5736,9 +5736,10 @@ function shiyanfunc(){
     //console.log(g_gmain);
     //console.log(gSocketMsg);
     gSocketMsg.go_combat();
+    //clickButton("event_1_35095441");
 }
 var p_id = 0;
-var vs_cz_dalay = 120000;
+var vs_cz_dalay = 60000;
 (function(){
     setInterval(clear_notify,20);
     setInterval(clear_vs,20);
@@ -5769,7 +5770,7 @@ function clear_vs(){
             },vs_cz_dalay);
         }
     }else{
-        vs_cz_dalay = 120000;
+        vs_cz_dalay = 60000;
         if(vs_cz_timeout != null){
             clearTimeout(vs_cz_timeout);
             vs_cz_timeout = null;
@@ -5856,7 +5857,7 @@ var jj_djrw_xie_int = null;
                                     clearInterval(jj_djrw_xie_int);
                                     jj_djrw_xie_int = null;
                                 }
-                            },10);
+                            },100);
                         }
                         if(xiewancheng){
                             go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
