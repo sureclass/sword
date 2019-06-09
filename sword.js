@@ -528,36 +528,36 @@
     "清风寨在哪？":"b",
 };//答题数据对象
 var mijing = {
-    "桃花泉": "jh 3;s;s;s;s;s;nw;n;n;e;find_task_road secret",
-    "潭畔草地": "jh 4;n;n;n;n;n;n;n;event_1_91604710;s;s;s;find_task_road secret",
-    "千尺幢": "jh 4;n;n;n;n;find_task_road secret",
-    "玉女峰": "jh 4;n;n;n;n;n;n;n;n;w;find_task_road secret",
-    "山坳": "jh 1;e;n;n;n;n;n;find_task_road secret",
-    "九老洞": "jh 8;w;nw;n;n;n;n;e;e;n;n;e;n;^i^山门广场^f^n^;n;n;w;n;n;n;n;n;n;n;n;n;nw;sw;w;nw;w;find_task_road secret",
-    "猢狲愁": "jh 4;n;n;n;n;n;n;e;n;n;find_task_road secret",
-    "长空栈道": "jh 4;n;n;n;n;n;n;n;n;n;e;find_task_road secret",
-    "临渊石台": "jh 4;n;n;n;n;n;n;n;n;n;e;n;find_task_road secret",
-    "沙丘小洞": "jh 6;event_1_98623439;ne;n;ne;ne;ne;event_1_97428251;find_task_road secret",
-    "悬根松": "jh 9;n;w;find_task_road secret",
-    "夕阳岭": "jh 9;n;n;e;find_task_road secret",
-    "青云坪": "jh 13;e;s;s;w;w;find_task_road secret",
-    "玉壁瀑布": "jh 16;s;s;s;s;e;n;e;find_task_road secret",
-    "湖边": "jh 16;s;s;s;s;e;n;e;event_1_5221690;s;w;find_task_road secret",
-    "碧水寒潭": "jh 18;n;nw;n;n;n;n;n;ne;n;n;n;n;n;e;e;se;se;e;find_task_road secret",
-    "寒水潭": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;e;se;find_task_road secret",
-    "悬崖": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;s;e;find_task_road secret",
-    "戈壁": "jh 21;find_task_road secret",
-    "山溪畔": "jh 22;n;n;w;n;n;n;n;look_npc songshan_songshan7;event_1_88705407;s;s;find_task_road secret",
-    "启母石": "jh 22;n;n;w;w;find_task_road secret",
-    "卢崖瀑布": "jh 22;n;n;n;n;n^v^青岗坪^v;e;n;find_task_road secret",
-    "无极老姆洞": "jh 22;n;n;w;n;n;n;n;find_task_road secret",
-    "奇槐坡": "jh 23;n;n;n;n;n;n;n;n;find_task_road secret",
-    "小洞天": "jh 24;n;n;n;n;e;e;find_task_road secret",
-    "云步桥": "jh 24;n;n;n;n;n;n;n;n;n;find_task_road secret",
-    "观景台": "jh 24;n;n;n;n;n;n;n;n;n;n;n;n;e;e;n;find_task_road secret",
-    "天梯": "jh 24;n;n;n;find_task_road secret",
-    "危崖前": "jh 25;w;find_task_road secret",
-    "草原": "jh 26;w;find_task_road secret",
+    "桃花泉": "jh 3;s;s;s;s;s;nw;n;n;e;f^cmd^仔细搜索^cmd",
+    "潭畔草地": "jh 4;n;n;n;n;n;n;n;event_1_91604710;s;s;s;f^cmd^仔细搜索^cmd",
+    "千尺幢": "jh 4;n;n;n;n;f^cmd^仔细搜索^cmd",
+    "玉女峰": "jh 4;n;n;n;n;n;n;n;n;w;f^cmd^仔细搜索^cmd",
+    "山坳": "jh 1;e;n;n;n;n;n;f^cmd^仔细搜索^cmd",
+    "九老洞": "jh 8;w;nw;n;n;n;n;e;e;n;n;e;n;^i^山门广场^f^n^;n;n;w;n;n;n;n;n;n;n;n;n;nw;sw;w;nw;w;f^cmd^仔细搜索^cmd",
+    "猢狲愁": "jh 4;n;n;n;n;n;n;e;n;n;f^cmd^仔细搜索^cmd",
+    "长空栈道": "jh 4;n;n;n;n;n;n;n;n;n;e;f^cmd^仔细搜索^cmd",
+    "临渊石台": "jh 4;n;n;n;n;n;n;n;n;n;e;n;f^cmd^仔细搜索^cmd",
+    "沙丘小洞": "jh 6;event_1_98623439;ne;n;ne;ne;ne;event_1_97428251;f^cmd^仔细搜索^cmd",
+    "悬根松": "jh 9;n;w;f^cmd^仔细搜索^cmd",
+    "夕阳岭": "jh 9;n;n;e;f^cmd^仔细搜索^cmd",
+    "青云坪": "jh 13;e;s;s;w;w;f^cmd^仔细搜索^cmd",
+    "玉壁瀑布": "jh 16;s;s;s;s;e;n;e;f^cmd^仔细搜索^cmd",
+    "湖边": "jh 16;s;s;s;s;e;n;e;event_1_5221690;s;w;f^cmd^仔细搜索^cmd",
+    "碧水寒潭": "jh 18;n;nw;n;n;n;n;n;ne;n;n;n;n;n;e;e;se;se;e;f^cmd^仔细搜索^cmd",
+    "寒水潭": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;e;se;f^cmd^仔细搜索^cmd",
+    "悬崖": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;s;e;f^cmd^仔细搜索^cmd",
+    "戈壁": "jh 21;f^cmd^仔细搜索^cmd",
+    "山溪畔": "jh 22;n;n;w;n;n;n;n;look_npc songshan_songshan7;event_1_88705407;s;s;f^cmd^仔细搜索^cmd",
+    "启母石": "jh 22;n;n;w;w;f^cmd^仔细搜索^cmd",
+    "卢崖瀑布": "jh 22;n;n;n;n;e;n;f^cmd^仔细搜索^cmd",
+    "无极老姆洞": "jh 22;n;n;w;n;n;n;n;f^cmd^仔细搜索^cmd",
+    "奇槐坡": "jh 23;n;n;n;n;n;n;n;n;f^cmd^仔细搜索^cmd",
+    "小洞天": "jh 24;n;n;n;n;e;e;f^cmd^仔细搜索^cmd",
+    "云步桥": "jh 24;n;n;n;n;n;n;n;n;n;f^cmd^仔细搜索^cmd",
+    "观景台": "jh 24;n;n;n;n;n;n;n;n;n;n;n;n;e;e;n;f^cmd^仔细搜索^cmd",
+    "天梯": "jh 24;n;n;n;f^cmd^仔细搜索^cmd",
+    "危崖前": "jh 25;w;f^cmd^仔细搜索^cmd",
+    "草原": "jh 26;w;f^cmd^仔细搜索^cmd",
     "无名山峡谷": "jh 29;n;n;n;n;event_1_60035830;event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^",
 	wmsxg:function(){
 		if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))=="洞口"){
@@ -4203,11 +4203,11 @@ function ispc(){
 }
 if(!ispc()){
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('dblclick', swboxfunc);
+    document.getElementById("page").addEventListener('dblclick', swboxfunc);
     g_gmain.recvNetWork2("你是手机端，加载成功...<br/>双击主界面启动菜单,中止启动键盘操作");
 }else{
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('dblclick', swboxfunc);
+    document.getElementById("page").addEventListener('dblclick', swboxfunc);
     g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作");
     document.onkeydown = function(e){
         let key = e||event;
@@ -4594,162 +4594,48 @@ function xuanhongfunc(){
 var xuanhongboolean = 0;
 var qxlist = [],qxqinmilist = [],qxstatelist = [];
 function autoqxfunc(){
-    if(ask_num == 0){
-        let str = prompt("请输入奇侠已交互次数以及奇遇出现次数，是否全程15金锭，用“，”号隔开","0，0，0");
+    if(autoqx == ""){
+        let str = prompt("请输入交互奇侠,奇遇出现次数,是否全程15金锭","夏岳卿,0,0");
         if(str==null&&str==""){
             return;
         }
-        ask_num = str.split("，")[0];
-        mj_num = str.split("，")[1];
-        is_15king = str.split("，")[2];
+        autoqx = str.split(",")[0];
+        mj_num = str.split(",")[1];
+        is_15king = str.split(",")[2];
     }
+    qx_off = 1;
     clickButton('open jhqx', 0);
-    setTimeout(autoqxfunc1,1000);
 }
+var mj_num = 0,autoqx = "",is_15king = 0,qx_off = 0;
 function autoqxfunc1(){
-    let qxblock = $("tbody tr");
-    for(let i = 0;i<qxblock.length;i++){
-        let y = qxblock[i].innerText.match(/(.*?)\((.*?)\)(.*?)领悟/);
-        if(y){
-            qxlist[i]=y[1];
-            qxqinmilist[i]=y[2];
-            qxstatelist[i]=y[3];
-        }
-    }
-    let num = autoqx_input();
-    if(num == null){
-        console.log("中止奇侠");
-        return;
-    }
-    let x = qxstatelist[num].match(/未出世|师门/);
-    if(!x){
-        clickButton("find_task_road qixia "+(num - 1));
-        setTimeout(autoqxfunc2,1000,num);
-    }else{
-        alert('你要交互的奇侠挂了，等等再来或者换一个(准备好了重开即可)');
-    }
-}
-var mj_num = 0,ask_num = 0,is_15king = 0;
-function autoqxfunc2(num){
-    if(is_exi_npc(qxlist[num])!=0){//看看奇侠在不在
-        let str = g_obj_map.get("msg_room").get("npc"+is_exi_npc(qxlist[num]));
+    if(fond_npc(autoqx)!=null){//看看奇侠在不在
         if(mj_num < 3){
             if(is_15king!=0){
-                clickButton('auto_zsjd20_'+str.split(",")[0].split("_")[0]);
+                clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
             }else{
-                clickButton("ask "+str.split(",")[0]);
+                clickButton("ask "+fond_npc(autoqx));
             }
-            ask_num++;
-            document.getElementById("out2").innerHTML += "<span class='out2'>又得一次，真好<br></span>";
-            setTimeout(autoqxfunc3,1000,num);
         }else if(mj_num<4){
             if(is_15king!=0){
-                clickButton('auto_zsjd20_'+str.split(",")[0].split("_")[0]);
+                clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
             }else{
-                clickButton('auto_zsjd_'+str.split(",")[0].split("_")[0]);
+                clickButton('auto_zsjd_'+fond_npc(autoqx).split("_")[0]);
             }
-            ask_num++;
-            document.getElementById("out2").innerHTML += "<span class='out2'>又得一次，真好<br></span>";
-            setTimeout(autoqxfunc3,1000,num);
         }else if(mj_num<5){
-            clickButton('auto_zsjd20_'+str.split(",")[0].split("_")[0]);
-            ask_num++;
-            document.getElementById("out2").innerHTML += "<span class='out2'>又得一次，真好<br></span>";
-            setTimeout(autoqxfunc3,1000,num);
-        }else if(ask_num<20){
-            if(is_15king!=0){
-                clickButton('auto_zsjd20_'+str.split(",")[0].split("_")[0]);
-            }else{
-                clickButton("ask "+str.split(",")[0]);
-            }
-            ask_num++;
-            document.getElementById("out2").innerHTML += "<span class='out2'>又得一次，真好<br></span>";
-            setTimeout(autoqxfunc3,1000,num);
+            clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
         }else{
-            document.getElementById("out2").innerHTML += "<span class='out2'>准备好了，开始拿果子<br></span>";
-            for(let i = 0;i<qxqinmilist.length;i++){
-                if(qxqinmilist[i]>30000){
-                    qx_ask_zg(i);
-                    return;
-                }
+            if(is_15king!=0){
+                clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
+            }else{
+                clickButton("ask "+fond_npc(autoqx));
             }
         }
     }else{//很明显，奇侠不在这
         clickButton('open jhqx', 0);
-        setTimeout(qx_mb,1000,num);
-    }
-}
-function qx_ask_zg(num){
-    if(num==1){
-        alert("对话领果子结束");
-        clickButton('home', 0);
-        return;
-    }
-    let shuzi = num-1;
-    clickButton('open jhqx', 0);
-    setTimeout(qx_ask_zg1,1000,shuzi);
-}
-function qx_ask_zg1(num){
-    let x = qxstatelist[num].match(/未出世|师门/);
-    if(!x){
-        clickButton("find_task_road qixia "+(num - 1));
-        setTimeout(qx_ask_zg2,400,num);
-    }else{
-        alert("要领果子的奇侠挂了");
-    }
-}
-function qx_ask_zg2(num){
-    if(is_exi_npc(qxlist[num])!=0){
-        let str = g_obj_map.get("msg_room").get("npc"+is_exi_npc(qxlist[num]));
-        clickButton("ask "+str.split(",")[0]);
-        clickButton("ask "+str.split(",")[0]);
-        clickButton("ask "+str.split(",")[0]);
-        clickButton("ask "+str.split(",")[0]);
-        clickButton("ask "+str.split(",")[0]);
-        setTimeout(qx_ask_zg,400,num);
-    }else{
-        qx_ask_zg(num+1);
-    }
-}
-function qx_mb(num){
-    let x = qxstatelist[num].match(/未出世|师门/);
-    if(!x){
-        clickButton("find_task_road qixia "+(num - 1));
-        setTimeout(autoqxfunc2,1000,num);
-    }else{
-        alert('你要交互的奇侠挂了，等等再来或者换一个(准备好了重开即可)');
     }
 }
 var qx_mj_int = null;
-function autoqxfunc3(num){
-    let str = $(".out2").text();
-    let text = str.split("又得一次，真好").pop();
-    let dmijing = text.match(/(.*?)对你悄声道：你现在去(.*?)，应当会有发现……/);
-    if(dmijing){
-        mj_num++;
-        go(mijing[dmijing[2]]);
-        qx_mj_int = setInterval(autoqxfunc4,200,num);
-    }else{
-        autoqxfunc2(num);
-    }
-}
-function autoqxfunc4(num){
-    if(tubu('仔细搜索')!=undefined){
-        eval(tubu('仔细搜索'));
-    }
-    let text = $(".out2").text().split("又得一次，真好").pop();
-    let str = text.match(/你开始四处搜索……你找到/);
-    if(str){
-        clearInterval(qx_mj_int);
-        if(is_qx_sweep()){
-            console.log("密境");
-        }else{
-            console.log("奇遇");
-            setTimeout(autoqxfunc2,1000,num);
-        }
-    }
-}
-function is_qx_sweep(){
+function is_sweep(){
     let direction=["west","east","south","north","southwest","southeast","northeast","northwest"];
     for(let i = 0;i<direction.length;i++){
         if(g_obj_map.get("msg_room").get(direction[i])!=undefined){
@@ -4760,52 +4646,16 @@ function is_qx_sweep(){
 }
 function is_exi_npc(name){
     try{
-        if(is_have_npc()!=0){
-            for(let i = 1;i<=is_have_npc();i++){
-                let text = ansi_up.ansi_to_text(g_obj_map.get("msg_room").get("npc"+i));
-                if(text.match(name)){
-                    return i;
-                }
+        for(let i = 1;i<=100;i++){
+            let text = ansi_up.ansi_to_text(g_obj_map.get("msg_room").get("npc"+i));
+            if(text.match(name)){
+                return i;
             }
-            return 0;
-        }else{
-            return 0;
         }
+        return 0;
     }catch(err){
         return 0;
     }
-}
-function tubu(text){
-    return $("button").filter(function(){
-        return $(this).text() == text;
-    }).attr("onclick");
-}
-function is_have_npc(){//返回这里的npc数量
-    try{
-        for(let i = 1;i<100;i++){
-            if(g_obj_map.get("msg_room").get("npc"+i) == undefined){
-                if(i==1){
-                    return 0;
-                }else{
-                    return i-1;
-                }
-            }
-        }
-    }catch(err){
-        return 0;
-    }
-}
-function autoqx_input(){
-    let str = prompt("请输入想交互的奇侠","风无痕");
-    if(str==null&&str==""){
-        return null;
-    }
-    for(let i = 0;i<qxlist.length;i++){
-        if(str == qxlist[i]){
-            return i;
-        }
-    }
-    alert("没有找到这个奇侠，看看是不是打错名字了");
 }
 //---------------------------战斗
 (function(){
@@ -4967,14 +4817,14 @@ function AutoSkill(){
                 }
                 let msg=g_simul_efun.replaceControlCharBlank(b.get("msg"));
                 let p = "你如|教你|向你|点你|指你|你只觉|你为|往你|割向你|你反应|青城|大嵩阳|裹向你|你的对攻无法击破"+
-"|推向你|倒刺|击向你|准你|你的姿态|奔你|渡你|取你|朝你|刺你|击你|你面对|你根本|抓向你|劈下"+
-"|砍向你|扣你|并力|你这一招|吹向你|到你|至你|你被|卷你|将你|了你|于你|你再|你已是|你已是"+
-"|双目内视|你愕然|扫你|从你|你的招式尽|削你|扑你|取你|令你|单手舞动，单刀离背而出|冲你"+
-"|你一时|落在你|拍你|切你|斩你|砍你|砸你|趁你|封你|待你|在你|与你|劈你|然你|你正搜寻|你发现时"+
-"|你犹如|袭你|使你|你受困|你在极端|钻你|你未被击中却亦是身受|你避无可避|你分身乏术|算你|你被滚滚"+
-"|哪怕你|你唯有|你瞬不及|你步步陷危|你顿时|你已呈九死|锁你|你观之|中你|只见你|你受此浩劲|你急急而挡"+
-"|你神识早已|你纵使|你难抗|瞬间你已是|你愕然|使你|你躲闪不及|逼近你|你宛如一叶|你抵御不住|你自感"+
-"|纵是你|捣你|你唯有|你颓然|你挡无可挡|你心头一痛|尽的你|你当场受创|你脸露惧|管你";
+                        "|推向你|倒刺|击向你|准你|你的姿态|奔你|渡你|取你|朝你|刺你|击你|你面对|你根本|抓向你|劈下"+
+                        "|砍向你|扣你|并力|你这一招|吹向你|到你|至你|你被|卷你|将你|了你|于你|你再|你已是|你已是"+
+                        "|双目内视|你愕然|扫你|从你|你的招式尽|削你|扑你|取你|令你|单手舞动，单刀离背而出|冲你"+
+                        "|你一时|落在你|拍你|切你|斩你|砍你|砸你|趁你|封你|待你|在你|与你|劈你|然你|你正搜寻|你发现时"+
+                        "|你犹如|袭你|使你|你受困|你在极端|钻你|你未被击中却亦是身受|你避无可避|你分身乏术|算你|你被滚滚"+
+                        "|哪怕你|你唯有|你瞬不及|你步步陷危|你顿时|你已呈九死|锁你|你观之|中你|只见你|你受此浩劲|你急急而挡"+
+                        "|你神识早已|你纵使|你难抗|瞬间你已是|你愕然|使你|你躲闪不及|逼近你|你宛如一叶|你抵御不住|你自感"+
+                        "|纵是你|捣你|你唯有|你颓然|你挡无可挡|你心头一痛|尽的你|你当场受创|你脸露惧|管你";
                 let str = msg.match(p);
                 let outskill = "";
                 let t_1 = msg.match(/(.*?)将招式连成/);
@@ -5830,11 +5680,92 @@ var jj_djrw_xie_int = null;
             }catch(e){}
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
+                if(type!="channel"&&type!="attrs_changed"){
+                    console.log(type);
+                }
+                if(type=="notice"){
+                    try{
+                        let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        let x = msg.match(/(.*?)对你悄声道：你现在去(.*?)，应当会有发现……/);
+                        let y = msg.match(/你在这儿一番搜寻，竟找到一条秘径，来到了一个绝密的所在！/);
+                        if(x){
+                            clearTimeout(qx_mj_int);
+                            mj_num++;
+                            go(mijing[x[2]]);
+                        }
+                        if(y){
+                            go("f^cmd^仔细搜索^cmd;");
+                        }
+                        if(msg.match("扫荡成功")){
+                            autoqxfunc1();
+                        }
+                    }catch(e){}
+                }
+                try{
+                    if(type=="show_html_page"){
+                        let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        let str_r = "";
+                        for(let i=0;i<msg.length;i++){
+                            if(!msg[i].match(/[a-zA-Z <>=""''\/_%:]/)){
+                                str_r += msg[i];
+                            }
+                        }
+                        let str_y = str_r.split(";");
+                        let str_t = [],k=0;
+                        for(let i=0;i<str_y.length;i++){
+                            if(str_y[i].length>30){
+                                let d_d = str_y[i];
+                                str_t[k] = d_d;
+                                k++;
+                            }
+                        }
+                        if(qx_off == 1){
+                            let qx_num = -1;
+                            for(let i=0;i<str_t.length;i++){
+                                let qx_ = str_t[i].match(/(.*?)(.*?)(.*?)/);
+                                if(qx_[2]==autoqx){
+                                    if(qx_[3].match(/未出世|师门|隐居修炼/)){
+                                        //
+                                    }else{
+                                        qx_num = qx_[1];
+                                    }
+                                }
+                            }
+                            clickButton("find_task_road qixia "+qx_num);
+                            setTimeout(autoqxfunc1,1000);
+                        }
+                        if(qx_off == 2){
+                            qx_off = 0;
+                            alert("暂时做到这里，改天增加领果子");
+                        }
+                    }
+                }catch(e){}
                 try{
                     if(type=="main_msg"){
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        //console.log(msg);
+                        let z = msg.match(/(.*?)往(.*?)离开。/);
+                        let x = msg.match(/今日亲密度操作次数\((.*?)\/20\)/);
+                        let y = msg.match(/你和(.*?)的亲密度增加了(.*?)点！/);
+                        let w = msg.match(/秘境(.*?)任务/);
                         if(msg.match(/选择了(.*?)宝藏地图。/)){
                             clickButton('clan bzmt puzz');
+                        }
+                        if(x){
+                            if(x[1]<20){
+                                qx_mj_int = setTimeout(autoqxfunc1,1000);
+                            }else{
+                                qx_off = 2;
+                                clickButton('open jhqx', 0);
+                            }
+                        }
+                        if(w){
+                            go("f^cmd^仔细搜索^cmd;");
+                            setTimeout(function(){
+                                if(fond_cmd("扫荡")!=null){
+                                    clickButton(fond_cmd("扫荡")+" go");
+                                }
+                            },1000);
                         }
                     }
                 }catch(e){}
@@ -5849,7 +5780,7 @@ var jj_djrw_xie_int = null;
                             go(lv_ditu_obj[xieweizhi[1]]);
                             jj_djrw_xie_int = setInterval(function(){
                                 if(fond_npc("美女")!=null){
-                                    go("jyfj_getmv_thlz^d^2000s;jyfj_getmv_thlz");
+                                    go("jyfj_getmv_thlz^d^3000s;jyfj_getmv_thlz");
                                     clearInterval(jj_djrw_xie_int);
                                     jj_djrw_xie_int = null;
                                 }
