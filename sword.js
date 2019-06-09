@@ -4203,11 +4203,11 @@ function ispc(){
 }
 if(!ispc()){
     ztbox.style.right = "10px";
-    document.getElementById("page").addEventListener('dblclick', swboxfunc);
+    document.getElementById("out").addEventListener('dblclick', swboxfunc);
     g_gmain.recvNetWork2("你是手机端，加载成功...<br/>双击主界面启动菜单,中止启动键盘操作");
 }else{
     ztbox.style.right = "10px";
-    document.getElementById("page").addEventListener('dblclick', swboxfunc);
+    document.getElementById("out").addEventListener('dblclick', swboxfunc);
     g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作");
     document.onkeydown = function(e){
         let key = e||event;
