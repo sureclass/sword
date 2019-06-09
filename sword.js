@@ -3998,7 +3998,6 @@ var lv_ditu_obj = {
                "w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;"+
                "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^问道堂^if",
 }//等级任务地图对象
-var kongzhi = document.createElement("input");
 var ztbox = document.createElement("div");
 var btnlist = {},btnwidth = "80px",btnheight = "20px",btnleft = 5,btntop = 5,btntopjg = 25,btnleftjg = 90;
 var tanfanname = "";
@@ -4203,24 +4202,19 @@ function ispc(){
     return true;
 }
 if(!ispc()){
-    kongzhi.style.right = "10px";
     ztbox.style.right = "10px";
-    document.addEventListener("gesturestart",swboxfunc);
+    document.getElementById("out").addEventListener('dblclick', swboxfunc);
+    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>双击主界面启动菜单,中止启动键盘操作");
 }else{
-    //kongzhi.style.left = "520px";
-    //ztbox.style.left = "450px";
-    kongzhi.style.right = "10px";
     ztbox.style.right = "10px";
+    document.getElementById("out").addEventListener('dblclick', swboxfunc);
+    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作");
+    document.onkeydown = function(e){
+        let key = e||event;
+        let currkey = key.keyCode||key.which||key.charCode;
+        //
+    }
 }
-kongzhi.setAttribute("id","kongzhi");
-kongzhi.setAttribute("type","button");
-kongzhi.setAttribute("value","显示");
-kongzhi.style.position = "absolute";
-kongzhi.style.width = "40px";
-kongzhi.style.height = "20px";
-kongzhi.style.top = "40px";
-document.getElementById("page").appendChild(kongzhi);
-kongzhi.addEventListener('click', swboxfunc);
 ztbox.setAttribute("id","ztbox");
 ztbox.style.position = "absolute";
 ztbox.style.border = "1px solid #000000";
