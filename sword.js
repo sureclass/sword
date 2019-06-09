@@ -1668,6 +1668,7 @@ var npcdp = {
         '小茗': 'jh 32,n,n,se,n,n,n,n,w,w,w,n,w,n,e,n,e,n,n',
     },
     '大理': {
+        '农夫1':'jh 33;sw;sw;s;s;s;s;e;e;e;e;se;s;e;e;e;ne;e',
         '摆夷女子': 'jh 33,sw,sw',
         '士兵': 'jh 33,sw,sw,s,s',
         '武将': 'jh 33,sw,sw,s,s',
@@ -4204,6 +4205,7 @@ function ispc(){
 if(!ispc()){
     kongzhi.style.right = "10px";
     ztbox.style.right = "10px";
+    document.addEventListener("gesturestart",swboxfunc);
 }else{
     //kongzhi.style.left = "520px";
     //ztbox.style.left = "450px";
