@@ -5699,6 +5699,9 @@ var jj_djrw_xie_int = null;
                         if(msg.match("扫荡成功")){
                             autoqxfunc1();
                         }
+                        if(msg.match("你从地髓石乳里爬了出来，终止了这次练功。")){
+                            clickButton("sleep_hanyuchuang");
+                        }
                     }catch(e){}
                 }
                 try{
@@ -5735,8 +5738,20 @@ var jj_djrw_xie_int = null;
                             setTimeout(autoqxfunc1,1000);
                         }
                         if(qx_off == 2){
+                            let reg = "";
+                            for(let i=str_t.length;i>0;i--){
+                                let qmd = str_t[i].match(/(.*?)(.*?)\((.*?)\)(.*?)/);
+                                if(qmd){
+                                    if(qmd[3]<30000){
+                                        for(let j=0;j<(i+1);j++){
+                                            reg += "find_task_road qixia "+(i-j);
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            go(reg);
                             qx_off = 0;
-                            alert("暂时做到这里，改天增加领果子");
                         }
                     }
                 }catch(e){}
