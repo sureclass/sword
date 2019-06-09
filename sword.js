@@ -5696,7 +5696,7 @@ var jj_djrw_xie_int = null;
                         if(y){
                             go("f^cmd^仔细搜索^cmd;");
                         }
-                        if(msg.match("扫荡成功")){
+                        if(msg.match("扫荡成功")&&msg.match("玄铁令")){
                             autoqxfunc1();
                         }
                         if(msg.match("你从地髓石乳里爬了出来，终止了这次练功。")){
