@@ -6670,7 +6670,7 @@ function jj_djrw_1(){
     }else if(shen<=(-50000)){
         go(npcdp.海云阁.血刀妖僧+",event_1_52483341");
     }else{
-        alert("你的正邪气不足");
+        g_gmain.recvNetWork2("你的正邪气不足");
     }
 }
 var jj_dsqd_value = 0;
