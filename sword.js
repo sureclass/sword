@@ -528,36 +528,36 @@
     "清风寨在哪？":"b",
 };//答题数据对象
 var mijing = {
-    "桃花泉": "jh 3;s;s;s;s;s;nw;n;n;e;f^cmd^仔细搜索^cmd",
-    "潭畔草地": "jh 4;n;n;n;n;n;n;n;event_1_91604710;s;s;s;f^cmd^仔细搜索^cmd",
-    "千尺幢": "jh 4;n;n;n;n;f^cmd^仔细搜索^cmd",
-    "玉女峰": "jh 4;n;n;n;n;n;n;n;n;w;f^cmd^仔细搜索^cmd",
-    "山坳": "jh 1;e;n;n;n;n;n;f^cmd^仔细搜索^cmd",
-    "九老洞": "jh 8;w;nw;n;n;n;n;e;e;n;n;e;n;^i^山门广场^f^n^;n;n;w;n;n;n;n;n;n;n;n;n;nw;sw;w;nw;w;f^cmd^仔细搜索^cmd",
-    "猢狲愁": "jh 4;n;n;n;n;n;n;e;n;n;f^cmd^仔细搜索^cmd",
-    "长空栈道": "jh 4;n;n;n;n;n;n;n;n;n;e;f^cmd^仔细搜索^cmd",
-    "临渊石台": "jh 4;n;n;n;n;n;n;n;n;n;e;n;f^cmd^仔细搜索^cmd",
-    "沙丘小洞": "jh 6;event_1_98623439;ne;n;ne;ne;ne;event_1_97428251;f^cmd^仔细搜索^cmd",
-    "悬根松": "jh 9;n;w;f^cmd^仔细搜索^cmd",
-    "夕阳岭": "jh 9;n;n;e;f^cmd^仔细搜索^cmd",
-    "青云坪": "jh 13;e;s;s;w;w;f^cmd^仔细搜索^cmd",
-    "玉壁瀑布": "jh 16;s;s;s;s;e;n;e;f^cmd^仔细搜索^cmd",
-    "湖边": "jh 16;s;s;s;s;e;n;e;event_1_5221690;s;w;f^cmd^仔细搜索^cmd",
-    "碧水寒潭": "jh 18;n;nw;n;n;n;n;n;ne;n;n;n;n;n;e;e;se;se;e;f^cmd^仔细搜索^cmd",
-    "寒水潭": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;e;se;f^cmd^仔细搜索^cmd",
-    "悬崖": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;s;e;f^cmd^仔细搜索^cmd",
-    "戈壁": "jh 21;f^cmd^仔细搜索^cmd",
-    "山溪畔": "jh 22;n;n;w;n;n;n;n;look_npc songshan_songshan7;event_1_88705407;s;s;f^cmd^仔细搜索^cmd",
-    "启母石": "jh 22;n;n;w;w;f^cmd^仔细搜索^cmd",
-    "卢崖瀑布": "jh 22;n;n;n;n;e;n;f^cmd^仔细搜索^cmd",
-    "无极老姆洞": "jh 22;n;n;w;n;n;n;n;f^cmd^仔细搜索^cmd",
-    "奇槐坡": "jh 23;n;n;n;n;n;n;n;n;f^cmd^仔细搜索^cmd",
-    "小洞天": "jh 24;n;n;n;n;e;e;f^cmd^仔细搜索^cmd",
-    "云步桥": "jh 24;n;n;n;n;n;n;n;n;n;f^cmd^仔细搜索^cmd",
-    "观景台": "jh 24;n;n;n;n;n;n;n;n;n;n;n;n;e;e;n;f^cmd^仔细搜索^cmd",
-    "天梯": "jh 24;n;n;n;f^cmd^仔细搜索^cmd",
-    "危崖前": "jh 25;w;f^cmd^仔细搜索^cmd",
-    "草原": "jh 26;w;f^cmd^仔细搜索^cmd",
+    "桃花泉": "jh 3;s;s;s;s;s;nw;n;n;e;f^cmd^仔细搜寻^cmd",
+    "潭畔草地": "jh 4;n;n;n;n;n;n;n;event_1_91604710;s;s;s;f^cmd^仔细搜寻^cmd",
+    "千尺幢": "jh 4;n;n;n;n;f^cmd^仔细搜寻^cmd",
+    "玉女峰": "jh 4;n;n;n;n;n;n;n;n;w;f^cmd^仔细搜寻^cmd",
+    "山坳": "jh 1;e;n;n;n;n;n;f^cmd^仔细搜寻^cmd",
+    "九老洞": "jh 8;w;nw;n;n;n;n;e;e;n;n;e;n;^i^山门广场^f^n^;n;n;w;n;n;n;n;n;n;n;n;n;nw;sw;w;nw;w;f^cmd^仔细搜寻^cmd",
+    "猢狲愁": "jh 4;n;n;n;n;n;n;e;n;n;f^cmd^仔细搜寻^cmd",
+    "长空栈道": "jh 4;n;n;n;n;n;n;n;n;n;e;f^cmd^仔细搜寻^cmd",
+    "临渊石台": "jh 4;n;n;n;n;n;n;n;n;n;e;n;f^cmd^仔细搜寻^cmd",
+    "沙丘小洞": "jh 6;event_1_98623439;ne;n;ne;ne;ne;event_1_97428251;f^cmd^仔细搜寻^cmd",
+    "悬根松": "jh 9;n;w;f^cmd^仔细搜寻^cmd",
+    "夕阳岭": "jh 9;n;n;e;f^cmd^仔细搜寻^cmd",
+    "青云坪": "jh 13;e;s;s;w;w;f^cmd^仔细搜寻^cmd",
+    "玉壁瀑布": "jh 16;s;s;s;s;e;n;e;f^cmd^仔细搜寻^cmd",
+    "湖边": "jh 16;s;s;s;s;e;n;e;event_1_5221690;s;w;f^cmd^仔细搜寻^cmd",
+    "碧水寒潭": "jh 18;n;nw;n;n;n;n;n;ne;n;n;n;n;n;e;e;se;se;e;f^cmd^仔细搜寻^cmd",
+    "寒水潭": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;e;se;f^cmd^仔细搜寻^cmd",
+    "悬崖": "jh 20;w;w;s;e;s;s;s;s;s;sw;sw;s;s;e;f^cmd^仔细搜寻^cmd",
+    "戈壁": "jh 21;f^cmd^仔细搜寻^cmd",
+    "山溪畔": "jh 22;n;n;w;n;n;n;n;look_npc songshan_songshan7;event_1_88705407;s;s;f^cmd^仔细搜寻^cmd",
+    "启母石": "jh 22;n;n;w;w;f^cmd^仔细搜寻^cmd",
+    "卢崖瀑布": "jh 22;n;n;n;n;e;n;f^cmd^仔细搜寻^cmd",
+    "无极老姆洞": "jh 22;n;n;w;n;n;n;n;f^cmd^仔细搜寻^cmd",
+    "奇槐坡": "jh 23;n;n;n;n;n;n;n;n;f^cmd^仔细搜寻^cmd",
+    "小洞天": "jh 24;n;n;n;n;e;e;f^cmd^仔细搜寻^cmd",
+    "云步桥": "jh 24;n;n;n;n;n;n;n;n;n;f^cmd^仔细搜寻^cmd",
+    "观景台": "jh 24;n;n;n;n;n;n;n;n;n;n;n;n;e;e;n;f^cmd^仔细搜寻^cmd",
+    "天梯": "jh 24;n;n;n;f^cmd^仔细搜寻^cmd",
+    "危崖前": "jh 25;w;f^cmd^仔细搜寻^cmd",
+    "草原": "jh 26;w;f^cmd^仔细搜寻^cmd",
     "无名山峡谷": "jh 29;n;n;n;n;event_1_60035830;event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^",
 	wmsxg:function(){
 		if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))=="洞口"){
@@ -4003,6 +4003,7 @@ var btnlist = {},btnwidth = "80px",btnheight = "20px",btnleft = 5,btntop = 5,btn
 var tanfanname = "";
 var autodboolean = 0;
 var room_id = "",bb_move_off = 1,bb_move_index = 0;
+var jh_bbb = 1,bububu = 0;
 //------------------------生成技能连招
 (function(){
     for(let i = 0;i<skill_list2.length;i++){
@@ -4208,11 +4209,50 @@ if(!ispc()){
 }else{
     ztbox.style.right = "10px";
     document.getElementById("out").addEventListener('dblclick', swboxfunc);
-    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作");
+    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
         let currkey = key.keyCode||key.which||key.charCode;
-        //
+        if(currkey == 38){
+            if(bububu==0){
+                bububu = 1;
+                g_gmain.recvNetWork2("开启按钮操作成功,当前s周围8个按钮控制方向<br/>t前进江湖r后退江湖h回家");
+            }else{
+                bububu = 0;
+                g_gmain.recvNetWork2("关闭按钮操作成功");
+            }
+        }
+        if(bububu==1){
+            if(currkey == 81)clickButton("nw");//q
+            if(currkey == 87)clickButton("n");//w
+            if(currkey == 69)clickButton("ne");//e
+            if(currkey == 65)clickButton("w");//a
+            if(currkey == 68)clickButton("e");//d
+            if(currkey == 90)clickButton("sw");//z
+            if(currkey == 88)clickButton("s");//x
+            if(currkey == 67)clickButton("se");//c
+            if(currkey == 72)clickButton("home");//c
+            if(currkey == 82){
+                if(jh_bbb>49){
+                    jh_bbb = 1;
+                }
+                if(jh_bbb<1){
+                    jh_bbb = 49;
+                }
+                clickButton("jh "+jh_bbb);
+                jh_bbb--;
+            }//r
+            if(currkey == 84){
+                if(jh_bbb>49){
+                    jh_bbb = 1;
+                }
+                if(jh_bbb<1){
+                    jh_bbb = 49;
+                }
+                clickButton("jh "+jh_bbb);
+                jh_bbb++;
+            }//t
+        }
     }
 }
 ztbox.setAttribute("id","ztbox");
@@ -5687,7 +5727,7 @@ var jj_djrw_xie_int = null;
                     try{
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
                         let x = msg.match(/(.*?)对你悄声道：你现在去(.*?)，应当会有发现……/);
-                        let y = msg.match(/你在这儿一番搜寻，竟找到一条秘径，来到了一个绝密的所在！/);
+                        let y = msg.match(/来到了一个绝密的所在/);
                         if(x){
                             clearTimeout(qx_mj_int);
                             mj_num++;
@@ -5739,14 +5779,15 @@ var jj_djrw_xie_int = null;
                         }
                         if(qx_off == 2){
                             let reg = "";
-                            for(let i=str_t.length;i>0;i--){
+                            for(let i=str_t.length;i>=0;i--){
                                 let qmd = str_t[i].match(/(.*?)(.*?)\((.*?)\)(.*?)/);
                                 if(qmd){
                                     if(qmd[3]<30000){
                                         for(let j=0;j<(i+1);j++){
-                                            reg += "find_task_road qixia "+(i-j);
+                                            reg += "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[1]+"^n;"+
+                                                "ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;"+
+                                                "ask+d^n^"+qmd[1]+"^n;";
                                         }
-                                        break;
                                     }
                                 }
                             }
@@ -5762,7 +5803,7 @@ var jj_djrw_xie_int = null;
                         let z = msg.match(/(.*?)往(.*?)离开。/);
                         let x = msg.match(/今日亲密度操作次数\((.*?)\/20\)/);
                         let y = msg.match(/你和(.*?)的亲密度增加了(.*?)点！/);
-                        let w = msg.match(/秘境(.*?)任务/);
+                        let w = msg.match(/你开始四处搜索/);
                         if(msg.match(/选择了(.*?)宝藏地图。/)){
                             clickButton('clan bzmt puzz');
                         }
@@ -5775,10 +5816,15 @@ var jj_djrw_xie_int = null;
                             }
                         }
                         if(w){
-                            go("f^cmd^仔细搜索^cmd;");
                             setTimeout(function(){
                                 if(fond_cmd("扫荡")!=null){
                                     clickButton(fond_cmd("扫荡")+" go");
+                                }else{
+                                    if(is_sweep()){
+                                        //
+                                    }else{
+                                        clickButton('open jhqx', 0);
+                                    }
                                 }
                             },1000);
                         }
