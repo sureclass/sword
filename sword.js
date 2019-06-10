@@ -5818,10 +5818,11 @@ var jj_djrw_xie_int = null;
                         if(w){
                             setTimeout(function(){
                                 if(fond_cmd("扫荡")!=null){
+                                    mj_num++;
                                     clickButton(fond_cmd("扫荡")+" go");
                                 }else{
                                     if(is_sweep()){
-                                        //
+                                        mj_num++;
                                     }else{
                                         clickButton('open jhqx', 0);
                                     }
