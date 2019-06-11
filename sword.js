@@ -559,13 +559,13 @@ var mijing = {
     "危崖前": "jh 25;w;f^cmd^仔细搜寻^cmd",
     "草原": "jh 26;w;f^cmd^仔细搜寻^cmd",
     "无名山峡谷": "jh 29;n;n;n;n;event_1_60035830;event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^",
-	wmsxg:function(){
-		if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))=="洞口"){
-			go("s;event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^");
-		}else{
-			go("event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^");
-		}
-	}
+    wmsxg:function(){
+        if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))=="洞口"){
+            go("s;event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^");
+        }else{
+            go("event_1_65661209;mijing.wmsxg()^i^无名山峡谷^f^find_task_road secret^");
+        }
+    }
 };//秘境位置对象
 var npcdp = {
     '雪亭镇': {
@@ -3975,28 +3975,28 @@ var need_clear_wp = [
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 var lv_ditu_obj = {
     "洛阳":"jh 2;n;n;e;s;f^cmd^跳上船坞(^cmd;n;n;w;n;e;s;n;w;w;f^cmd^蒲团^cmd;n;e;n;e;"+
-           "s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;"+
-           "s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;"+
-           "f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;"+
-           "w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n"+
-           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^北郊小路^if",
+    "s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;"+
+    "s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;"+
+    "f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;"+
+    "w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n"+
+    ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^北郊小路^if",
     "逍遥林":"jh 16;s;s;s;s;e;e;s;w;n;s;s;s;n;n;w;n;n;s;s;s;s;n;n;w;w;n;s;s;n;w;e^c^6c;"+
-             "n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;"+
-             "v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;"+
-             "h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e"+
-             ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^石级^if",
+    "n;n;e;g^cmd^钻入瀑布^cmd;jh 16;s;s;s;s;e;n;e;a^cmd^跳崖^cmd;s;w;"+
+    "v^cmd^推动岩石^cmd;n;n;w;w;e;n;s;e;e;n;h^cmd^弹第四根琴弦^cmd;"+
+    "h^cmd^弹第三根琴弦^cmd;h^cmd^弹第二根琴弦^cmd;h^cmd^弹第一根琴弦^cmd;s;s;e;n;n;w;n;e"+
+    ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^石级^if",
     "开封":"jh 17;sw;nw;se;s;sw;nw;ne;解^cmd^转动桥墩^cmd;jh 17;event_1_97081006;s;s;s;e;"+
-           "o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;"+
-           "x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;"+
-           "e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;"+
-           "w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w"+
-           ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^演兵场^if",
+    "o^cmd^拨开松枝^cmd;n;w;s;s;w;v^cmd^拨开草丛^cmd;s;w;e;e;n;n;n;n;n;e;e;s;s;s;e;"+
+    "x^cmd^前往御碑亭^cmd;s;w;s;s;w;jh 17;n;e;s;n;w;w;e;n;w;s;n;n;n;s;s;e;e;s;s;s;w;"+
+    "e;s;w;e;n;e;n;s;s;n;e;e;w;w;w;n;n;n;e;s;n;n;n;s;h^cmd^跳上客船^cmd;jh 17;n;n;n;e;"+
+    "w;n;e;w;n;e;se;s;n;nw;n;n;n;z^cmd^往炼药房^cmd;jh 17;n;n;n;n;w;w;s;n;n;s;w;w;e;s;s;w;e;n;n;n;n;w"+
+    ";"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^演兵场^if",
     "铁血大旗门":"jh 11;e;e;s;n;nw;w;nw;e;e;e;se;nw;n;w;jh 25;w;e;e;e;e;e;s;yell;n;s;e;ne;se;e;e;e;e;w;w;w;w;nw;sw;w;s;e;"+
-                 "的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^秘道^if",
+    "的^cmd^推动岩石^cmd;w;e;s;e;n;w;w;s;w;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^秘道^if",
     "慕容山庄":"jh 32;n;n;se;w;e;n;w;e;ne;sw;n;n;n;n;s;e;w;w;s;n;w;s;n;n;s;w;n;d^cmd^游过去^cmd;"+
-               "d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;"+
-               "w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;"+
-               "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^问道堂^if",
+    "d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;d^cmd^划水^cmd;w;e;s;"+
+    "w;n;e;n;w;n;w;e;s;e;e;n;n;s;e;w;w;jh 32;n;n;se;e;s;s;event_1_99232080;e;e;s;e;s;e;e;"+
+    "e;n;n;s;s;s;s;y^cmd^跃过院墙^cmd;e;n;s;s;"+npcdp.海云阁.血刀妖僧+",event_1_42791641 go,event_1_52483341 go^if^问道堂^if",
 }//等级任务地图对象
 var ztbox = document.createElement("div");
 var btnlist = {},btnwidth = "80px",btnheight = "20px",btnleft = 5,btntop = 5,btntopjg = 25,btnleftjg = 90;
@@ -4004,6 +4004,7 @@ var tanfanname = "";
 var autodboolean = 0;
 var room_id = "",bb_move_off = 1,bb_move_index = 0;
 var jh_bbb = 1,bububu = 0;
+var swbox_time = 0;
 //------------------------生成技能连招
 (function(){
     for(let i = 0;i<skill_list2.length;i++){
@@ -4032,27 +4033,27 @@ var go_nonext_dp = [
     "渔船","木船","竹篮","木筏","小船","客船"
 ];
 function go(str){
-	if(str==null&&str==undefined){
+    if(str==null&&str==undefined){
         if(go_1_settime!=null){
-           clearTimeout(go_1_settime);
-           go_1_settime = null;
+            clearTimeout(go_1_settime);
+            go_1_settime = null;
         }
-		return;
-	}
+        return;
+    }
     if(go_1_settime!=null){
         clearTimeout(go_1_settime);
         go_1_settime = null;
     }
-	go_reg_num = 0;
+    go_reg_num = 0;
     let go_arr = [];
-	if(str.indexOf(";")>=0){
-		go_arr = str.split(";");
-	}else if(str.indexOf(",")>=0){
-		go_arr = str.split(",");
-	}else{
+    if(str.indexOf(";")>=0){
+        go_arr = str.split(";");
+    }else if(str.indexOf(",")>=0){
+        go_arr = str.split(",");
+    }else{
         go_arr = [];
-		clickButton(str);
-	}
+        clickButton(str);
+    }
     console.log(str);
     go_1(go_arr);
 }
@@ -4072,102 +4073,102 @@ function go_1(go_arr){
     }
     if(num==4){
         if(go_reg_num<go_arr.length){
-	    let text = go_arr[go_reg_num];
-		let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
-		let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
-		let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//成功往后执行，失败执行函数，函数为空停止执行
-		let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//失败重新开始，没有动作循环等待，直到成功往后继续执行
-        let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再行动
-        let x_6 = text.match(/(.*?)\^cmd\^(.*?)\^cmd/);//按钮存在了再行动
-        let x_7 = text.match(/(.*?)\^if\^(.*?)\^if/);//成功执行函数，失败重头再来
-		let reg = text;
-		let delay = 200;
-		if(x_1&&!x_3){
-		    if(go_repeat<x_1[2]-1){
-			    go_reg_num -= 1;
-				go_repeat+=1;
-			}else{
-			    go_repeat = 0;
-			}
-			reg = x_1[1];
-		}
-		if(x_2&&!x_3){
-			delay = x_2[2];
-			reg = x_2[1];
-		}
-		if(x_3){
-			let str = x_3[1];
-            let s = "不存在";
-            try{
-			    s = ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'));
-            }catch(e){}
-			if(s!=x_3[2]){
-			    eval(str);
-				return "未完成";
-			}
-			reg = x_3[3];
-		}
-		if(x_4){
-            reg = "";
-            try{
-		        if(x_4[2]!=ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
-			        go_1_settime = setTimeout(go_1,delay,go_arr);
-                    go_reg_num = 0;
-			        return "未完成";
-			    }
-            }catch(e){
-                return "未完成";
-            }
-		}
-        if(x_5){
-            let name = x_5[2];
-            let reg_str = x_5[1];
-            if(fond_npc(name)==null){
-                go_1_settime = setTimeout(go_1,10,go_arr);
-                return "未完成";
-            }else{
-                if(reg_str.indexOf("+")>=0){
-                    reg = reg_str.split("+")[0]+" "+fond_npc(name);
+            let text = go_arr[go_reg_num];
+            let x_1 = text.match(/(.*?)\^c\^(.*?)c/);//重复执行
+            let x_2 = text.match(/(.*?)\^d\^(.*?)s/);//延时后一步执行
+            let x_3 = text.match(/(.*?)\^i\^(.*?)\^f\^(.*?)\^/);//成功往后执行，失败执行函数，函数为空停止执行
+            let x_4 = text.match(/(.*?)\^v\^(.*?)\^v/);//失败重新开始，没有动作循环等待，直到成功往后继续执行
+            let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再行动
+            let x_6 = text.match(/(.*?)\^cmd\^(.*?)\^cmd/);//按钮存在了再行动
+            let x_7 = text.match(/(.*?)\^if\^(.*?)\^if/);//成功执行函数，失败重头再来
+            let reg = text;
+            let delay = 200;
+            if(x_1&&!x_3){
+                if(go_repeat<x_1[2]-1){
+                    go_reg_num -= 1;
+                    go_repeat+=1;
                 }else{
-                    reg = reg_str;
+                    go_repeat = 0;
+                }
+                reg = x_1[1];
+            }
+            if(x_2&&!x_3){
+                delay = x_2[2];
+                reg = x_2[1];
+            }
+            if(x_3){
+                let str = x_3[1];
+                let s = "不存在";
+                try{
+                    s = ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'));
+                }catch(e){}
+                if(s!=x_3[2]){
+                    eval(str);
+                    return "未完成";
+                }
+                reg = x_3[3];
+            }
+            if(x_4){
+                reg = "";
+                try{
+                    if(x_4[2]!=ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
+                        go_1_settime = setTimeout(go_1,delay,go_arr);
+                        go_reg_num = 0;
+                        return "未完成";
+                    }
+                }catch(e){
+                    return "未完成";
                 }
             }
-        }
-        if(x_6){
-            let name = x_6[2];
-            if(fond_cmd(name)==null){
-                go_reg_num = 0;
-                go_1_settime = setTimeout(go_1,10,go_arr);
-                return "未完成";
-            }else{
-                reg = fond_cmd(x_6[2]);
+            if(x_5){
+                let name = x_5[2];
+                let reg_str = x_5[1];
+                if(fond_npc(name)==null){
+                    go_1_settime = setTimeout(go_1,10,go_arr);
+                    return "未完成";
+                }else{
+                    if(reg_str.indexOf("+")>=0){
+                        reg = reg_str.split("+")[0]+" "+fond_npc(name);
+                    }else{
+                        reg = reg_str;
+                    }
+                }
             }
-        }
-        if(x_7){
-            reg ="";
-            try{
-		        if(x_7[2]==ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
-			        go(x_7[1]);
-			        return "未完成";
-			    }else{
+            if(x_6){
+                let name = x_6[2];
+                if(fond_cmd(name)==null){
                     go_reg_num = 0;
                     go_1_settime = setTimeout(go_1,10,go_arr);
                     return "未完成";
+                }else{
+                    reg = fond_cmd(x_6[2]);
                 }
-            }catch(e){
-                return "未完成";
             }
+            if(x_7){
+                reg ="";
+                try{
+                    if(x_7[2]==ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))){
+                        go(x_7[1]);
+                        return "未完成";
+                    }else{
+                        go_reg_num = 0;
+                        go_1_settime = setTimeout(go_1,10,go_arr);
+                        return "未完成";
+                    }
+                }catch(e){
+                    return "未完成";
+                }
+            }
+            go_reg_num+=1;
+            clickButton(reg);
+            go_1_settime = setTimeout(go_1,delay,go_arr);
+        }else{
+            g_gmain.recvNetWork2("执行完毕");
+            go_reg_num = 0;
+            go_repeat = 0;
+            go_next = 0;
+            return "完成任务";
         }
-		go_reg_num+=1;
-		clickButton(reg);
-		go_1_settime = setTimeout(go_1,delay,go_arr);
-	}else{
-        g_gmain.recvNetWork2("执行完毕");
-        go_reg_num = 0;
-        go_repeat = 0;
-        go_next = 0;
-        return "完成任务";
-    }
     }
     if(num==0){
         g_gmain.recvNetWork2("异常");
@@ -4177,17 +4178,17 @@ function go_1(go_arr){
 var go_is_npc = 0;
 function go_nonext_func(){
     try{
-    if(is_fighting==1){
-        return 1;
-    }
-    for(let i=0;i<go_nonext_dp.length;i++){
-        if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))==go_nonext_dp[i]){
-            return 2;
+        if(is_fighting==1){
+            return 1;
         }
-    }
-    if(go_is_npc!=0){
-        return 3;
-    }
+        for(let i=0;i<go_nonext_dp.length;i++){
+            if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get('short'))==go_nonext_dp[i]){
+                return 2;
+            }
+        }
+        if(go_is_npc!=0){
+            return 3;
+        }
     }catch(e){}
     return 4;
 }
@@ -4204,12 +4205,26 @@ function ispc(){
 }
 if(!ispc()){
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('dblclick', swboxfunc);
-    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>双击主界面启动菜单,中止启动键盘操作");
+    document.getElementById("out").addEventListener('mousedown', function(){
+        swbox_time = new Date().getTime();
+    });
+    document.getElementById("out").addEventListener('mouseup', function(){
+        if((new Date().getTime() - swbox_time)>500){
+            swboxfunc();
+        }
+    });
+    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>长按主界面0.5秒以上后松开启动菜单,中止启动键盘操作");
 }else{
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('dblclick', swboxfunc);
-    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>双击主界面启动菜单,启动键盘操作,按上键开启");
+    document.getElementById("out").addEventListener('mousedown', function(){
+        swbox_time = new Date().getTime();
+    });
+    document.getElementById("out").addEventListener('mouseup', function(){
+        if((new Date().getTime() - swbox_time)>500){
+            swboxfunc();
+        }
+    });
+    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面0.5秒以上后松开启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
         let currkey = key.keyCode||key.which||key.charCode;
@@ -4532,9 +4547,9 @@ function dazhaobihua1(){
 }
 function changle(){
     go("team create;fb 6;event_1_94101353;kill changleweiyang_huagmencheng^d^2000s;home;"+
-	"fb 6;event_1_8221898;kill changleweiyang_taishuling^d^2000s;home;"+
-	"fb 6;event_1_18437151;kill changleweiyang_zhijinwu^d^2000s;home;"+
-	"fb 6;event_1_74386803;kill changleweiyang_caiyinvguan^d^2000s;home");
+       "fb 6;event_1_8221898;kill changleweiyang_taishuling^d^2000s;home;"+
+       "fb 6;event_1_18437151;kill changleweiyang_zhijinwu^d^2000s;home;"+
+       "fb 6;event_1_74386803;kill changleweiyang_caiyinvguan^d^2000s;home");
 }
 var digongInt = null;
 function bpzxfunc(){
@@ -4857,14 +4872,14 @@ function AutoSkill(){
                 }
                 let msg=g_simul_efun.replaceControlCharBlank(b.get("msg"));
                 let p = "你如|教你|向你|点你|指你|你只觉|你为|往你|割向你|你反应|青城|大嵩阳|裹向你|你的对攻无法击破"+
-                        "|推向你|倒刺|击向你|准你|你的姿态|奔你|渡你|取你|朝你|刺你|击你|你面对|你根本|抓向你|劈下"+
-                        "|砍向你|扣你|并力|你这一招|吹向你|到你|至你|你被|卷你|将你|了你|于你|你再|你已是|你已是"+
-                        "|双目内视|你愕然|扫你|从你|你的招式尽|削你|扑你|取你|令你|单手舞动，单刀离背而出|冲你"+
-                        "|你一时|落在你|拍你|切你|斩你|砍你|砸你|趁你|封你|待你|在你|与你|劈你|然你|你正搜寻|你发现时"+
-                        "|你犹如|袭你|使你|你受困|你在极端|钻你|你未被击中却亦是身受|你避无可避|你分身乏术|算你|你被滚滚"+
-                        "|哪怕你|你唯有|你瞬不及|你步步陷危|你顿时|你已呈九死|锁你|你观之|中你|只见你|你受此浩劲|你急急而挡"+
-                        "|你神识早已|你纵使|你难抗|瞬间你已是|你愕然|使你|你躲闪不及|逼近你|你宛如一叶|你抵御不住|你自感"+
-                        "|纵是你|捣你|你唯有|你颓然|你挡无可挡|你心头一痛|尽的你|你当场受创|你脸露惧|管你";
+                    "|推向你|倒刺|击向你|准你|你的姿态|奔你|渡你|取你|朝你|刺你|击你|你面对|你根本|抓向你|劈下"+
+                    "|砍向你|扣你|并力|你这一招|吹向你|到你|至你|你被|卷你|将你|了你|于你|你再|你已是|你已是"+
+                    "|双目内视|你愕然|扫你|从你|你的招式尽|削你|扑你|取你|令你|单手舞动，单刀离背而出|冲你"+
+                    "|你一时|落在你|拍你|切你|斩你|砍你|砸你|趁你|封你|待你|在你|与你|劈你|然你|你正搜寻|你发现时"+
+                    "|你犹如|袭你|使你|你受困|你在极端|钻你|你未被击中却亦是身受|你避无可避|你分身乏术|算你|你被滚滚"+
+                    "|哪怕你|你唯有|你瞬不及|你步步陷危|你顿时|你已呈九死|锁你|你观之|中你|只见你|你受此浩劲|你急急而挡"+
+                    "|你神识早已|你纵使|你难抗|瞬间你已是|你愕然|使你|你躲闪不及|逼近你|你宛如一叶|你抵御不住|你自感"+
+                    "|纵是你|捣你|你唯有|你颓然|你挡无可挡|你心头一痛|尽的你|你当场受创|你脸露惧|管你";
                 let str = msg.match(p);
                 let outskill = "";
                 let t_1 = msg.match(/(.*?)将招式连成/);
@@ -5740,7 +5755,7 @@ var jj_djrw_xie_int = null;
                             autoqxfunc1();
                         }
                         if(msg.match("你从地髓石乳里爬了出来，终止了这次练功。")){
-                            clickButton("sleep_hanyuchuang");
+                            go("home;sleep_hanyuchuang");
                         }
                     }catch(e){}
                 }
@@ -5768,7 +5783,7 @@ var jj_djrw_xie_int = null;
                                 let qx_ = str_t[i].match(/(.*?)(.*?)(.*?)/);
                                 if(qx_[2]==autoqx){
                                     if(qx_[3].match(/未出世|师门|隐居修炼/)){
-                                        //
+                                        g_gmain.recvNetWork2("你要交互的npc挂了");
                                     }else{
                                         qx_num = qx_[1];
                                     }
@@ -5778,20 +5793,27 @@ var jj_djrw_xie_int = null;
                             setTimeout(autoqxfunc1,1000);
                         }
                         if(qx_off == 2){
+                            g_gmain.recvNetWork2("领果子开始");
                             let reg = "";
-                            for(let i=str_t.length;i>=0;i--){
+                            for(let i=str_t.length;i>=0;i-=1){
                                 let qmd = str_t[i].match(/(.*?)(.*?)\((.*?)\)(.*?)/);
                                 if(qmd){
+                                    g_gmain.recvNetWork2("到这来");
                                     if(qmd[3]<30000){
                                         for(let j=0;j<(i+1);j++){
-                                            reg += "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[1]+"^n;"+
+                                            reg = "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[1]+"^n;"+
                                                 "ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;"+
-                                                "ask+d^n^"+qmd[1]+"^n;";
+                                                "ask+d^n^"+qmd[1]+"^n;home";
                                         }
+                                        break;
                                     }
                                 }
                             }
-                            go(reg);
+                            if(reg==""){
+                                g_gmain.recvNetWork2("你的所有奇侠均已达到最低直接领朱果要求，保险起见请直接点击领朱果");
+                            }else{
+                                go(reg);
+                            }
                             qx_off = 0;
                         }
                     }
@@ -5892,16 +5914,16 @@ var jj_djrw_xie_int = null;
                     }
                 }
                 if(tuposkill_off==1){
-                if(type=="skills"&&subtype=="info"){
-                    if(b.get("tupo_tm")!=undefined){
-                        let timestamp = new Date().getTime();
-                        console.log(parseInt(b.get("tupo_tm")),parseInt(b.get("tupo_tm"))*1000+timestamp,timestamp);
-                        tuposkill_obj[g_simul_efun.replaceControlCharBlank(b.get("name"))] = {
-                            id:b.get("id"),
-                            time:(parseInt(b.get("tupo_tm"))*1000+timestamp)
-                        };
+                    if(type=="skills"&&subtype=="info"){
+                        if(b.get("tupo_tm")!=undefined){
+                            let timestamp = new Date().getTime();
+                            console.log(parseInt(b.get("tupo_tm")),parseInt(b.get("tupo_tm"))*1000+timestamp,timestamp);
+                            tuposkill_obj[g_simul_efun.replaceControlCharBlank(b.get("name"))] = {
+                                id:b.get("id"),
+                                time:(parseInt(b.get("tupo_tm"))*1000+timestamp)
+                            };
+                        }
                     }
-                }
                 }
                 if(type=="notice"&&jj_autotp_js_off!=0){
                     try{
@@ -5914,17 +5936,17 @@ var jj_djrw_xie_int = null;
                             }
                             let dalay = 10;
                             if(jj_autotp_js_boolean == 0&&jj_autotp_js_off==1){
-								jj_autotp_js_boolean = 1;
+                                jj_autotp_js_boolean = 1;
                                 for(let i in tuposkill_obj){
                                     let reg = "tupo go,"+tuposkill_obj[i].id;
-								    let gjsreg = "tupo_speedup2 "+tuposkill_obj[i].id+" go";
-								    let cjsreg = "tupo_speedup3 "+tuposkill_obj[i].id+" go";
+                                    let gjsreg = "tupo_speedup2 "+tuposkill_obj[i].id+" go";
+                                    let cjsreg = "tupo_speedup3 "+tuposkill_obj[i].id+" go";
                                     setTimeout(clickButton,dalay,reg);
-								    setTimeout(clickButton,dalay+220,gjsreg);
-								    setTimeout(clickButton,dalay+440,cjsreg);
-									return;
+                                    setTimeout(clickButton,dalay+220,gjsreg);
+                                    setTimeout(clickButton,dalay+440,cjsreg);
+                                    return;
                                 }
-							}
+                            }
                             for(let i in tuposkill_obj){
                                 let reg = "tupo go,"+tuposkill_obj[i].id;
                                 setTimeout(clickButton,dalay,reg);
@@ -5935,17 +5957,17 @@ var jj_djrw_xie_int = null;
                     }catch(e){}
                 }
                 if (type=="disconnect" && subtype=="change")
-				{
-					if (chonglian == 1){
-						g_gmain.g_delay_connect=0;
-						connectServer();
-					}else if(chonglian == 2){
-						setTimeout(function(){
-							g_gmain.g_delay_connect=0;
-							connectServer();
-						},1500000);
-					}
-				}
+                {
+                    if (chonglian == 1){
+                        g_gmain.g_delay_connect=0;
+                        connectServer();
+                    }else if(chonglian == 2){
+                        setTimeout(function(){
+                            g_gmain.g_delay_connect=0;
+                            connectServer();
+                        },1500000);
+                    }
+                }
             }
             if(jj_qback_event==1){
                 let type = b.get("type"),subType = b.get("subtype"),key = b.keys();
@@ -6530,20 +6552,20 @@ function jj_xid_func(){
 }
 function jj_zid_func(){
     let text = "<span class='out2'><span style='color:rgb(0, 255, 0)'>战场中各id如下:</span><br></span>";
-        for(let i=1;i<9;i++){
-            let str1 = "vs1_name"+i;
-            let str2 = "vs2_name"+i;
-            if(g_obj_map.get("msg_vs_info").get(str1)!=undefined){
-                text += "<span class='out2'><span style='color:rgb(0, 255, 0)'>vs1一方的"+
+    for(let i=1;i<9;i++){
+        let str1 = "vs1_name"+i;
+        let str2 = "vs2_name"+i;
+        if(g_obj_map.get("msg_vs_info").get(str1)!=undefined){
+            text += "<span class='out2'><span style='color:rgb(0, 255, 0)'>vs1一方的"+
                 g_obj_map.get("msg_vs_info").get(str1)+":"+g_obj_map.get("msg_vs_info").get("vs1_pos"+i)+
                 "</span><br></span>";
-            }
-            if(g_obj_map.get("msg_vs_info").get(str2)!=undefined){
-                text += "<span class='out2'><span style='color:rgb(0, 255, 0)'>vs2一方的"+
+        }
+        if(g_obj_map.get("msg_vs_info").get(str2)!=undefined){
+            text += "<span class='out2'><span style='color:rgb(0, 255, 0)'>vs2一方的"+
                 g_obj_map.get("msg_vs_info").get(str2)+":"+g_obj_map.get("msg_vs_info").get("vs2_pos"+i)+
                 "</span><br></span>";
-            }
         }
+    }
     抓到的id =  text;
 }
 function jj_qback_func(){
