@@ -4205,13 +4205,13 @@ function ispc(){
 }
 if(!ispc()){
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('touchstart', function(){
+    document.getElementById("out").addEventListener('dblclick', function(){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
-        swbox_time = setTimeout(swboxfunc,2000);//
+        swbox_time = setTimeout(swboxfunc,2000);
     });
-    document.getElementById("out").addEventListener('touchend', function(){
+    document.getElementById("out").addEventListener('click', function(){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
