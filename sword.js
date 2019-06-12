@@ -4674,7 +4674,7 @@ function autoqxfunc(){
 }
 var mj_num = 0,autoqx = "",is_15king = 0,qx_off = 0;
 function autoqxfunc1(){
-    if(fond_npc(autoqx)!=null){//看看奇侠在不在
+    if(fond_npc(autoqx)!=null){//看看奇侠在不在.
         if(mj_num < 3){
             if(is_15king!=0){
                 clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
