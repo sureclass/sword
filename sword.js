@@ -4209,7 +4209,7 @@ if(!ispc()){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
-        swbox_time = setTimeout(swboxfunc,2000);
+        swbox_time = setTimeout(swboxfunc,2000);//
     });
     document.getElementById("out").addEventListener('touchend', function(){
         try{
