@@ -4004,7 +4004,7 @@ var tanfanname = "";
 var autodboolean = 0;
 var room_id = "",bb_move_off = 1,bb_move_index = 0;
 var jh_bbb = 1,bububu = 0;
-var swbox_time = 0;
+var swbox_time = setTimeout(function(){},99999999);
 //------------------------生成技能连招
 (function(){
     for(let i = 0;i<skill_list2.length;i++){
@@ -4206,25 +4206,31 @@ function ispc(){
 if(!ispc()){
     ztbox.style.right = "10px";
     document.getElementById("out").addEventListener('mousedown', function(){
-        swbox_time = new Date().getTime();
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
+        swbox_time = setTimeout(swboxfunc,2000);
     });
     document.getElementById("out").addEventListener('mouseup', function(){
-        if((new Date().getTime() - swbox_time)>500){
-            swboxfunc();
-        }
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
     });
-    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>长按主界面0.5秒以上后松开启动菜单,中止启动键盘操作");
+    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>长按主界面2秒以上启动菜单,中止启动键盘操作");
 }else{
     ztbox.style.right = "10px";
     document.getElementById("out").addEventListener('mousedown', function(){
-        swbox_time = new Date().getTime();
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
+        swbox_time = setTimeout(swboxfunc,2000);
     });
     document.getElementById("out").addEventListener('mouseup', function(){
-        if((new Date().getTime() - swbox_time)>500){
-            swboxfunc();
-        }
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
     });
-    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面0.5秒以上后松开启动菜单,启动键盘操作,按上键开启");
+    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面2秒以上启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
         let currkey = key.keyCode||key.which||key.charCode;
