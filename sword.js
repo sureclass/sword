@@ -6428,13 +6428,6 @@ function qlyxauto(){
                 if(j==1){
                     //【系统】游侠会：听说石青璇出来闯荡江湖了，目前正在前往华山村的路上。
                     let msg=g_simul_efun.replaceControlCharBlank(b.get("msg"));
-                    /*let y = msg.match(/【系统】【醉梦销魂】：各位大侠请知晓了，我醉梦楼的(.*?)仙子此刻心情大好，小舞一曲以飨同好。座位有限，请速速前来。/);
-                        if(y){
-                            if(y[1]=="盈散花"){
-                                go("rank go 160;w;w;w;w;w;n;n;n;e;e;n");
-                            }
-                        }
-                        */
                     let jt = msg.match(/【系统】(.*?)慌不择路，逃往了(.*?)\-/);
                     if(jt){
                         if(jt[1]==tanfanname.split(",")[0]||jt[1]==tanfanname.split(",")[1]||jt[1]==tanfanname.split(",")[2]||jt[1]==tanfanname.split(",")[3]){
