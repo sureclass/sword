@@ -4205,27 +4205,37 @@ function ispc(){
 }
 if(!ispc()){
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('dblclick', function(){
+    document.getElementById("page").addEventListener('touchstart', function(){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
         swbox_time = setTimeout(swboxfunc,500);
     });
-    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>双击主界面启动菜单,中止启动键盘操作");
+    document.getElementById("page").addEventListener('touchend', function(){
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
+    });
+	document.getElementById("page").addEventListener('touchmove', function(){
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
+    });
+    g_gmain.recvNetWork2("你是手机端，加载成功...<br/>长按主界面启动菜单,中止启动键盘操作");
 }else{
     ztbox.style.right = "10px";
-    document.getElementById("out").addEventListener('mousedown', function(){
+    document.getElementById("page").addEventListener('mousedown', function(){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
-        swbox_time = setTimeout(swboxfunc,2000);
+        swbox_time = setTimeout(swboxfunc,500);
     });
-    document.getElementById("out").addEventListener('mouseup', function(){
+    document.getElementById("page").addEventListener('mouseup', function(){
         try{
             clearTimeout(swbox_time);
         }catch(e){}
     });
-    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面2秒以上启动菜单,启动键盘操作,按上键开启");
+    g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
         let currkey = key.keyCode||key.which||key.charCode;
