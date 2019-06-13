@@ -4235,6 +4235,11 @@ if(!ispc()){
             clearTimeout(swbox_time);
         }catch(e){}
     });
+    document.getElementById("page").addEventListener('mousemove', function(){
+        try{
+            clearTimeout(swbox_time);
+        }catch(e){}
+    });
     g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
@@ -5638,16 +5643,15 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    /*let g = g_obj_map;
+    let g = g_obj_map.get("msg_vs_info");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
     }
-    */
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
     //console.log(g_gmain);
     //console.log(gSocketMsg);
-    gSocketMsg.go_combat();
+    //gSocketMsg.go_combat();
     //clickButton("event_1_35095441");
 }
 var p_id = 0;
@@ -5747,7 +5751,7 @@ var jj_djrw_xie_int = null;
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
                 if(type!="channel"&&type!="attrs_changed"){
-                    console.log(type);
+                    //console.log(type);
                 }
                 if(type=="notice"){
                     try{
@@ -5775,28 +5779,31 @@ var jj_djrw_xie_int = null;
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
                         let str_r = "";
                         for(let i=0;i<msg.length;i++){
-                            if(!msg[i].match(/[a-zA-Z <>=""''\/_%:]/)){
+                            if(!msg[i].match(/[a-zA-Z <>=""''\/_%:;]/)){
                                 str_r += msg[i];
                             }
                         }
-                        let str_y = str_r.split(";");
+                        let str_y = str_r.split("领悟");
                         let str_t = [],k=0;
                         for(let i=0;i<str_y.length;i++){
-                            if(str_y[i].length>30){
-                                let d_d = str_y[i];
-                                str_t[k] = d_d;
+                            let d_d = (str_y[i]+"#").match(/300(.*?)0\((.*?)\)(.*?)#/);
+                            if(d_d!=null){
+                                str_t[k] = d_d[1].replace(/[0-9]/,"").replace(/[0-9]/,"")+"-"+d_d[2]+"-"+d_d[3];
                                 k++;
+                            }else{
+                                break;
                             }
                         }
                         if(qx_off == 1){
                             let qx_num = -1;
                             for(let i=0;i<str_t.length;i++){
-                                let qx_ = str_t[i].match(/(.*?)(.*?)(.*?)/);
-                                if(qx_[2]==autoqx){
-                                    if(qx_[3].match(/未出世|师门|隐居修炼/)){
+                                let qx_ = str_t[i].split("-");
+                                if(qx_[0]==autoqx){
+                                    if(qx_[2].match(/未出世|师门|隐居修炼/)){
                                         g_gmain.recvNetWork2("你要交互的npc挂了");
+                                        return;
                                     }else{
-                                        qx_num = qx_[1];
+                                        qx_num = i;
                                     }
                                 }
                             }
@@ -5806,18 +5813,16 @@ var jj_djrw_xie_int = null;
                         if(qx_off == 2){
                             g_gmain.recvNetWork2("领果子开始");
                             let reg = "";
-                            for(let i=str_t.length;i>=0;i-=1){
-                                let qmd = str_t[i].match(/(.*?)(.*?)\((.*?)\)(.*?)/);
-                                if(qmd){
-                                    g_gmain.recvNetWork2("到这来");
-                                    if(qmd[3]<30000){
-                                        for(let j=0;j<(i+1);j++){
-                                            reg = "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[1]+"^n;"+
-                                                "ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;ask+d^n^"+qmd[1]+"^n;"+
-                                                "ask+d^n^"+qmd[1]+"^n;home";
-                                        }
-                                        break;
+                            let i = 0;
+                            for(i=(str_t.length-1);i>=0;i-=1){
+                                let qmd = str_t[i].split("-");
+                                if(qmd[1]<30000){
+                                    for(let j=0;j<(i+1);j++){
+                                        reg = "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[0]+"^n;"+
+                                            "ask+d^n^"+qmd[0]+"^n;ask+d^n^"+qmd[0]+"^n;ask+d^n^"+qmd[0]+"^n;"+
+                                            "ask+d^n^"+qmd[0]+"^n;home;";
                                     }
+                                    break;
                                 }
                             }
                             if(reg==""){
@@ -5828,7 +5833,7 @@ var jj_djrw_xie_int = null;
                             qx_off = 0;
                         }
                     }
-                }catch(e){}
+                }catch(e){console.log(e)}
                 try{
                     if(type=="main_msg"){
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
