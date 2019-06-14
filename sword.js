@@ -4235,11 +4235,6 @@ if(!ispc()){
             clearTimeout(swbox_time);
         }catch(e){}
     });
-    document.getElementById("page").addEventListener('mousemove', function(){
-        try{
-            clearTimeout(swbox_time);
-        }catch(e){}
-    });
     g_gmain.recvNetWork2("你是电脑端，加载成功...<br/>长按主界面启动菜单,启动键盘操作,按上键开启");
     document.onkeydown = function(e){
         let key = e||event;
@@ -5769,7 +5764,7 @@ var jj_djrw_xie_int = null;
                         if(msg.match("扫荡成功")&&msg.match("玄铁令")){
                             autoqxfunc1();
                         }
-                        if(msg.match("你从地髓石乳里爬了出来，终止了这次练功。")){
+                        if(msg.match("你从地髓石乳中出来，发现自己变强了。")){
                             go("home;sleep_hanyuchuang");
                         }
                     }catch(e){}
@@ -5815,12 +5810,11 @@ var jj_djrw_xie_int = null;
                             let reg = "";
                             let i = 0;
                             for(i=(str_t.length-1);i>=0;i-=1){
-                                let qmd = str_t[i].split("-");
-                                if(qmd[1]<30000){
+                                if(str_t[i].split("-")[1]<30000){
                                     for(let j=0;j<(i+1);j++){
-                                        reg = "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+qmd[0]+"^n;"+
-                                            "ask+d^n^"+qmd[0]+"^n;ask+d^n^"+qmd[0]+"^n;ask+d^n^"+qmd[0]+"^n;"+
-                                            "ask+d^n^"+qmd[0]+"^n;home;";
+                                        reg += "find_task_road qixia "+(i-j)+"^d^1000s;ask+d^n^"+str_t[i-j].split("-")[0]+"^n;"+
+                                            "ask+d^n^"+str_t[i-j].split("-")[0]+"^n;ask+d^n^"+str_t[i-j].split("-")[0]+"^n;ask+d^n^"+str_t[i-j].split("-")[0]+"^n;"+
+                                            "ask+d^n^"+str_t[i-j].split("-")[0]+"^n;home;";
                                     }
                                     break;
                                 }
