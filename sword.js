@@ -4081,6 +4081,7 @@ function go_1(go_arr){
             let x_5 = text.match(/(.*?)\^n\^(.*?)\^n/);//npc存在了再行动
             let x_6 = text.match(/(.*?)\^cmd\^(.*?)\^cmd/);//按钮存在了再行动
             let x_7 = text.match(/(.*?)\^if\^(.*?)\^if/);//成功执行函数，失败重头再来
+            let x_8 = text.match(/(.*?)\^item\^(.*?)\^item/);//物品存在了再行动
             let reg = text;
             let delay = 200;
             if(x_1&&!x_3){
@@ -4157,6 +4158,15 @@ function go_1(go_arr){
                     }
                 }catch(e){
                     return "未完成";
+                }
+            }
+            if(x_8){
+                let name = x_8[2];
+                if(fond_item(name)==null){
+                    go_1_settime = setTimeout(go_1,10,go_arr);
+                    return "未完成";
+                }else{
+                    reg = "get "+fond_item(name);
                 }
             }
             go_reg_num+=1;
@@ -5137,7 +5147,7 @@ var killnpclist = [
     "镇山神兽", "守山神兽", "应龙幼崽", "镇殿神兽", "守殿神兽", "幽荧幼崽","饕餮兽魂","螣蛇兽魂","应龙兽魂","幽荧兽魂","饕餮王","应龙王","螣蛇王",
     "饕餮分身","应龙分身","螣蛇分身","幽荧分身","饕餮战神","螣蛇战神","应龙战神","幽荧战神","金狼将","采菊隐士","采菊童子","欢喜罗汉","紫神将",
     "魔郡主","快活居士","濯缨剑士","对影剑士","血斧客","龙山徒","纵横圣使","千夜暗影","天梵僧","贰壹刀客","月幽剑士","夏花剑士","鬼杀","幽冥鬼杀",
-    "白骨秀士","血剑客"
+    "白骨秀士","血剑客","剑影","剑浪","剑豹","剑蟒","剑飞"
 ];
 function autojzdfunc(){
     if(autojzdboolean == 0){
@@ -5638,16 +5648,18 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    let g = g_obj_map.get("msg_vs_info");
+    /*let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
-    }
+    }*/
     //writeToScreen(str,1);
     //send_notice(me,"我的天呐");
     //console.log(g_gmain);
     //console.log(gSocketMsg);
     //gSocketMsg.go_combat();
     //clickButton("event_1_35095441");
+    //console.log(vs_text_1);
+    console.log(fond_item("玉蜂浆"));
 }
 var p_id = 0;
 var vs_cz_dalay = 60000;
@@ -5732,6 +5744,7 @@ var tuposkill_off = 0;
 var jj_qs_delay = 20;
 var jj_sq_zj_num = 0;
 var jj_djrw_xie_int = null;
+var vs_text_1 = "";
 (function (window) {
     window.game = this;
     window.attach = function() {
@@ -5745,8 +5758,28 @@ var jj_djrw_xie_int = null;
             }catch(e){}
             if(1==1){
                 let type = b.get("type"),subtype=b.get("subtype");
-                if(type!="channel"&&type!="attrs_changed"){
-                    //console.log(type);
+                if(type=="vs"){
+                    try{
+                        let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        vs_text_1 += msg;
+                        if(msg.match(/造成(.*?)点伤害。/)){
+                            vs_text_1 = "";
+                        }
+                        if(vs_text_1!=""){
+                            let vs_str = "";
+                            for(let i = 0;i<100;i++){
+                                if(vs_text_1[i]!=undefined){
+                                    vs_str += vs_text_1[i];
+                                }else{
+                                    break;
+                                }
+                            }
+                            //let vs_t1 = vs_text_1.match(/\-\-(.*?)向(.*?)！/);
+                            //let vs_t2 = vs_text_1.match(/\-\-于(.*?)疏乎/);
+                            //于剑大师疏乎
+                            //console.log(vs_t1);
+                        }
+                    }catch(e){}
                 }
                 if(type=="notice"){
                     try{
@@ -5764,7 +5797,7 @@ var jj_djrw_xie_int = null;
                         if(msg.match("扫荡成功")&&msg.match("玄铁令")){
                             autoqxfunc1();
                         }
-                        if(msg.match("你从地髓石乳中出来，发现自己变强了。")){
+                        if(msg.match("你从地髓石乳中出来，发现自己变强了。")&&jj_dsqd_yrc == 1){
                             go("home;sleep_hanyuchuang");
                         }
                     }catch(e){}
@@ -5860,6 +5893,9 @@ var jj_djrw_xie_int = null;
                                     }
                                 }
                             },1000);
+                        }
+                        if(msg.match("你从地髓石乳中出来，发现自己变强了。")&&jj_dsqd_yrc == 1){
+                            go("home;sleep_hanyuchuang");
                         }
                     }
                 }catch(e){}
@@ -6286,7 +6322,7 @@ function fond_npc(name){
             }catch(e){}
         }
         return null;
-    }catch(e){}
+    }catch(e){return null}
 }
 function fond_cmd(name){
     try{
@@ -6305,7 +6341,26 @@ function fond_cmd(name){
             }catch(e){}
         }
         return null;
-    }catch(e){}
+    }catch(e){return null}
+}
+function fond_item(name){
+    try{
+        let return_text = "";
+        for(let i=1;i<1000;i++){
+            let text = "item"+i;
+            try{
+                if(g_obj_map.get("msg_room").get(text)!=undefined){
+                    if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get(text)).split(",")[1]==name){
+                        return_text = ansi_up.ansi_to_text(g_obj_map.get("msg_room").get(text)).split(",")[0];
+                        return return_text;
+                    }
+                }else{
+                    break;
+                }
+            }catch(e){}
+        }
+        return null;
+    }catch(e){return null}
 }
 var autoskill = new AutoSkill();
 var autoskillboolean = 0;
@@ -6701,14 +6756,17 @@ function jj_djrw_1(){
 var jj_dsqd_value = 0;
 var jj_dsqd_int = null;
 var jj_dsqd_suiji1 = 0;
+var jj_dsqd_yrc = 0;
 function jj_dsqd_func(){
     if(jj_dsqd_int == null){
         jj_dsqd_value = 0;
+        jj_dsqd_yrc = 1;
         btnlist["定时签到"].innerText = "定时签到i";
         jj_dsqd_int = setInterval(jj_dsqd_int_func,1000);
     }else{
         jj_dsqd_value = 0;
         jj_dsqd_suiji1 = 0;
+        jj_dsqd_yrc = 0;
         btnlist["定时签到"].innerText = "定时签到";
         clearInterval(jj_dsqd_int);
         jj_dsqd_int = null;
@@ -6819,6 +6877,10 @@ function jj_xhdj_int_func(name){
     btnlist["绝杀"].style.display = "none";
     createButton("上沉香",kj_cx_func);
     btnlist["上沉香"].style.display = "none";
+    createButton("到粽子",kj_dzz_func);
+    btnlist["到粽子"].style.display = "none";
+    createButton("龙血",kj_longxue_func);
+    btnlist["龙血"].style.display = "none";
     createButton("快捷返回",kjfhfunc);
     btnlist["快捷返回"].style.display = "none";
     btnlist["快捷返回"].innerText = "返回";
@@ -6834,6 +6896,8 @@ function kuaijiefunc(){
     btnlist["绝杀"].style.display = "block";
     btnlist["木人18"].style.display = "block";
     btnlist["上沉香"].style.display = "block";
+    btnlist["到粽子"].style.display = "block";
+    btnlist["龙血"].style.display = "block";
 }
 function kjfhfunc(){
     btnlist["到通天塔"].style.display = "none";
@@ -6845,6 +6909,8 @@ function kjfhfunc(){
     btnlist["绝杀"].style.display = "none";
     btnlist["木人18"].style.display = "none";
     btnlist["上沉香"].style.display = "none";
+    btnlist["龙血"].style.display = "none";
+    btnlist["到粽子"].style.display = "none";
     showzt();
 }
 function kj_tt_func(){
@@ -6881,6 +6947,12 @@ function kj_mr18_func(){
 function kj_js_func(){
     let str = npcdp.海云阁.海东狮 + ",n";
     go(str);
+}
+function kj_dzz_func(){
+    go("jh 16;s^c^4c;e;n;e;g^cmd^跳崖^cmd;s;w;j^item^芦苇^item;jh 18;n;nw;n^c^5c;ne;n^c^9c;w;nw;j^item^清水葫芦^item;jh 2;n^c^5c;e;e;n;n;e;n");
+}
+function kj_longxue_func(){
+    go("fb 9^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;");
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
