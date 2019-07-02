@@ -4685,19 +4685,19 @@ function autoqxfunc(){
 var mj_num = 0,autoqx = "",is_15king = 0,qx_off = 0;
 function autoqxfunc1(){
     if(fond_npc(autoqx)!=null){//看看奇侠在不在.
-        if(mj_num < 3){
+        if(mj_num < 4){
             if(is_15king!=0){
                 clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
             }else{
                 clickButton("ask "+fond_npc(autoqx));
             }
-        }else if(mj_num<4){
+        }else if(mj_num<5){
             if(is_15king!=0){
                 clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
             }else{
                 clickButton('auto_zsjd_'+fond_npc(autoqx).split("_")[0]);
             }
-        }else if(mj_num<5){
+        }else if(mj_num<6){
             clickButton('auto_zsjd20_'+fond_npc(autoqx).split("_")[0]);
         }else{
             if(is_15king!=0){
@@ -5657,9 +5657,9 @@ function shiyanfunc(){
     //console.log(g_gmain);
     //console.log(gSocketMsg);
     //gSocketMsg.go_combat();
-    //clickButton("event_1_35095441");
+    clickButton("event_1_35095441");
     //console.log(vs_text_1);
-    console.log(fond_item("玉蜂浆"));
+    //console.log(fond_item("玉蜂浆"));
 }
 var p_id = 0;
 var vs_cz_dalay = 60000;
