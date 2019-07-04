@@ -6786,8 +6786,9 @@ function jj_dsqd_int_func(){
                 jj_dsqd_value = 0;
             },119000);
         }
-    }
-    if(jj_dsqd_value == 0){
+        if(h == 15&&m == 10){
+            killYXTrigger = 0;
+        }
         if(h == 6&&m == 30){
             yzqdfunc();
             jj_dsqd_value = 9999999;
@@ -6796,8 +6797,6 @@ function jj_dsqd_int_func(){
                 jj_dsqd_value = 0;
             },119000);
         }
-    }
-    if(jj_dsqd_value == 0){
         if(h == 6&&m == 32+jj_dsqd_suiji1){
             pkrcfunc();
             jj_dsqd_value = 9999999;
@@ -6806,8 +6805,17 @@ function jj_dsqd_int_func(){
                 jj_dsqd_value = 0;
             },599000);
         }
+        if(h == 5&&m == 30){
+            go("vip finish_bad 1^c^5c;vip finish_bad 2^c^5c;");
+            jj_dsqd_value = 9999999;
+            killYXTrigger = 0;
+            setTimeout(function(){
+                jj_dsqd_value = 0;
+                killYXTrigger = 1;
+            },120000);
+        }
     }
-    if(jj_dsqd_value == 0){
+    if(jj_dsqd_value == 3.1415926){
         let this_m = 60;
         let this_h = 24;
         if((32+jj_dsqd_suiji1+10)>59){
@@ -6824,17 +6832,6 @@ function jj_dsqd_int_func(){
                 jj_dsqd_value = 0;
                 killYXTrigger = 1;
             },1200000);
-        }
-    }
-    if(jj_dsqd_value == 0){
-        if(h == 5&&m == 30){
-            go("vip finish_bad 1^c^5c;vip finish_bad 2^c^5c;");
-            jj_dsqd_value = 9999999;
-            killYXTrigger = 0;
-            setTimeout(function(){
-                jj_dsqd_value = 0;
-                killYXTrigger = 1;
-            },120000);
         }
     }
 }
