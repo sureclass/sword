@@ -6778,7 +6778,12 @@ function jj_dsqd_int_func(){
     let m = sureclock.getMinutes();
     let h = sureclock.getHours();
     if(jj_dsqd_value == 0){
+        if(h == 5&&m == 0){
+            qlyxautoboolean = 0;
+        }
         if(h == 6&&m == 25){
+            g_gmain.g_delay_connect=0;
+            connectServer();
             bingyuegufunc();
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
@@ -6787,9 +6792,13 @@ function jj_dsqd_int_func(){
             },119000);
         }
         if(h == 15&&m == 10){
-            killYXTrigger = 0;
+            if(killYXTrigger != 0){
+                killYXTrigger = 0
+            }
         }
         if(h == 6&&m == 30){
+            g_gmain.g_delay_connect=0;
+            connectServer();
             yzqdfunc();
             jj_dsqd_value = 9999999;
             jj_dsqd_suiji1 = (parseInt(runnum(2))+1)%20;
@@ -6798,14 +6807,19 @@ function jj_dsqd_int_func(){
             },119000);
         }
         if(h == 6&&m == 32+jj_dsqd_suiji1){
+            g_gmain.g_delay_connect=0;
+            connectServer();
             pkrcfunc();
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
             setTimeout(function(){
                 jj_dsqd_value = 0;
+                killYXTrigger = 1;
             },599000);
         }
         if(h == 5&&m == 30){
+            g_gmain.g_delay_connect=0;
+            connectServer();
             go("vip finish_bad 1^c^5c;vip finish_bad 2^c^5c;");
             jj_dsqd_value = 9999999;
             killYXTrigger = 0;
@@ -6815,7 +6829,7 @@ function jj_dsqd_int_func(){
             },120000);
         }
     }
-    if(jj_dsqd_value == 3.1415926){
+    if(jj_dsqd_value == 3.1415926){//不会触发单纯备用
         let this_m = 60;
         let this_h = 24;
         if((32+jj_dsqd_suiji1+10)>59){
@@ -6949,7 +6963,7 @@ function kj_dzz_func(){
     go("jh 16;s^c^4c;e;n;e;g^cmd^跳崖^cmd;s;w;j^item^芦苇^item;jh 18;n;nw;n^c^5c;ne;n^c^9c;w;nw;j^item^清水葫芦^item;jh 2;n^c^5c;e;e;n;n;e;n");
 }
 function kj_longxue_func(){
-    go("fb 9^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;n^d^2000s;");
+    go("fb 9^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;");
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
