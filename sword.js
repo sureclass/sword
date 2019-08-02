@@ -5296,7 +5296,7 @@ var killnpclist = [
     "镇山神兽", "守山神兽", "应龙幼崽", "镇殿神兽", "守殿神兽", "幽荧幼崽","饕餮兽魂","螣蛇兽魂","应龙兽魂","幽荧兽魂","饕餮王","应龙王","螣蛇王",
     "饕餮分身","应龙分身","螣蛇分身","幽荧分身","饕餮战神","螣蛇战神","应龙战神","幽荧战神","金狼将","采菊隐士","采菊童子","欢喜罗汉","紫神将",
     "魔郡主","快活居士","濯缨剑士","对影剑士","血斧客","龙山徒","纵横圣使","千夜暗影","天梵僧","贰壹刀客","月幽剑士","夏花剑士","鬼杀","幽冥鬼杀",
-    "白骨秀士","血剑客","剑影","剑浪","剑豹","剑蟒","剑飞"
+    "白骨秀士","血剑客","剑影","剑浪","剑豹","剑蟒","剑飞","石幽冥","绛衣杀手","剑神","绛衣剑客","巨鹏"
 ];
 function autojzdfunc(){
     if(autojzdboolean == 0){
@@ -5802,18 +5802,9 @@ function shiyanfunc(){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
     }*/
     //writeToScreen(str,1);
-    //send_notice(me,"我的天呐");
-    //console.log(g_gmain);
-    //console.log(gSocketMsg);
     //gSocketMsg.go_combat();
     //clickButton("event_1_35095441");
-    //console.log(vs_text_1);
-    //console.log(fond_item("玉蜂浆"));
-    for(let i in npcdplist){
-                            for(let j in npcdplist[i]){
-                                g_gmain.recvNetWork2(npcdplist[i][j]);
-                            }
-                        }
+    g_gmain.clickButton("jh 11");
 }
 var p_id = 0;
 var vs_cz_dalay = 60000;
@@ -7068,6 +7059,8 @@ function jj_xhdj_int_func(name1){
     btnlist["到粽子"].style.display = "none";
     createButton("龙血",kj_longxue_func);
     btnlist["龙血"].style.display = "none";
+    createButton("前院",kj_ymszqy_func);
+    btnlist["前院"].style.display = "none";
     createButton("快捷返回",kjfhfunc);
     btnlist["快捷返回"].style.display = "none";
     btnlist["快捷返回"].innerText = "返回";
@@ -7085,6 +7078,7 @@ function kuaijiefunc(){
     btnlist["上沉香"].style.display = "block";
     btnlist["到粽子"].style.display = "block";
     btnlist["龙血"].style.display = "block";
+    btnlist["前院"].style.display = "block";
 }
 function kjfhfunc(){
     btnlist["到通天塔"].style.display = "none";
@@ -7098,6 +7092,7 @@ function kjfhfunc(){
     btnlist["上沉香"].style.display = "none";
     btnlist["龙血"].style.display = "none";
     btnlist["到粽子"].style.display = "none";
+    btnlist["前院"].style.display = "none";
     showzt();
 }
 function kj_tt_func(){
@@ -7139,7 +7134,14 @@ function kj_dzz_func(){
     go("jh 16;s^c^4c;e;n;e;g^cmd^跳崖^cmd;s;w;j^item^芦苇^item;jh 18;n;nw;n^c^5c;ne;n^c^9c;w;nw;j^item^清水葫芦^item;jh 2;n^c^5c;e;e;n;n;e;n");
 }
 function kj_longxue_func(){
-    go("fb 9^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;n^d^3000s;");
+    go("fb 9^d^3000s,n^d^3000s,n^d^3000s,n^d^3000s,n^d^3000s,n^d^3000s,n");
+}
+function kj_ymszqy_func(){
+    let str = "jh 45,ne,ne,n,n,ne,ne,e,ne,n,n,n,n,n,ne,ne,n,n,n,nw,nw,n,e,e,e,e,e,"+
+        "event_1_77775145,event_1_77775145 ymsz_qianyuan,e^d^2000s,e^d^2000s,"+
+        "s^d^2000s,n,n^d^2000s,s,e^d^2000s,e^d^2000s,ne^d^2000s,sw,s^d^2000s,s^d^2000s,"+
+        "s^d^2000s,e";
+    go(str);
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
