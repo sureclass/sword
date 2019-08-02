@@ -5804,7 +5804,7 @@ function shiyanfunc(){
     //writeToScreen(str,1);
     //gSocketMsg.go_combat();
     //clickButton("event_1_35095441");
-    g_gmain.clickButton("jh 11");
+    clickButton("team chat 测试队伍说话！！！");
 }
 var p_id = 0;
 var vs_cz_dalay = 60000;
@@ -7027,12 +7027,18 @@ function jj_xhdj_func(){
         jj_xhdj_int = null;
     }
 }
-function jj_xhdj_int_func(name1){
-    if(fond_cmd(name1)!=null&&is_fighting!=1){
-        clickButton(fond_cmd(name1));
+function jj_xhdj_int_func(name){
+    let arr = [];
+    if(name.indexOf("，")>=0){
+        arr = name.split("，");
+    }else{
+        arr[0] = name;
     }
-    if(fond_cmd("普通矿洞")!=null&&is_fighting!=1){
-        clickButton(fond_cmd("普通矿洞"));
+    for(let i = 0;i<arr.length;i++){
+        if(fond_cmd(arr[i])!=null&&is_fighting!=1){
+            clickButton(fond_cmd(arr[i]));
+            return;
+        }
     }
 }
 //--------------------------快捷键
