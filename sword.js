@@ -5482,11 +5482,27 @@ function kf_qql_func(){
     }
 }
 var kf_qql_href = "";
+var kf_ljl = 0;//关于跨服领奖励
 function kf_qql_int_func(){
     if(qfql_href()!=""){
         if(qfql_href()!=kf_qql_href){
             kf_qql_href = qfql_href();
             clickButton(kf_qql_href);
+        }
+    }
+    let sureclock = new Date();
+    let s = sureclock.getSeconds();
+    let m = sureclock.getMinutes();
+    let h = sureclock.getHours();
+    if(kf_ljl == 0){
+        if(h == 18&&m == 1){
+            g_gmain.g_delay_connect=0;
+            connectServer();
+            go(";;;;;;;;;;;w^c^10c;n;event_1_18378233;s;e^c^10c;sort global fetch_reward");
+            kf_ljl = 9999999;
+            setTimeout(function(){
+                kf_ljl = 0;
+            },6000);
         }
     }
 }
@@ -5892,6 +5908,9 @@ var jj_djrw_xie_int = null;
 var vs_text_1 = "";
 var cl_settime = null;
 var ql_cishu = 0,ql_settime = null;
+var csyx_jineng = "";//传授游侠技能名
+var csyx_jilv = 0;//传授游侠技能等级
+var chuaimo_name = "";//揣摩技能名
 (function (window) {
     window.game = this;
     window.attach = function() {
@@ -5899,6 +5918,13 @@ var ql_cishu = 0,ql_settime = null;
         gSocketMsg.dispatchMessage = function(b) {
             this.old(b);
             try{
+                let type = b.get("type"),subtype=b.get("subtype");
+                if(type=="skills"&&subtype=="info"){
+                    chuaimo_name = b.get("cmd1");
+                }
+                //if(type!="cannel"){
+                    //console.log(type,subtype,b.get("msg"));
+                //}
                 if(b.get("msg").match("天剑真身")){
                     console.log(b.get("type"),g_simul_efun.replaceControlCharBlank(b.get("msg")));
                 }
@@ -5952,6 +5978,30 @@ var ql_cishu = 0,ql_settime = null;
                 try{
                     if(type=="show_html_page"){
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
+                        let reg = new RegExp(csyx_jineng);
+                        let str_102 = "";
+                        for(let str_102_i = 0;str_102_i<msg.length;str_102_i++){
+                            if(msg[str_102_i]!="<"&&msg[str_102_i]!=">"&&msg[str_102_i]!="/"){
+                                if(msg[str_102_i]=="◆"){
+                                    str_102+=msg[str_102_i];
+                                    str_102+=";";
+                                }else{
+                                    str_102+=msg[str_102_i];
+                                }
+                            }
+                        }
+                        let arr_102 = str_102.split(";");
+                        for(let i=0;i<arr_102.length;i++){
+                            if(arr_102[i].length<5){
+                                arr_102.splice(i,1);
+                            }
+                        }
+                        for(let i = 0;i<arr_102.length;i++){
+                            if(arr_102[i].indexOf(csyx_jineng)>=0){
+                                clickButton(arr_102[i+1].split("")[0]+" 100");
+                                return;
+                            }
+                        }
                         let str_r = "";
                         for(let i=0;i<msg.length;i++){
                             if(!msg[i].match(/[a-zA-Z <>=""''\/_%:;]/)){
@@ -6052,6 +6102,12 @@ var ql_cishu = 0,ql_settime = null;
                         let xieweizhi = x.match(/血刀妖僧：有个美女在(.*?)出现/);
                         let xiewancheng = x.match(/你已用合欢散将美女弄晕，赶紧弄回去讨好(.*?)领赏/);
                         let zhenwancheng = x.match(/你已杀掉了全部的星宿恶徒，回去找(.*?)回报一下吧。/);
+                        let csyx = x.match(/你使用潜能(.*?)提升(.*?)的(.*?)技能等级到(.*?)级。/);
+                        let chuaimo = x.match(/你开始揣摩/);
+                        if(chuaimo){
+                            g_gmain.recvNetWork2("揣摩"+chuaimo_name);
+                            setTimeout(clickButton,200,chuaimo_name);
+                        }
                         if(xieweizhi){
                             g_gmain.recvNetWork2(xieweizhi[1]);
                             go(lv_ditu_obj[xieweizhi[1]]);
@@ -6068,6 +6124,10 @@ var ql_cishu = 0,ql_settime = null;
                         }
                         if(zhenwancheng){
                             go("daily go 18,event_1_20668593");
+                        }
+                        if(csyx){
+                            csyx_jineng = csyx[3];
+                            csyx_jilv = csyx[4];
                         }
                     }catch(e){}
                 }
