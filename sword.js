@@ -5978,9 +5978,10 @@ var chuaimo_name = "";//揣摩技能名
                 try{
                     if(type=="show_html_page"){
                         let msg = g_simul_efun.replaceControlCharBlank(b.get("msg"));
-                        let reg = new RegExp(csyx_jineng);
-                        let str_102 = "";
-                        for(let str_102_i = 0;str_102_i<msg.length;str_102_i++){
+                        if(csyx_jineng!=""){
+                            let reg = new RegExp(csyx_jineng);
+                            let str_102 = "";
+                            for(let str_102_i = 0;str_102_i<msg.length;str_102_i++){
                             if(msg[str_102_i]!="<"&&msg[str_102_i]!=">"&&msg[str_102_i]!="/"){
                                 if(msg[str_102_i]=="◆"){
                                     str_102+=msg[str_102_i];
@@ -5990,16 +5991,18 @@ var chuaimo_name = "";//揣摩技能名
                                 }
                             }
                         }
-                        let arr_102 = str_102.split(";");
-                        for(let i=0;i<arr_102.length;i++){
+                            let arr_102 = str_102.split(";");
+                            for(let i=0;i<arr_102.length;i++){
                             if(arr_102[i].length<5){
                                 arr_102.splice(i,1);
                             }
                         }
-                        for(let i = 0;i<arr_102.length;i++){
+                            for(let i = 0;i<arr_102.length;i++){
                             if(arr_102[i].indexOf(csyx_jineng)>=0){
+                                csyx_jineng = "";
                                 clickButton(arr_102[i+1].split("")[0]+" 100");
                                 return;
+                                }
                             }
                         }
                         let str_r = "";
@@ -6143,7 +6146,7 @@ var chuaimo_name = "";//揣摩技能名
                         return;
                     }
                     if(x.indexOf("乘胜追击")>=0){
-                        if(jd<8){
+                        if(jd<30){
                             if(jj_sq_zj_num>=2){
                                 jj_sq_zj_num = 0;
                                 setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
@@ -6154,6 +6157,7 @@ var chuaimo_name = "";//揣摩技能名
                         }else{
                             jj_sq_zj_num = 0;
                             setTimeout(clickButton,deday,jj_qs_cmd_id+' get');
+                            jj_qs_cmd_id = "";
                         }
                         return;
                     }
