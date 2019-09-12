@@ -6233,7 +6233,7 @@ var chuaimo_name = "";//揣摩技能名
                             cl_settime = setTimeout(function(){
                                 g_gmain.g_delay_connect=0;
                                 connectServer();
-                            },1500000);
+                            },900000);
                         }
                     }
                 }
