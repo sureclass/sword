@@ -7132,6 +7132,10 @@ function jj_xhdj_int_func(name){
     btnlist["龙血"].style.display = "none";
     createButton("前院",kj_ymszqy_func);
     btnlist["前院"].style.display = "none";
+    createButton("到白猿",kj_baiyuan_func);
+    btnlist["到白猿"].style.display = "none";
+    createButton("到箭楼",kj_jianlou_func);
+    btnlist["到箭楼"].style.display = "none";
     createButton("快捷返回",kjfhfunc);
     btnlist["快捷返回"].style.display = "none";
     btnlist["快捷返回"].innerText = "返回";
@@ -7150,6 +7154,8 @@ function kuaijiefunc(){
     btnlist["到粽子"].style.display = "block";
     btnlist["龙血"].style.display = "block";
     btnlist["前院"].style.display = "block";
+    btnlist["到白猿"].style.display = "block";
+    btnlist["到箭楼"].style.display = "block";
 }
 function kjfhfunc(){
     btnlist["到通天塔"].style.display = "none";
@@ -7164,6 +7170,8 @@ function kjfhfunc(){
     btnlist["龙血"].style.display = "none";
     btnlist["到粽子"].style.display = "none";
     btnlist["前院"].style.display = "none";
+    btnlist["到白猿"].style.display = "none";
+    btnlist["到箭楼"].style.display = "none";
     showzt();
 }
 function kj_tt_func(){
@@ -7213,6 +7221,12 @@ function kj_ymszqy_func(){
         "s^d^2000s,n,n^d^2000s,s,e^d^2000s,e^d^2000s,ne^d^2000s,sw,s^d^2000s,s^d^2000s,"+
         "s^d^2000s,e";
     go(str);
+}
+function kj_baiyuan_func(){
+    go("jh 50;ne;ne;n;n;n;ne;ne;ne;n;n;n");
+}
+function kj_jianlou_func(){
+    go("jh 50;ne;ne;n;n;n;ne;ne;ne;se;se;se;s;s;s;s;se;se;e;n^c^8c;w");
 }
 //--------------------------jq叫杀方法（性能不高）
 function killfunc(arr){
