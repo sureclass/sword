@@ -6698,7 +6698,7 @@ function killYXfeedback(){
                 let x_2 = msg.match(/系统更新中，请稍候再试。/);
                 let x_3 = msg.match(/你今天江湖悬红榜任务数量已经达到上限/);
                 if(x){
-                    go("jh 1;w;event_1_40923067^c^2c");
+                    go("jh 1;w;event_1_40923067;event_1_40923067");
                 }
                 if(x_1){
                     setTimeout(clickButton,200,"event_1_40923067");
