@@ -612,6 +612,7 @@ var npcdp = {
         '花不为': 'jh 1,e,n,n,n,n,e',
         '杜宽': 'jh 1,e,n,n,n,n,w',
         '杜宽宽': 'jh 1,e,n,n,n,n,w',
+        '1p':'jh 1;w;w;n;s;s;n;w;n;s;s;n;w;n;s;s;n;w;n;s;s;n;w;n;s;s;n;w;n;s;s;n;w;n;s;s;n;w;jh 1;e;s;w;w;e;s;jh 1;e;e;s;ne;ne;jh 1;e;n;w;e;e;e;n;s;e;e;s;n;e;w;n;jh 1;e;n;n;w;e;n;w;e;e;e;w;w;n;w;e;e;w;n'
     },
     '洛阳': {
         '农夫': 'jh 2,n',
@@ -662,6 +663,11 @@ var npcdp = {
         '布衣老翁': 'jh 2,n,n,n,n,n,n,n,n,n,e,n',
         '萧问天': 'jh 2,n,n,n,n,n,n,n,n,n,e,n,n',
         '藏剑楼首领': 'jh 2,n,n,n,n,n,n,n,n,n,e,n,n,n',
+        'p2':"jh 2;n;n;e;s;f^cmd^跳上船坞(^cmd;n;n;w;n;e;s;n;w;w;f^cmd^蒲团^cmd;n;e;n;e;"+
+             "s;n;w;w;event_1_98995501;n;w;e;n;e;w;s;s;s;s;w;e;n;e;n;e;n;f^cmd^参天大树^cmd;"+
+             "s;s;e;n;n;e;n;s;w;w;e;n;w;e;n;e;w;n;f^cmd^冬青^cmd;w;w;e;s^c^5c;w;w;w;s;"+
+             "f^cmd^穿过密林^cmd;e;n;n;n;w;e;s;s;w;n;w;e;n;n;e;w;s;s;s;e;e;n;e;n;s;w;w;e;n;e;"+
+             "w;n;e;w;w;d^cmd^进入密室^cmd;n;e;n;e;n;n;n;s;s;s;w;n;w;w;w;w;e;e;e;e;n;n;n",
     },
     '长安': {
         '胡商': 'jh 2,n,n,n,n,n,n,n,n,n,n,n,n,n,n',
@@ -4182,6 +4188,7 @@ var go_next = 0;//是否继续执行
 var go_nonext_dp = [
     "渔船","木船","竹篮","木筏","小船","客船"
 ];
+var go_ifrive = "";
 function go(str){
     if(str==null&&str==undefined){
         if(go_1_settime!=null){
@@ -4214,7 +4221,7 @@ function go_1(go_arr){
         go_1_settime = null;
     }
     let num = 0;
-    num = go_nonext_func();
+    num = go_nonext_func(go_arr);
     if(num==1||num==3){
         go_1_settime = setTimeout(go_1,10,go_arr);
     }
@@ -4336,8 +4343,9 @@ function go_1(go_arr){
     return "未完成";
 }
 var go_is_npc = 0;
-function go_nonext_func(){
+function go_nonext_func(go_arr){
     try{
+        let room_id = g_obj_map.get("msg_room").get("go_random");//记录现在的房间id
         if(is_fighting==1){
             return 1;
         }
@@ -4348,6 +4356,16 @@ function go_nonext_func(){
         }
         if(go_is_npc!=0){
             return 3;
+        }
+        if(room_id != go_ifrive){
+            go_ifrive = room_id;
+        }else{
+            let fangxiangddx = ["e","w","n","s","ne","nw","se","sw"];
+            for(let i = 0;i<8;i++){
+                if(go_arr[go_reg_num-1]==fangxiangddx[i]){
+                    return 1;
+                }
+            }
         }
     }catch(e){}
     return 4;
@@ -5814,14 +5832,14 @@ function shiyanfunc(){
     //console.log(skill_key);
     //clickButton("change_server world");
     //clickButton('team create');
-    /*let g = g_obj_map.get("msg_room");
+    let g = g_obj_map.get("msg_room");
     for(let i=0;i<g.keys().length;i++){
         try{console.log(g.keys()[i]+":"+g.get(g.keys()[i]));}catch(e){}
-    }*/
+    }
     //writeToScreen(str,1);
     //gSocketMsg.go_combat();
     //clickButton("event_1_35095441");
-    clickButton("team chat 测试队伍说话！！！");
+    //clickButton("team chat 测试队伍说话！！！");
 }
 var p_id = 0;
 var vs_cz_dalay = 60000;
@@ -5908,7 +5926,7 @@ var jj_sq_zj_num = 0;
 var jj_djrw_xie_int = null;
 var vs_text_1 = "";
 var cl_settime = null;
-var ql_cishu = 0,ql_settime = null;
+var ql_cishu = 0,ql_settime = null,ql_off = 0;//重连参数
 var csyx_jineng = "";//传授游侠技能名
 var csyx_jilv = 0;//传授游侠技能等级
 var chuaimo_name = "";//揣摩技能名
@@ -6215,16 +6233,14 @@ var chuaimo_name = "";//揣摩技能名
                     }catch(e){}
                 }
                 if (type=="disconnect" && subtype=="change"){
-                    ql_cishu+=1;
-                    if(ql_settime!=null){
-                        clearTimeout(ql_settime);
-                        ql_settime = null;
-                    }else{
-                        ql_settime = setTimeout(function(){ql_cishu = 0},1000);
-                    }
+                    setTimeout(function(){ql_cishu = 0;},10000);
                     if(chonglian == 1){
-                        g_gmain.g_delay_connect=0;
-                        connectServer();
+                        if(ql_cishu==0){
+                           g_gmain.g_delay_connect=0;
+                           connectServer();
+                        }else{
+                            setTimeout(function(){g_gmain.g_delay_connect=0;connectServer();},150000);
+                        }
                     }
                     if(chonglian == 2){
                         if(cl_settime!=null){
@@ -6234,9 +6250,12 @@ var chuaimo_name = "";//揣摩技能名
                             cl_settime = setTimeout(function(){
                                 g_gmain.g_delay_connect=0;
                                 connectServer();
-                            },900000);
+                                clearTimeout(cl_settime);
+                                cl_settime = null;
+                            },1500000);
                         }
                     }
+                    ql_cishu += 1;
                 }
             }
             if(jj_qback_event==1){
