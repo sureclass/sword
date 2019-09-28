@@ -6239,7 +6239,7 @@ var chuaimo_name = "";//揣摩技能名
                            g_gmain.g_delay_connect=0;
                            connectServer();
                         }else{
-                            setTimeout(function(){g_gmain.g_delay_connect=0;connectServer();},150000);
+                            setTimeout(function(){g_gmain.g_delay_connect=0;connectServer();},1500000);
                         }
                     }
                     if(chonglian == 2){
