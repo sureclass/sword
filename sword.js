@@ -5414,9 +5414,24 @@ function xhjsfunc(){
 }
 function xhjs(name){
     let kill_npc = "";
+	let fight_user = null;
     for(let i=0;i<name.length;i++){
+		if(name[i].indexOf("**")>=0){
+            fight_user = name[i].split("**");
+			break;
+        }
         if(fond_npc(name[i])!=null){
             kill_npc = fond_npc(name[i]);
+        }
+    }
+    if(fight_user!=null){
+        if(fond_user(fight_user[0])!=""&&fond_user(fight_user[0])!=null){
+            clickButton("fight "+fond_user(fight_user[0]));
+            return;
+        }
+        if(fond_user(fight_user[1])!=""&&fond_user(fight_user[1])!=null){
+            clickButton("fight "+fond_user(fight_user[1]));
+            return;
         }
     }
     if(!document.getElementById("combat_xdz_text")){
@@ -7267,4 +7282,20 @@ function runnum(n){
         num += Math.floor(Math.random()*10);
     }
     return num;
+}
+//--------------------------找玩家id
+function fond_user(name){
+    try{
+        let return_text = "";
+        for(let i=0;i<100;i++){
+            let text = "user"+i;
+            try{
+                if(ansi_up.ansi_to_text(g_obj_map.get("msg_room").get(text)).split(",")[1]==name){
+                    return_text = g_obj_map.get("msg_room").get(text).split(",")[0];
+                    return return_text;
+                }
+            }catch(e){}
+        }
+        return null;
+    }catch(e){return null}
 }
